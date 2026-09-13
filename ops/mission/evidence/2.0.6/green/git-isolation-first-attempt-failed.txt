@@ -1,0 +1,33 @@
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor) ... FAIL
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor) ... FAIL
+
+======================================================================
+FAIL: test_git_run_neutralizes_candidate_fsmonitor (tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_release_reviews.py", line 35, in test_git_run_neutralizes_candidate_fsmonitor
+    self.assertEqual(reviews.git_run(GIT, repo, "rev-parse", "--is-inside-work-tree"), "true")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'false' != 'true'
+- false
++ true
+
+
+======================================================================
+FAIL: test_git_run_neutralizes_candidate_fsmonitor (tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_release.py", line 37, in test_git_run_neutralizes_candidate_fsmonitor
+    self.assertEqual(publication.git_run(GIT, repo, "rev-parse", "--is-inside-work-tree"), "true")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'false' != 'true'
+- false
++ true
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.119s
+
+FAILED (failures=2)
+EXIT 1

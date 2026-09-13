@@ -11,9 +11,14 @@ Verification is a ladder. Each rung establishes one authority and stops there.
 | External freshness launcher | Newest authorized release plus content integrity under protected external state | Protection from a compromised operating system or trusted runtime |
 | Independent exact-head review | A reviewer’s verdict on one immutable commit/tree and stated matrix | Merge, tag, release, or broader authority |
 
-## Current release identity
+## Published baseline identity
 
 Forge 50 2.0.5 is a **limited-trust, public content-authenticated** release.
+
+The 2.0.6 security-patch checkout is a different candidate, not authenticated by
+the 2.0.5 signature or witnesses. Its intended manifest sequence is 5. Follow
+the [2.0.6 promotion gates](2.0.6-release-scope.md) before using its release claim.
+Until those gates are evidenced, keep acquisition pinned to the published baseline.
 
 ```text
 repository  Island-Dev-Crew/idc-skills

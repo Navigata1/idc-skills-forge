@@ -1,0 +1,4 @@
+COMMAND ["bash", "-n", "scripts/setup-signing-wizard.sh"]
+
+EXIT 0
+SECONDS 0.003

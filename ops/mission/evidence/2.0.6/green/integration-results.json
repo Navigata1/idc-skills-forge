@@ -1,0 +1,282 @@
+[
+  {
+    "gate": "python-full",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 54.465
+  },
+  {
+    "gate": "guard-matrix",
+    "command": [
+      "bash",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 14.434
+  },
+  {
+    "gate": "egress-corpus",
+    "command": [
+      "bash",
+      "skills/self-contained-ship/scripts/test-scan-egress.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 55.326
+  },
+  {
+    "gate": "canonical",
+    "command": [
+      "python3",
+      "-I",
+      "-B",
+      "scripts/validate_skills.py",
+      "--json"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.317
+  },
+  {
+    "gate": "forge-50",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/verify_forge_50.py",
+      "--json"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.467
+  },
+  {
+    "gate": "gauntlet-strict",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/verify_gauntlet_records.py"
+    ],
+    "exit": 1,
+    "expected": 1,
+    "pass": true,
+    "seconds": 0.137
+  },
+  {
+    "gate": "gauntlet-historical",
+    "command": [
+      "python3",
+      "-B",
+      "scripts/verify_gauntlet_records.py",
+      "--historical-records"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.145
+  },
+  {
+    "gate": "shellcheck",
+    "command": [
+      "shellcheck",
+      "console/assemble.sh",
+      "scripts/install.sh",
+      "scripts/setup-signing-wizard.sh",
+      "scripts/test-skill-integrity.sh",
+      "skills/agent-guardrails/scripts/block-dangerous-git.sh",
+      "skills/agent-guardrails/scripts/block-dangerous-git-strict.sh",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh",
+      "skills/self-contained-ship/scripts/scan-egress.sh",
+      "skills/self-contained-ship/scripts/test-scan-egress.sh",
+      "skills/computer-use-smoke/scripts/smoke.sh",
+      "skills/video-analysis/scripts/grab.sh",
+      "skills/wizard/template.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 1.509
+  },
+  {
+    "gate": "sealed-fixtures",
+    "command": [
+      "node",
+      "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 7.513
+  },
+  {
+    "gate": "sealed-artifacts",
+    "command": [
+      "node",
+      "scripts/verify-sealed-artifacts.mjs",
+      "--output",
+      "/private/tmp/forge-206-baseline.4IY6If/integration-gates/sealed-browser.json"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 15.143
+  },
+  {
+    "gate": "bash-syntax-0",
+    "command": [
+      "bash",
+      "-n",
+      "console/assemble.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-1",
+    "command": [
+      "bash",
+      "-n",
+      "scripts/install.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.002
+  },
+  {
+    "gate": "bash-syntax-2",
+    "command": [
+      "bash",
+      "-n",
+      "scripts/setup-signing-wizard.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-3",
+    "command": [
+      "bash",
+      "-n",
+      "scripts/test-skill-integrity.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-4",
+    "command": [
+      "bash",
+      "-n",
+      "skills/agent-guardrails/scripts/block-dangerous-git.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-5",
+    "command": [
+      "bash",
+      "-n",
+      "skills/agent-guardrails/scripts/block-dangerous-git-strict.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.002
+  },
+  {
+    "gate": "bash-syntax-6",
+    "command": [
+      "bash",
+      "-n",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.004
+  },
+  {
+    "gate": "bash-syntax-7",
+    "command": [
+      "bash",
+      "-n",
+      "skills/self-contained-ship/scripts/scan-egress.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-8",
+    "command": [
+      "bash",
+      "-n",
+      "skills/self-contained-ship/scripts/test-scan-egress.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.006
+  },
+  {
+    "gate": "bash-syntax-9",
+    "command": [
+      "bash",
+      "-n",
+      "skills/computer-use-smoke/scripts/smoke.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-10",
+    "command": [
+      "bash",
+      "-n",
+      "skills/video-analysis/scripts/grab.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  },
+  {
+    "gate": "bash-syntax-11",
+    "command": [
+      "bash",
+      "-n",
+      "skills/wizard/template.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "pass": true,
+    "seconds": 0.003
+  }
+]

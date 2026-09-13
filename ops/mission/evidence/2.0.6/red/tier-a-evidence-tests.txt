@@ -1,0 +1,206 @@
+Base implementation: 68ce34a032484529104b570d417e29ac8156b080; new test files added before implementation changes.
+Command: python3 -B -m unittest tests.test_gauntlet_records tests.test_platform_evidence
+Exit: 1
+FEFFFFFFFFFFFFFFFFF...E.F...
+======================================================================
+ERROR: test_arbitrary_absent_pin_cannot_self_declare_historical (tests.test_gauntlet_records.GauntletRecordTests.test_arbitrary_absent_pin_cannot_self_declare_historical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 77, in test_arbitrary_absent_pin_cannot_self_declare_historical
+    self.assertTrue(self.verify_record(self.record, historical=True))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 51, in verify_record
+    return gauntlet.verify(allow_historical=True)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: verify() got an unexpected keyword argument 'allow_historical'
+
+======================================================================
+ERROR: test_consistent_capture_passes_without_claiming_host_authenticity (tests.test_platform_evidence.PlatformCaptureTests.test_consistent_capture_passes_without_claiming_host_authenticity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_platform_evidence.py", line 59, in test_consistent_capture_passes_without_claiming_host_authenticity
+    platform.validate(self.value, HEAD)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/scripts/verify_platform_evidence.py", line 52, in validate
+    record = _exact(item, expected_keys, f"records[{index}]")
+  File "/Users/IDC2.5/Desktop/IDC-skills/scripts/verify_platform_evidence.py", line 25, in _exact
+    raise PlatformEvidenceError(f"{label} keys differ")
+scripts.verify_platform_evidence.PlatformEvidenceError: records[0] keys differ
+
+======================================================================
+FAIL: test_absent_valid_hex_commit_fails_closed (tests.test_gauntlet_records.GauntletRecordTests.test_absent_valid_hex_commit_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 56, in test_absent_valid_hex_commit_fails_closed
+    self.assertTrue(self.verify_record(self.record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='title', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='title', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='title', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='title', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='title', value=7)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='evidence', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='evidence', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='evidence', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='evidence', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='evidence', value=7)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='recompute', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='recompute', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='recompute', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='recompute', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_gutted_finding_text_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_gutted_finding_text_is_rejected) (field='recompute', value=7)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 73, in test_gutted_finding_text_is_rejected
+    self.assertTrue(self.verify_record(record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_known_legacy_records_require_explicit_mode_and_provenance (tests.test_gauntlet_records.GauntletRecordTests.test_known_legacy_records_require_explicit_mode_and_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 87, in test_known_legacy_records_require_explicit_mode_and_provenance
+    self.assertTrue(gauntlet.verify())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_non_commit_object_is_rejected (tests.test_gauntlet_records.GauntletRecordTests.test_non_commit_object_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_gauntlet_records.py", line 65, in test_non_commit_object_is_rejected
+    self.assertTrue(self.verify_record(self.record))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_fabricated_pass_without_artifact_fails (tests.test_platform_evidence.PlatformCaptureTests.test_fabricated_pass_without_artifact_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_platform_evidence.py", line 55, in test_fabricated_pass_without_artifact_fails
+    with self.assertRaises(platform.PlatformEvidenceError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: PlatformEvidenceError not raised
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.285s
+
+FAILED (failures=19, errors=2)
+
+Interpretation: 009 absent/non-commit pins and non-string finding text falsely pass; 010 no-artifact passed records falsely pass. New historical API and artifact-bearing positive fixture additionally error because old implementation lacks those interfaces. These are local fixture results, not acceptance or host attestation.

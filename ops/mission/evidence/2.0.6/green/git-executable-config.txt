@@ -1,0 +1,10 @@
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_clean_filters_before_status tests.test_public_release.PublicReleaseTests.test_git_run_rejects_executable_clean_filters_before_status
+test_git_run_rejects_executable_diff_before_comparison (tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison) ... ok
+test_git_run_rejects_executable_clean_filters_before_status (tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_clean_filters_before_status) ... ok
+test_git_run_rejects_executable_clean_filters_before_status (tests.test_public_release.PublicReleaseTests.test_git_run_rejects_executable_clean_filters_before_status) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.364s
+
+OK
+EXIT 0

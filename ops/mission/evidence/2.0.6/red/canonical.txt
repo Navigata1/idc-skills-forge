@@ -1,0 +1,161 @@
+COMMAND ["python3", "-I", "-B", "scripts/validate_skills.py", "--json"]
+BASE 68ce34a032484529104b570d417e29ac8156b080
+{
+  "checks": {
+    "canonical_compatibility": "pass",
+    "claude_ai_exportability": "warn",
+    "description_contract": "pass",
+    "frontmatter": "pass",
+    "invocation_parity": "pass",
+    "name_folder": "pass",
+    "one_hop_references": "pass",
+    "openai_sidecar": "pass",
+    "references": "pass",
+    "registry_bijection": "pass",
+    "script_syntax": "pass",
+    "utf8": "pass"
+  },
+  "diagnostics": [
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: argument-hint, disable-model-invocation",
+      "path": "skills/batch-sample-curate/SKILL.md",
+      "severity": "warning",
+      "skill": "batch-sample-curate"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: argument-hint, disable-model-invocation",
+      "path": "skills/connected-fix-prompt/SKILL.md",
+      "severity": "warning",
+      "skill": "connected-fix-prompt"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/delegated-authority-prompt/SKILL.md",
+      "severity": "warning",
+      "skill": "delegated-authority-prompt"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: argument-hint, disable-model-invocation",
+      "path": "skills/gauntlet-loop/SKILL.md",
+      "severity": "warning",
+      "skill": "gauntlet-loop"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/handoff/SKILL.md",
+      "severity": "warning",
+      "skill": "handoff"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/prose-craft/SKILL.md",
+      "severity": "warning",
+      "skill": "prose-craft"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/short/SKILL.md",
+      "severity": "warning",
+      "skill": "short"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: argument-hint, disable-model-invocation",
+      "path": "skills/skill-duel/SKILL.md",
+      "severity": "warning",
+      "skill": "skill-duel"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: argument-hint, disable-model-invocation",
+      "path": "skills/teach/SKILL.md",
+      "severity": "warning",
+      "skill": "teach"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/to-questionnaire/SKILL.md",
+      "severity": "warning",
+      "skill": "to-questionnaire"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/wait-what/SKILL.md",
+      "severity": "warning",
+      "skill": "wait-what"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/wayfinder/SKILL.md",
+      "severity": "warning",
+      "skill": "wayfinder"
+    },
+    {
+      "check": "claude_ai_exportability",
+      "code": "CLAUDE_AI_SUPPLIED_UNSUPPORTED_KEYS",
+      "message": "supplied 2026-08-11 claude.ai probe rejects top-level keys: disable-model-invocation",
+      "path": "skills/worktree-fleet/SKILL.md",
+      "severity": "warning",
+      "skill": "worktree-fleet"
+    }
+  ],
+  "profile": "canonical",
+  "profileSemantics": "Authored-source profile: Claude Code extensions are allowed, Codex invocation parity is enforced through agents/openai.yaml, and the supplied 2026-08-11 claude.ai allowlist probe is advisory.",
+  "root": "/private/tmp/forge-206-baseline.4IY6If/repo",
+  "schemaVersion": 1,
+  "summary": {
+    "diagnostics": 13,
+    "errors": 0,
+    "failedSkills": [],
+    "skillsLoaded": 50,
+    "skillsRegistered": 50,
+    "warningSkills": [
+      "batch-sample-curate",
+      "connected-fix-prompt",
+      "delegated-authority-prompt",
+      "gauntlet-loop",
+      "handoff",
+      "prose-craft",
+      "short",
+      "skill-duel",
+      "teach",
+      "to-questionnaire",
+      "wait-what",
+      "wayfinder",
+      "worktree-fleet"
+    ],
+    "warnings": 13
+  },
+  "tooling": {
+    "bash": "/bin/bash",
+    "node": "/Users/IDC2.5/.local/bin/node",
+    "pwsh": null,
+    "python": "/opt/homebrew/opt/python@3.14/bin/python3.14"
+  },
+  "valid": true
+}
+
+EXIT 0
+SECONDS 0.312

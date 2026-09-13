@@ -1,0 +1,8 @@
+COMMAND python3 -B -m unittest -v tests.test_git_guard_grammar.GitGuardGrammarTests.test_fetch_update_head_ok_is_not_an_upload_pack_program
+test_fetch_update_head_ok_is_not_an_upload_pack_program (tests.test_git_guard_grammar.GitGuardGrammarTests.test_fetch_update_head_ok_is_not_an_upload_pack_program) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.061s
+
+OK
+EXIT 0

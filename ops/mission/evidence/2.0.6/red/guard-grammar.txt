@@ -1,0 +1,620 @@
+test_bang_alias_composes_with_call_site_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_bang_alias_composes_with_call_site_arguments) ... ok
+test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) ... 
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -m x -e', strict=False) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -m x -e', strict=True) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit --edit -m x', strict=False) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit --edit -m x', strict=True) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='VISUAL=evil git merge --no-ff -m x --edit topic', strict=False) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='VISUAL=evil git merge --no-ff -m x --edit topic', strict=True) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='EDITOR=evil git commit -F message --edit', strict=False) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='EDITOR=evil git commit -F message --edit', strict=True) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -C HEAD --edit', strict=False) ... FAIL
+  test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -C HEAD --edit', strict=True) ... FAIL
+test_editor_option_values_and_suppression_remain_literal (tests.test_git_guard_grammar.GitGuardGrammarTests.test_editor_option_values_and_suppression_remain_literal) ... 
+  test_editor_option_values_and_suppression_remain_literal (tests.test_git_guard_grammar.GitGuardGrammarTests.test_editor_option_values_and_suppression_remain_literal) (command='GIT_EDITOR=evil git commit --message x') ... FAIL
+  test_editor_option_values_and_suppression_remain_literal (tests.test_git_guard_grammar.GitGuardGrammarTests.test_editor_option_values_and_suppression_remain_literal) (command='GIT_EDITOR=evil git commit --file message') ... FAIL
+test_non_alias_config_and_plumbing_mutations_block (tests.test_git_guard_grammar.GitGuardGrammarTests.test_non_alias_config_and_plumbing_mutations_block) ... ok
+test_push_redirection_forms_receive_same_block (tests.test_git_guard_grammar.GitGuardGrammarTests.test_push_redirection_forms_receive_same_block) ... ok
+test_reset_redirection_forms_receive_same_block (tests.test_git_guard_grammar.GitGuardGrammarTests.test_reset_redirection_forms_receive_same_block) ... ok
+test_safe_commands_remain_available_in_strict_mode (tests.test_git_guard_grammar.GitGuardGrammarTests.test_safe_commands_remain_available_in_strict_mode) ... ok
+test_strict_command_position_scan_preserves_literal_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_position_scan_preserves_literal_arguments) ... 
+  test_strict_command_position_scan_preserves_literal_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_position_scan_preserves_literal_arguments) (command='echo "; eval harmless"') ... FAIL
+  test_strict_command_position_scan_preserves_literal_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_position_scan_preserves_literal_arguments) (command='echo "c0=d;c1=d;$COMMAND"') ... FAIL
+test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) ... 
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='{ eval "git push"; }') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if true; then eval "git push"; fi') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='! eval "git push"') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='time eval "git push"') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='x=1 { eval "git push"; }') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='> /dev/null eval "git push"') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='while eval "git push"; do :; done') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='until eval "git push"; do :; done') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if false; then :; elif eval "git push"; then :; else eval x; fi') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='for x in a; do eval "git push"; done') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='coproc eval "git push"') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='coproc WORKER { eval "git push"; }') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if true; then /bin/bash -c "git push"; fi') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='{ source /tmp/commands; }') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='! . /tmp/commands') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='A=1 B=2 eval "git push"') ... FAIL
+  test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='command eval "git push"') ... FAIL
+test_strict_mode_blocks_missing_command_but_advisory_mode_announces_open (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_mode_blocks_missing_command_but_advisory_mode_announces_open) ... ok
+test_strict_mode_blocks_unsupported_dynamic_grammar (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_mode_blocks_unsupported_dynamic_grammar) ... ok
+test_strict_mode_remains_available_below_command_ceiling (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_mode_remains_available_below_command_ceiling) ... ok
+test_strict_mode_short_circuits_oversized_command (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_mode_short_circuits_oversized_command) ... ok
+test_strict_semicolon_assignment_chain_finishes_under_two_seconds (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_semicolon_assignment_chain_finishes_under_two_seconds) ... FAIL
+test_transport_option_literals_remain_available (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_option_literals_remain_available) ... ok
+test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) ... 
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git ls-remote --upload-pack='touch /tmp/x' origin", strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git ls-remote --upload-pack='touch /tmp/x' origin", strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git clone -u 'touch /tmp/x' origin", strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git clone -u 'touch /tmp/x' origin", strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git fetch --upload-pack='touch /tmp/x' origin", strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git fetch --upload-pack='touch /tmp/x' origin", strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git pull --upload-pack='touch /tmp/x' origin", strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git pull --upload-pack='touch /tmp/x' origin", strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -uevil origin', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -uevil origin', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -qu evil origin', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -qu evil origin', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git ls-remote --upload-pack evil origin', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git ls-remote --upload-pack evil origin', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --receive-pack=evil origin HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --receive-pack=evil origin HEAD', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --exec evil origin HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --exec evil origin HEAD', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote=origin --exec=evil HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote=origin --exec=evil HEAD', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote origin --exec evil HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote origin --exec evil HEAD', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git send-pack origin HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git send-pack origin HEAD', strict=True) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git archive --remote=origin HEAD', strict=False) ... FAIL
+  test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git archive --remote=origin HEAD', strict=True) ... FAIL
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -m x -e', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -m x -e', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit --edit -m x', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit --edit -m x', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='VISUAL=evil git merge --no-ff -m x --edit topic', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='VISUAL=evil git merge --no-ff -m x --edit topic', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='EDITOR=evil git commit -F message --edit', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='EDITOR=evil git commit -F message --edit', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -C HEAD --edit', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_edit_reopens_explicit_message_editor (tests.test_git_guard_grammar.GitGuardGrammarTests.test_edit_reopens_explicit_message_editor) (command='GIT_EDITOR=evil git commit -C HEAD --edit', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 143, in test_edit_reopens_explicit_message_editor
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_editor_option_values_and_suppression_remain_literal (tests.test_git_guard_grammar.GitGuardGrammarTests.test_editor_option_values_and_suppression_remain_literal) (command='GIT_EDITOR=evil git commit --message x')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 155, in test_editor_option_values_and_suppression_remain_literal
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_editor_option_values_and_suppression_remain_literal (tests.test_git_guard_grammar.GitGuardGrammarTests.test_editor_option_values_and_suppression_remain_literal) (command='GIT_EDITOR=evil git commit --file message')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 155, in test_editor_option_values_and_suppression_remain_literal
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_strict_command_position_scan_preserves_literal_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_position_scan_preserves_literal_arguments) (command='echo "; eval harmless"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 184, in test_strict_command_position_scan_preserves_literal_arguments
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_strict_command_position_scan_preserves_literal_arguments (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_position_scan_preserves_literal_arguments) (command='echo "c0=d;c1=d;$COMMAND"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 184, in test_strict_command_position_scan_preserves_literal_arguments
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='{ eval "git push"; }')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if true; then eval "git push"; fi')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='! eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='time eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='x=1 { eval "git push"; }')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='> /dev/null eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='while eval "git push"; do :; done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='until eval "git push"; do :; done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if false; then :; elif eval "git push"; then :; else eval x; fi')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='for x in a; do eval "git push"; done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='coproc eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='coproc WORKER { eval "git push"; }')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='if true; then /bin/bash -c "git push"; fi')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='{ source /tmp/commands; }')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='! . /tmp/commands')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='A=1 B=2 eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_command_positions_reject_dynamic_shells (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_command_positions_reject_dynamic_shells) (command='command eval "git push"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 174, in test_strict_command_positions_reject_dynamic_shells
+    self.assertEqual(self.run_guard(command, strict=True).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_strict_semicolon_assignment_chain_finishes_under_two_seconds (tests.test_git_guard_grammar.GitGuardGrammarTests.test_strict_semicolon_assignment_chain_finishes_under_two_seconds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 190, in test_strict_semicolon_assignment_chain_finishes_under_two_seconds
+    result = self.run_guard(command, strict=True, timeout=2.0)
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 42, in run_guard
+    stdout, stderr = process.communicate(json.dumps(payload), timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2154, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['bash', '/Users/IDC2.5/Desktop/IDC-skills/skills/agent-guardrails/scripts/block-dangerous-git.sh']' timed out after 2.0 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 192, in test_strict_semicolon_assignment_chain_finishes_under_two_seconds
+    self.fail("K3-205-005: n=30 semicolon assignments exceeded two seconds")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: K3-205-005: n=30 semicolon assignments exceeded two seconds
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git ls-remote --upload-pack='touch /tmp/x' origin", strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git ls-remote --upload-pack='touch /tmp/x' origin", strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git clone -u 'touch /tmp/x' origin", strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git clone -u 'touch /tmp/x' origin", strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git fetch --upload-pack='touch /tmp/x' origin", strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git fetch --upload-pack='touch /tmp/x' origin", strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git pull --upload-pack='touch /tmp/x' origin", strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command="git pull --upload-pack='touch /tmp/x' origin", strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -uevil origin', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -uevil origin', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -qu evil origin', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git clone -qu evil origin', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git ls-remote --upload-pack evil origin', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git ls-remote --upload-pack evil origin', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --receive-pack=evil origin HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --receive-pack=evil origin HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --exec evil origin HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git send-pack --exec evil origin HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote=origin --exec=evil HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote=origin --exec=evil HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote origin --exec evil HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='git archive --remote origin --exec evil HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git send-pack origin HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git send-pack origin HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git archive --remote=origin HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_transport_program_options_block_in_both_modes (tests.test_git_guard_grammar.GitGuardGrammarTests.test_transport_program_options_block_in_both_modes) (command='GIT_SSH_COMMAND=evil git archive --remote=origin HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 217, in test_transport_program_options_block_in_both_modes
+    self.assertEqual(self.run_guard(command, strict=strict).returncode, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 16 tests in 5.505s
+
+FAILED (failures=58)

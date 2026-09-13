@@ -1,0 +1,19 @@
+COMMAND ["python3", "-m", "unittest", "discover", "-s", "tests"]
+BASE 68ce34a032484529104b570d417e29ac8156b080
+................................................................................................................................................................................................................................................................F.......................
+======================================================================
+FAIL: test_current_pack_canonical_contract (test_validate_skills.ProductionPackTests.test_current_pack_canonical_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/forge-206-baseline.4IY6If/repo/tests/test_validate_skills.py", line 274, in test_current_pack_canonical_contract
+    self.assertTrue(result["valid"])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 280 tests in 39.918s
+
+FAILED (failures=1)
+
+EXIT 1
+SECONDS 40.066

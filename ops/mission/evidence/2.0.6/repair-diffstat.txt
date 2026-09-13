@@ -1,0 +1,32 @@
+REPAIR SOURCE ONLY: 68ce34a032484529104b570d417e29ac8156b080..997368ed1baa0bbe9495f572d17d70550bb17a14
+ CHANGELOG.md                                       |   4 +-
+ bootstrap/idc_verify_fresh.py                      |   2 +-
+ docs/STATE-2.0.3-hardening.md                      |  10 +-
+ docs/release-acceptance-evidence.md                |  10 +-
+ ops/gauntlet/reviews/P0-T1-contract-critique.json  |   1 +
+ ops/gauntlet/reviews/P0-T2-validator-critique.json |   1 +
+ ops/gauntlet/reviews/P0-T3-installer-critique.json |   1 +
+ ops/mission/evidence/platform-evidence.schema.json |   4 +-
+ scripts/reaccept.py                                |   5 +-
+ scripts/trust_root.py                              |  32 ++++-
+ scripts/validate_skills.py                         |  10 ++
+ scripts/verify-sealed-artifacts.mjs                | 114 ++++++++++++----
+ scripts/verify_gauntlet_records.py                 |  76 +++++++++--
+ scripts/verify_platform_evidence.py                | 114 +++++++++++++---
+ scripts/verify_public_release.py                   |  43 +++---
+ scripts/verify_release_reviews.py                  |  26 +---
+ .../scripts/block-dangerous-git.sh                 | 100 +++++++++++---
+ .../scripts/test-block-dangerous-git.sh            |  41 ++++++
+ skills/self-contained-ship/SKILL.md                |  16 ++-
+ .../scripts/test-sealed-artifacts.mjs              |  78 +++++++++--
+ tests/__init__.py                                  |   4 +
+ tests/test_gauntlet_records.py                     |  97 ++++++++++++++
+ tests/test_git_guard_grammar.py                    | 145 ++++++++++++++++++++-
+ tests/test_platform_evidence.py                    | 118 +++++++++++++++++
+ tests/test_public_release.py                       |  95 ++++++++++++--
+ tests/test_release_reviews.py                      |  73 +++++++++++
+ tests/test_runtime_boundaries.py                   |  28 ++--
+ tests/test_security_patch_docs.py                  |  20 +++
+ tests/test_validate_skills.py                      |  10 ++
+ trust/README.md                                    |   9 +-
+ 30 files changed, 1099 insertions(+), 188 deletions(-)

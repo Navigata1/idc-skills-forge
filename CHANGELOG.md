@@ -1,5 +1,44 @@
 # Changelog
 
+## 2.0.6 — security-patch construction (2026-09-13)
+
+Unsigned builder handoff; this entry is not evidence of release publication.
+The intended profile remains limited-trust content authentication. Independent
+certification, owner manifest/signature, protected CI, fresh acceptance and new
+witnesses must precede publication. No skill swap and no threshold activation.
+
+- K3-205-008: `trust_root.py` now supplies both acceptance/publication Git
+  helpers; fsmonitor/hook controls and executable filter/diff refusals pass
+  discriminating regressions in `test_release_reviews.py` and `test_public_release.py`.
+  The source freshness launcher retains pin enforcement at the repaired module hash.
+- K3-205-009: `verify_gauntlet_records.py` rejects absent/non-commit pins and
+  gutted findings. Three original staging critiques are retained only under
+  explicit historical validation in `reaccept.py`; `test_gauntlet_records.py`
+  proves they cannot self-appoint as exact public acceptance.
+- K3-205-010: `verify_platform_evidence.py` hashes bounded semantic captures;
+  `test_platform_evidence.py` rejects absent files, wrong-head/command/environment
+  bindings, modified bytes and fake success. This is not host attestation.
+- K3-205-003/004/005/006: the dangerous-Git guard repairs editor reopening,
+  autosquash, transport execution and compound-position strict parsing. New
+  shell/grammar fixtures preserve safe message/option values, fetch `-u`, and
+  the byte ceiling while rejecting bypasses and bounding the assignment-chain case.
+- K3-205-007: `verify-sealed-artifacts.mjs` retains interception through confirmed
+  termination and reports bounded observations. Real-Chrome delayed and child-frame
+  fixtures reject; the clean fixture passes without lifetime or ICE-capture claims.
+- K3-205-027: publication checks use the committed registry release and qualified
+  annotated tag, not a fixed construction version. New-version/mismatch/lightweight
+  tag fixtures in `test_public_release.py` discriminate the change.
+- K3-205-026/031: staging citations are labeled in historical docs; generated
+  bytecode no longer breaks canonical validation while invalid source still fails.
+  Documentation and validator fixtures capture both transitions.
+
+All repairs remain pending qualified exact-head certification; source finding
+severities/statuses are not rewritten. See
+[`CHANGES.md`](ops/mission/evidence/2.0.6/CHANGES.md) for red/green evidence,
+local repair commits, retained residuals and the deliberate owner-only manifest stop.
+The intended registry release is `2.0.6`, manifest sequence 5. The published
+2.0.5 manifest, signature, tag and external witnesses remain unchanged.
+
 ## 2.0.5 — 2026-09-09 (evidence-routed public front door)
 
 This release gives Forge 50 a public entrance built around outcomes rather than

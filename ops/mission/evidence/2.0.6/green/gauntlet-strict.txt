@@ -1,0 +1,7 @@
+COMMAND ["python3", "-B", "scripts/verify_gauntlet_records.py"]
+ERROR P0-T1-contract-critique.json: reviewedCommit does not resolve to a commit object
+ERROR P0-T2-validator-critique.json: reviewedCommit does not resolve to a commit object
+ERROR P0-T3-installer-critique.json: reviewedCommit does not resolve to a commit object
+
+EXIT 1
+SECONDS 0.137

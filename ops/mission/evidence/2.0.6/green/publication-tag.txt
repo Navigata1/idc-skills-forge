@@ -1,0 +1,10 @@
+COMMAND python3 -B -m unittest -v tests.test_public_release.PublicReleaseTests.test_matching_new_registry_release_passes tests.test_public_release.PublicReleaseTests.test_registry_release_mismatch_rejected tests.test_public_release.PublicReleaseTests.test_lightweight_release_tag_rejected
+test_matching_new_registry_release_passes (tests.test_public_release.PublicReleaseTests.test_matching_new_registry_release_passes) ... ok
+test_registry_release_mismatch_rejected (tests.test_public_release.PublicReleaseTests.test_registry_release_mismatch_rejected) ... ok
+test_lightweight_release_tag_rejected (tests.test_public_release.PublicReleaseTests.test_lightweight_release_tag_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.704s
+
+OK
+EXIT 0

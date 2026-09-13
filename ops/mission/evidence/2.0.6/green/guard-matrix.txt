@@ -1,0 +1,460 @@
+COMMAND ["bash", "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"]
+== must BLOCK (exit 2) — plain forms ==
+  ok    [2] plain push
+  ok    [2] reset --hard
+  ok    [2] clean -fd
+  ok    [2] branch -D
+  ok    [2] checkout .
+  ok    [2] restore .
+== must BLOCK (exit 2) — global-option bypasses (F-01) ==
+  ok    [2] -C then push
+  ok    [2] --no-pager push
+  ok    [2] -c k=v push
+  ok    [2] --git-dir= push
+  ok    [2] --git-dir <sp> push
+  ok    [2] --work-tree= push
+  ok    [2] -C then reset --hard
+  ok    [2] globals then clean -fd
+  ok    [2] full-path git push
+  ok    [2] after && with -C
+  ok    [2] quoted subcommand
+  ok    [2] env prefix then push
+== must BLOCK (exit 2) — shell-word and long-form bypasses (F-02) ==
+  ok    [2] single-quote concatenated push
+  ok    [2] backslash-concatenated push
+  ok    [2] quote-concatenated git executable
+  ok    [2] double-quote concatenated push
+  ok    [2] mixed quoted push
+  ok    [2] line-continuation push
+  ok    [2] branch long delete plus force
+  ok    [2] checkout force
+  ok    [2] restore worktree plus staged
+== must BLOCK (exit 2) — 2.0.3 hardening: IFS word-split + alias injection ==
+  ok    [2] IFS word-split push
+  ok    [2] IFS word-split reset --hard
+  ok    [2] alias injection via -c (push)
+  ok    [2] alias injection via -c (checkout)
+  ok    [2] persistent alias definition to push
+  ok    [2] persistent alias definition to reset --hard
+== must BLOCK (exit 2) — 2.0.3 review round 2: !shell aliases + whole-tree pathspec ==
+  ok    [2] shell-command alias (!git push)
+  ok    [2] shell-command alias via -c
+  ok    [2] checkout whole-tree pathspec :/
+  ok    [2] restore whole-tree pathspec :/
+  ok    [2] checkout glob pathspec *
+  ok    [2] checkout HEAD whole-tree
+== must BLOCK (exit 2) — 2.0.3 review round 3 (Codex re-verify probes) ==
+  ok    [2] multiline: inert line then git push
+  ok    [2] multiline: reset --hard on 2nd line
+  ok    [2] checkout ./ (whole tree)
+  ok    [2] checkout ./. (whole tree)
+  ok    [2] checkout magic pathspec :(top,glob)**
+  ok    [2] branch -d -f (force delete, split flags)
+  ok    [2] branch -df (force delete, bundled)
+  ok    [2] branch -fd (force delete, bundled reversed)
+  ok    [2] git.exe push (Windows binary name)
+  ok    [2] alias injection via glued -calias.p=push
+  ok    [2] git.exe checkout . after &&
+  ok    [2] env-assignment prefix then push
+  ok    [2] config alias.co=checkout (aliases a guarded sub)
+== must BLOCK (exit 2) — 2.0.3 self-red-team (adversarial panel) ==
+  ok    [2] subshell glued to git (no space)
+  ok    [2] subshell reset --hard
+  ok    [2] subshell after && 
+  ok    [2] process substitution <(git push)
+  ok    [2] abbrev --har == --hard
+  ok    [2] abbrev --ha == --hard
+  ok    [2] abbrev --for == --force (clean)
+  ok    [2] abbrev --forc == --force (clean)
+  ok    [2] abbrev --for == --force (checkout)
+  ok    [2] abbrev --dele --forc == delete+force
+  ok    [2] bundled checkout force -fq
+  ok    [2] bundled checkout force -fb
+  ok    [2] bundled restore -SW (staged+worktree)
+  ok    [2] bundled restore -WS (worktree+staged)
+  ok    [2] switch -f discards changes
+  ok    [2] switch --discard-changes
+  ok    [2] exclude pathspec :! (whole-tree-minus-one)
+  ok    [2] case-variant config section ALIAS.
+  ok    [2] case-variant config section Alias.
+  ok    [2] alias value with leading global flag -p
+  ok    [2] bang alias with glued semicolon
+== must BLOCK (exit 2) — 2.0.3-r4 (Codex round-3 exact-head) ==
+  ok    [2] inline alias reset + call-site --hard
+  ok    [2] inline alias clean + call-site -fd
+  ok    [2] inline alias branch + call-site -D
+  ok    [2] --config-env alias from env var
+  ok    [2] GIT_CONFIG_* env alias injection
+  ok    [2] checkout -B force branch reset
+  ok    [2] switch -C force branch reset
+  ok    [2] ANSI-C quoted git word $'git'
+  ok    [2] ANSI-C quoted subcommand $'push'
+  ok    [2] |& pipe-both separator then push
+  ok    [2] leading redirection then push
+  ok    [2] leading ! negation then push
+  ok    [2] brace group then push
+  ok    [2] if/then/fi with push in body
+  ok    [2] command -p (default PATH) runs git
+  ok    [2] nice -n <value> then push
+  ok    [2] env --unset <var> then push
+  ok    [2] exec -a <name> then push
+== must BLOCK (exit 2) — 2.0.3-r5 (Codex round-4 exact-head) ==
+  ok    [2] restore exclude-only pathspec (whole tree)
+  ok    [2] checkout exclude-only pathspec (whole tree)
+  ok    [2] checkout :(top,exclude) magic pathspec
+  ok    [2] fd-dup 2>&1 then push
+  ok    [2] fd-dup 1>&2 then push
+  ok    [2] bare fd-dup >&2 then push
+  ok    [2] append-assignment prefix then push
+  ok    [2] array-assignment prefix then push
+  ok    [2] herestring then push
+  ok    [2] noclobber-override redirection then push
+  ok    [2] env -S split-string push
+  ok    [2] env --split-string= push
+  ok    [2] env -S glued split-string push
+  ok    [2] env bundled -vS split-string push
+  ok    [2] env -u then -S split-string push
+  ok    [2] nested alias chain n -> p -> push (invoked)
+  ok    [2] nested alias chain defined via -c
+  ok    [2] persistent nested alias chain
+  ok    [2] nested alias + call-site --hard
+  ok    [2] branch -f force ref move
+  ok    [2] branch --force ref move
+  ok    [2] branch -M force rename (clobbers target)
+  ok    [2] branch -C force copy (clobbers target)
+  ok    [2] branch --move --force
+  ok    [2] branch --copy --force
+== must ALLOW (exit 0) — 2.0.3-r5 safe forms (no over-block) ==
+  ok    [0] command -pv is a query (prints a path)
+  ok    [0] command -pV is a query
+  ok    [0] branch -m safe rename (fails on clobber)
+  ok    [0] branch -c safe copy (fails on clobber)
+  ok    [0] nested alias to a SAFE subcommand
+  ok    [0] alias cycle: git refuses it, nothing runs
+  ok    [0] branch -u upstream (not a force)
+  ok    [0] branch --merged (read-only listing)
+== must BLOCK (exit 2) — 2.0.3-r6 (Codex round-5 exact-head) ==
+  ok    [2] fd2 clobber-override redirect then push
+  ok    [2] fd1 clobber-override redirect then push
+  ok    [2] fd9 clobber-override redirect then push
+  ok    [2] fd clobber-override with spaced target
+  ok    [2] fd0 clobber-override then reset --hard
+  ok    [2] GIT_CONFIG_PARAMETERS split key=value alias
+  ok    [2] GIT_CONFIG_PARAMETERS single-token alias
+  ok    [2] GIT_CONFIG_PARAMETERS multiple entries
+  ok    [2] GIT_CONFIG_PARAMETERS alias to reset --hard
+  ok    [2] GIT_CONFIG_PARAMETERS bang-alias to push
+== must ALLOW (exit 0) — 2.0.3-r6 safe forms (no over-block) ==
+  ok    [0] config as status pathspec, not an alias def
+  ok    [0] config as diff pathspec, not an alias def
+  ok    [0] config as log pathspec, not an alias def
+  ok    [0] config as add pathspec, not an alias def
+  ok    [0] config as a plain log argument
+  ok    [0] config as a plain show argument
+  ok    [0] GIT_CONFIG_PARAMETERS non-alias entry
+  ok    [0] GIT_CONFIG_PARAMETERS alias to safe status
+  ok    [0] GIT_CONFIG_PARAMETERS boolean alias (no value)
+  ok    [0] a spaced digit before >| is an arg, no git
+  ok    [2] real config alias.p=push still blocked
+  ok    [2] real config --global alias.co still blocked
+== must ALLOW (exit 0) — 2.0.3-r4 safe forms (no over-block) ==
+  ok    [0] command -v git only prints a path
+  ok    [0] checkout -b<name> attached (create branch)
+  ok    [0] switch -c<name> attached (create branch)
+  ok    [0] restore -s<source> attached (single file)
+  ok    [0] clean -e<pattern> attached (exclude)
+  ok    [0] magic pathspec single file :(literal)
+  ok    [0] magic pathspec single file :(top)path
+  ok    [0] root-relative single file :/path
+  ok    [0] push is shell-comment text, not a command
+== must ALLOW (exit 0) — read-only / dry-run / non-dangerous ==
+  ok    [0] unquoted git as echo argument
+  ok    [0] unquoted git as grep argument
+  ok    [0] safe add + echo mentioning push
+  ok    [0] soft reset HEAD alias is safe
+  ok    [0] plain branch switch
+  ok    [0] safe alias definition (status)
+  ok    [0] safe alias definition (log)
+== must ALLOW (exit 0) — false-positive regressions (quoted text must not trip) ==
+  ok    [0] commit message mentions the command
+  ok    [0] commit message mentions alias.branch
+  ok    [0] echo of alias text (non-git)
+  ok    [0] commit message mentions checkout .
+  ok    [0] non-git echo of config alias (not a git invocation)
+  ok    [0] python -c is not a git -c (scoped to git word)
+  ok    [0] safe alias to show-branch (no substring false-match)
+  ok    [0] status
+  ok    [0] -C then status
+  ok    [0] log
+  ok    [0] diff
+  ok    [0] fetch
+  ok    [0] clean dry-run (-fdn)
+  ok    [0] reset --soft
+  ok    [0] branch -d (safe delete)
+  ok    [0] --no-pager log
+  ok    [0] non-git command
+== must BLOCK/ALLOW — 2.0.3-r7 inherited Git runtime-config environment ==
+  ok    [2] inherited GIT_CONFIG_PARAMETERS alias -> push
+  ok    [2] inherited GIT_CONFIG_COUNT alias -> push
+  ok    [2] inherited bang alias -> nested git push
+  ok    [2] inherited nested alias chain -> push
+  ok    [2] inherited PARAMETERS reset + call-site --hard
+  ok    [2] inherited COUNT bang alias -> push
+  ok    [2] inherited COUNT reset + call-site --hard
+  ok    [2] inherited alias name is case-folded
+  ok    [2] inherited config-env source is resolved
+  ok    [2] last duplicate PARAMETERS value dangerous
+  ok    [2] inherited PARAMETERS wins collision over COUNT
+  ok    [0] command assignment overrides inherited PARAMETERS
+  ok    [0] command count zero disables inherited COUNT entries
+  ok    [0] env -u removes inherited PARAMETERS before git
+  ok    [0] inherited safe alias -> status
+  ok    [0] inherited non-alias config
+  ok    [2] malformed inherited PARAMETERS blocks explicitly
+  ok    [2] missing COUNT value blocks explicitly
+  ok    [2] invalid unquoted PARAMETERS entry blocks explicitly
+  ok    [0] COUNT at resource ceiling with safe entries
+  ok    [2] COUNT above resource ceiling blocks as evasion
+  ok    [0] PARAMETERS at resource ceiling with safe entries
+  ok    [2] PARAMETERS above resource ceiling blocks as evasion
+  ok    [2] oversized PARAMETERS raw blocks as evasion
+  ok    [2] oversized COUNT value blocks as evasion
+  ok    [2] alias nesting beyond resolver cap blocks as evasion
+== must ALLOW — 2.0.3-r7 precedence, scope, and single-file controls ==
+  ok    [0] stray indexed vars without COUNT are inert
+  ok    [0] indexed vars above COUNT are inert
+  ok    [0] COUNT zero ignores stray pairs
+  ok    [0] last duplicate PARAMETERS value safe
+  ok    [0] PARAMETERS safe overrides dangerous COUNT
+  ok    [0] inline safe overrides inherited PARAMETERS danger
+  ok    [0] later config-env safe wins within argv layer
+  ok    [2] later config-env dangerous wins within argv layer
+  ok    [0] env -i clears inherited runtime config
+  ok    [0] post-subcommand -c text is ordinary argv
+  ok    [0] post-subcommand config-env text is ordinary argv
+  ok    [0] single-file restore intentionally allowed
+  ok    [0] single-file worktree restore intentionally allowed
+  ok    [0] single-file checkout-from-HEAD intentionally allowed
+== must BLOCK/ALLOW — 2.0.3-r8 exact-head red-team regressions ==
+  ok    [2] shell += assignment injects PARAMETERS alias -> push
+  ok    [2] shell += assignments inject COUNT alias -> push
+  ok    [2] shell += appends a dangerous entry to inherited PARAMETERS
+  ok    [0] env NAME+=value sets NAME+, not GIT_CONFIG_PARAMETERS
+  ok    [2] env dash executes git push
+  ok    [2] full-path env dash executes reset --hard
+  ok    [2] nested command+env dash executes clean -fd
+  ok    [2] split-string nested env dash executes push
+  ok    [2] exported PARAMETERS persists across shell segment
+  ok    [2] exported COUNT family persists across shell segment
+  ok    [2] assignment then bare export persists PARAMETERS
+  ok    [2] exported config-env source persists across shell segments
+  ok    [2] assignment updates an inherited-exported PARAMETERS variable
+  ok    [0] unexported assignment-only PARAMETERS stays out of child git
+  ok    [0] unset removes prior exported PARAMETERS state
+  ok    [0] later exported safe PARAMETERS value wins
+  ok    [0] exported safe config-env source remains usable
+  ok    [2] declare -x exports PARAMETERS across segments
+  ok    [2] typeset -x exports PARAMETERS across segments
+  ok    [2] set -a exports later assignment-only PARAMETERS
+  ok    [2] assignment to special builtin updates inherited-exported PARAMETERS
+  ok    [0] export -n removes PARAMETERS from the child environment
+  ok    [2] skipped conditional unset cannot erase inherited PARAMETERS
+  ok    [2] skipped OR unset cannot erase inherited PARAMETERS
+  ok    [2] pipeline-subshell unset cannot erase inherited PARAMETERS
+  ok    [2] conditionally introduced dangerous PARAMETERS remains visible
+  ok    [2] OR-introduced dangerous PARAMETERS remains visible
+  ok    [2] ambiguous safe override is conservatively blocked
+  ok    [2] ambiguous shell-state lattice blocks at its hard variant cap
+  ok    [2] wildcard ?* restores the whole tree
+  ok    [2] checkout wildcard ?* restores the whole tree
+  ok    [2] root-relative wildcard restores the whole tree
+  ok    [2] glob-magic recursive wildcard restores the tree
+  ok    [2] glob character class is broad checkout pathspec
+  ok    [2] raw character class is broad restore pathspec
+  ok    [2] mixed magic wildcard is broad restore pathspec
+  ok    [2] root-relative character class is broad checkout pathspec
+  ok    [2] recursive subtree wildcard is conservatively blocked
+  ok    [0] literal magic preserves a concrete wildcard-named file
+  ok    [0] top+literal magic preserves a concrete bracket-named file
+  ok    [2] restore attached opaque pathspec file cannot hide whole-tree selection
+  ok    [2] restore separate opaque pathspec file cannot hide whole-tree selection
+  ok    [2] checkout stdin pathspec cannot hide whole-tree selection
+  ok    [2] restore unambiguous long-option abbreviation remains blocked
+  ok    [0] post-boundary -f is a concrete restore filename
+  ok    [0] post-boundary --pathspec-from-file is a concrete checkout filename
+  ok    [0] post-boundary --force is a concrete restore filename
+  ok    [2] pre-boundary -f remains a restore force option
+  ok    [2] pre-boundary --force remains a restore force option
+  ok    [2] pre-boundary --pathspec-from-file remains opaque
+  ok    [2] clean exclude consumes first double dash; later --force remains live
+  ok    [2] clean exclude consumes first double dash; later -f remains live
+  ok    [2] clean exclude consumes first double dash; later abbreviated force remains live
+  ok    [2] long exclude consumes first double dash; later force remains live
+  ok    [0] option-looking -f is the exclude value, not a force option
+  ok    [0] attached exclude value leaves a real separator and concrete --force filename
+  ok    [2] abbreviated exclude consumes its value; later abbreviated force stays live
+  ok    [2] restore source consumes first double dash; later force stays live
+  ok    [0] option-looking --force is a consumed restore source value
+  ok    [2] switch create consumes first double dash; later discard stays live
+  ok    [0] option-looking -f is a consumed branch-name value
+  ok    [2] branch upstream consumes first double dash; later force stays live
+  ok    [0] option-looking -f is a consumed upstream value
+  ok    [2] reset pathspec source consumes first double dash; later hard stays live
+  ok    [0] wildcard-shaped source value is not a whole-tree pathspec
+  ok    [0] literal magic preserves a concrete star-named file
+  ok    [0] top+literal magic preserves a concrete double-star-named file
+  ok    [0] literal magic preserves a concrete bracket-and-star filename
+  ok    [0] Git-generated escaped-bang non-alias config is benign
+  ok    [0] Git-generated escaped-bang alias to status is safe
+  ok    [2] Git-generated escaped-bang alias to push blocks
+  ok    [2] persistent bang alias composes with inherited reset alias
+  ok    [0] persistent bang alias composes safely with inherited status alias
+  ok    [0] Git-generated embedded quote remains parseable
+  ok    [0] bundled env -iS clears inherited PARAMETERS
+  ok    [0] bundled env -ivS retains ignore-environment semantics
+  ok    [2] bundled env -iS clears then installs visible dangerous PARAMETERS
+== must BLOCK (exit 2) — 2.0.4 G2 red-team grammar regressions ==
+  ok    [2] attached output redirect after push
+  ok    [2] attached input redirect after push
+  ok    [2] attached redirect after git word
+  ok    [2] attached redirect after reset option
+  ok    [2] attached redirect after whole-tree pathspec
+  ok    [2] attached redirect after checkout pathspec
+  ok    [2] attached redirect after clean force option
+  ok    [2] attached redirect after switch option
+  ok    [2] attached redirect after branch option
+  ok    [2] attached append redirect after push
+  ok    [2] bang alias bare git plus push argument
+  ok    [2] bang alias bare git plus reset arguments
+  ok    [2] bang alias bare git plus clean arguments
+  ok    [0] bang alias bare git plus safe status argument
+  ok    [2] clean requireForce=false deletes untracked files
+  ok    [2] update-ref force moves a branch ref
+  ok    [2] update-ref deletes a branch ref
+  ok    [2] tag -f clobbers a tag ref
+  ok    [2] Bash brace expansion is fail-closed
+  ok    [2] strict mode blocks variable dispatch
+  ok    [2] strict mode blocks command assembly
+  ok    [2] strict mode blocks eval
+  ok    [2] strict mode blocks nested shell command
+  ok    [2] strict mode blocks function definitions
+  ok    [0] strict mode retains proved safe Git command
+== must BLOCK/ALLOW — 2.0.4 K3-204 guard regressions ==
+  ok    [2] inline exec-valued core.editor config blocks
+  ok    [2] glued inline exec-valued config blocks
+  ok    [2] config-env exec-valued sequence.editor blocks
+  ok    [2] command PARAMETERS exec-valued config blocks
+  ok    [2] command COUNT exec-valued config blocks
+  ok    [2] inherited PARAMETERS exec-valued config blocks
+  ok    [2] inherited COUNT exec-valued config blocks
+  ok    [2] exported exec-valued config persists across segments
+  ok    [2] visible GIT_EDITOR command injection blocks
+  ok    [2] inherited GIT_EDITOR command injection blocks
+  ok    [2] persistent exec-valued config mutation blocks
+  ok    [2] persistent patterned exec-valued config mutation blocks
+  ok    [2] credential helper runtime command blocks
+  ok    [2] filter process runtime command blocks
+  ok    [2] custom submodule update command blocks
+  ok    [2] alternate refs shell command blocks
+  ok    [2] textconv runtime command blocks
+  ok    [2] recent-objects shell hook blocks
+  ok    [2] SSH signing key command blocks
+  ok    [2] difftool executable path blocks
+  ok    [2] mergetool executable path blocks
+  ok    [2] remote upload-pack command blocks
+  ok    [2] upload-pack shell hook blocks
+  ok    [2] base send-email recipient command blocks
+  ok    [2] identity sendmail command blocks
+  ok    [2] send-email executable SMTP-server path blocks
+  ok    [2] visible Git SSH command blocks on a network operation
+  ok    [2] visible external diff command blocks on diff
+  ok    [2] visible pager command blocks under explicit pagination
+  ok    [2] fallback EDITOR command injection blocks
+  ok    [2] fallback pager command blocks under explicit pagination
+  ok    [0] ordinary runtime config remains usable
+  ok    [0] built-in submodule update strategy remains usable
+  ok    [0] empty executable config value remains usable
+  ok    [0] boolean per-command pager setting remains usable
+  ok    [0] ordinary SMTP host remains usable
+  ok    [0] reading an executable config key remains usable
+  ok    [0] removing an executable config key remains usable
+  ok    [0] inherited editor is inert for a non-editor command
+  ok    [0] explicit commit message does not invoke inherited editor
+  ok    [2] read-tree reset plus update discards worktree
+  ok    [2] read-tree merged update discards worktree
+  ok    [2] read-tree long merge plus update blocks
+  ok    [2] checkout-index force plus all overwrites tree
+  ok    [2] checkout-index bundled force plus all blocks
+  ok    [2] checkout-index long force plus all blocks
+  ok    [2] checkout-index prefixed whole-tree overwrite blocks
+  ok    [0] checkout-index forced concrete file remains usable
+  ok    [0] checkout-index all without overwrite force remains usable
+  ok    [2] tag short delete removes tag ref
+  ok    [2] tag long delete removes tag ref
+  ok    [2] tag abbreviated delete removes tag ref
+  ok    [0] tag listing remains usable
+  ok    [2] leading named-fd duplication before push
+  ok    [2] leading named-fd input before push
+  ok    [2] leading named-fd output before hard reset
+  ok    [2] anonymous coproc executes git push
+  ok    [2] named coproc group executes hard reset
+  ok    [2] strict blocks unquoted mid-token parameter splice
+  ok    [2] strict blocks unquoted option parameter splice
+  ok    [2] strict blocks unquoted variable subcommand dispatch
+  ok    [2] strict blocks quoted variable subcommand dispatch
+  ok    [2] strict blocks parameter-spliced command word
+  ok    [2] strict blocks quoted variable command dispatch
+  ok    [0] advisory mode retains variable-dispatch compatibility
+  ok    [0] strict allows quoted variable in ordinary operand
+  ok    [0] strict ignores parameter expansion outside Git
+  ok    [0] strict allows single-quoted literal dollar text
+  ok    [2] advisory oversized command avoids E2BIG handoff
+  ok    [2] strict oversized dangerous command fails closed
+  ok    [0] PARAMETERS parser never evaluates config bytes
+  ok    [0] PARAMETERS no-eval canary
+  ok    [0] COUNT parser never evaluates config bytes
+  ok    [0] COUNT no-eval canary
+
+  ok    [2] 003 advisory explicit edit reopens editor
+  ok    [2] 003 strict explicit edit reopens editor
+  ok    [2] 003 merge explicit edit
+  ok    [0] 003 message named edit is data
+  ok    [0] 003 no-edit control
+  ok    [2] 004 grouped eval
+  ok    [2] 004 conditional eval
+  ok    [2] 004 negated eval
+  ok    [2] 004 timed eval
+  ok    [2] 004 assignment group prefix
+  ok    [2] 004 redirected eval
+  ok    [2] 004 case arm eval
+  ok    [2] 004 named coproc eval
+  ok    [0] 004 literal reserved words
+  ok    [0] 004 literal log format
+  ok    [0] 004 literal separator is data
+  ok    [2] 006 advisory upload-pack
+  ok    [2] 006 strict upload-pack
+  ok    [2] 006 clone upload program
+  ok    [2] 006 fetch upload program
+  ok    [2] 006 pull upload program
+  ok    [2] 006 receive program
+  ok    [2] 006 exec program
+  ok    [2] 006 remote archive program
+  ok    [2] 006 SSH config program
+  ok    [2] 006 SSH env program
+  ok    [2] 006 send-pack SSH env program
+  ok    [2] 006 archive SSH env program
+  ok    [0] 006 ls-remote control
+  ok    [0] 006 fetch control
+  ok    [0] 006 clone control
+  ok    [0] 006 branch value is data
+  ok    [0] 006 local archive control
+  ok    [2] 003 squash opens editor
+  ok    [2] 003 equals squash opens editor
+  ok    [2] 003 amend fixup opens editor
+  ok    [2] 003 reword fixup opens editor
+  ok    [0] 003 plain fixup suppresses editor
+  ok    [0] 003 literal fixup message
+RESULT pass=434 fail=0
+
+EXIT 0
+SECONDS 14.434

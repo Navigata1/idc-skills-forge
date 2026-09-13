@@ -1,0 +1,5 @@
+COMMAND ["python3", "-B", "scripts/verify_gauntlet_records.py", "--historical-records"]
+gauntlet historical records checked: 3 staging-only; not in public history; exact-commit acceptance and independent authorship not verified
+
+EXIT 0
+SECONDS 0.145

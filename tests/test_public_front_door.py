@@ -27,6 +27,7 @@ PUBLIC_DOCS = (
     ROOT / "docs" / "getting-started.md",
     ROOT / "docs" / "verification.md",
     ROOT / "docs" / "2.0.5-release-scope.md",
+    ROOT / "docs" / "2.0.6-release-scope.md",
 )
 
 
@@ -139,10 +140,11 @@ class PublicFrontDoorTests(unittest.TestCase):
             headings = re.findall(r"^# (.+)$", document.read_text(encoding="utf-8"), re.MULTILINE)
             self.assertEqual(len(headings), 1, f"{document}: H1 count differs")
 
-    def test_public_release_line_is_2_0_5_sequence_4(self) -> None:
+    def test_security_candidate_and_published_baseline_are_distinct(self) -> None:
         registry = json.loads((ROOT / "skills" / "registry.json").read_text(encoding="utf-8"))
-        self.assertEqual(registry["release"], "2.0.5")
-        self.assertEqual(registry["manifestSequence"], 4)
+        self.assertEqual(registry["release"], "2.0.6")
+        self.assertEqual(registry["manifestSequence"], 5)
+        self.assertIn("does not authenticate this changed checkout", README.read_text(encoding="utf-8"))
         for document in (ROOT / "README.md", ROOT / "SECURITY.md", ROOT / "docs" / "getting-started.md", ROOT / "docs" / "verification.md"):
             text = document.read_text(encoding="utf-8")
             self.assertIn("2.0.5", text, f"{document}: missing release line")

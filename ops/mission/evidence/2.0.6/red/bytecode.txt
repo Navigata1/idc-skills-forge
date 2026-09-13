@@ -1,0 +1,17 @@
+COMMAND python3 -B -m unittest -v tests.test_validate_skills.ValidatorTests.test_generated_bytecode_does_not_pollute_canonical_validation
+test_generated_bytecode_does_not_pollute_canonical_validation (tests.test_validate_skills.ValidatorTests.test_generated_bytecode_does_not_pollute_canonical_validation) ... FAIL
+
+======================================================================
+FAIL: test_generated_bytecode_does_not_pollute_canonical_validation (tests.test_validate_skills.ValidatorTests.test_generated_bytecode_does_not_pollute_canonical_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_validate_skills.py", line 85, in test_generated_bytecode_does_not_pollute_canonical_validation
+    self.assertTrue(self.validate()["valid"])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)
+EXIT 1

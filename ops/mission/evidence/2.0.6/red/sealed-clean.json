@@ -1,0 +1,114 @@
+{
+  "command": [
+    "/Users/IDC2.5/.hermes/node/bin/node",
+    "/Users/IDC2.5/Desktop/IDC-skills/scripts/verify-sealed-artifacts.mjs",
+    "--config",
+    "/var/folders/7h/7yl2w89958s0s90j1dvth2880000gp/T/idc-sealed-test-S7wvV5/config.json",
+    "--output",
+    "/var/folders/7h/7yl2w89958s0s90j1dvth2880000gp/T/idc-sealed-test-S7wvV5/evidence.json"
+  ],
+  "fixture": "<!doctype html><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; connect-src 'none'; font-src 'none'; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; worker-src 'none'\"><title>clean</title><body><main>sealed</main></body>",
+  "config": {
+    "schema": "idc-sealed-artifacts/v1",
+    "observationMs": 300,
+    "settleMs": 250,
+    "artifacts": [
+      {
+        "path": "/var/folders/7h/7yl2w89958s0s90j1dvth2880000gp/T/idc-sealed-test-S7wvV5/clean.html",
+        "label": "clean",
+        "states": [
+          {
+            "name": "mobile",
+            "width": 375,
+            "height": 812,
+            "media": "screen"
+          }
+        ]
+      }
+    ]
+  },
+  "result": {
+    "status": 0,
+    "stdout": "verify-sealed-artifacts: PASS — 1 artifact(s), 4-state sealed matrix\n  evidence: /var/folders/7h/7yl2w89958s0s90j1dvth2880000gp/T/idc-sealed-test-S7wvV5/evidence.json\n",
+    "stderr": ""
+  },
+  "unexpectedExternalDeliveries": 0,
+  "evidence": {
+    "schema": "idc-sealed-browser-evidence/v1",
+    "generatedAt": "2026-09-13T22:51:40.598Z",
+    "enforced": {
+      "network": "all non-local request attempts intercepted and failed",
+      "serviceWorkers": "disabled by ephemeral browser launch and asserted empty",
+      "webrtc": {
+        "ipHandlingPolicy": "disable_non_proxied_udp",
+        "peerConnection": "constructors blocked before artifact scripts; guard installation and zero attempts asserted in-page",
+        "limitation": "the verifier does not claim packet-level capture of WebRTC or ICE traffic"
+      },
+      "csp": "default-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; connect-src 'none'; font-src 'none'; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; worker-src 'none'",
+      "observationMs": 300
+    },
+    "browser": {
+      "product": "Chrome/152.0.7977.83",
+      "protocolVersion": "1.3",
+      "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    },
+    "passed": true,
+    "artifacts": [
+      {
+        "path": "/var/folders/7h/7yl2w89958s0s90j1dvth2880000gp/T/idc-sealed-test-S7wvV5/clean.html",
+        "label": "clean",
+        "sha256": "sha256:62e5f124c520888cf92850b0a9553735bac0be4a9f860e1202f318981ae34e9e",
+        "passed": true,
+        "states": [
+          {
+            "state": {
+              "name": "mobile",
+              "width": 375,
+              "height": 812,
+              "media": "screen"
+            },
+            "passed": true,
+            "attempts": [],
+            "consoleErrors": [],
+            "serviceWorkerEvents": [
+              [],
+              [
+                {
+                  "registrationId": "0",
+                  "scopeURL": "chrome-extension://fignfifoniblkonapihmkfakmlgkbkcf/",
+                  "isDeleted": false
+                }
+              ],
+              [
+                {
+                  "registrationId": "0",
+                  "scopeURL": "chrome-extension://fignfifoniblkonapihmkfakmlgkbkcf/",
+                  "isDeleted": false
+                }
+              ]
+            ],
+            "artifactServiceWorkers": [],
+            "page": {
+              "readyState": "complete",
+              "title": "clean",
+              "csp": "default-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; connect-src 'none'; font-src 'none'; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; worker-src 'none'",
+              "registrationCount": 0,
+              "viewportWidth": 375,
+              "scrollWidth": 375,
+              "horizontalOverflow": false,
+              "overflowingElements": [],
+              "tableWraps": [],
+              "bodyTextBytes": 6,
+              "rtcGuard": {
+                "installed": true,
+                "attempts": 0
+              }
+            },
+            "printModeEmulated": false,
+            "rtcLaunchPolicyApplied": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_clean_filters_before_status tests.test_public_release.PublicReleaseTests.test_git_run_rejects_executable_clean_filters_before_status
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+    ~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 103, in __init__
+    self.parseArgs(argv)
+    ~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 142, in parseArgs
+    self.createTests()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 153, in createTests
+    self.test = self.testLoader.loadTestsFromNames(self.testNames,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+                                                   self.module)
+                                                   ^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 214, in loadTestsFromNames
+    suites = [self.loadTestsFromName(name, module) for name in names]
+              ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 141, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_release_reviews.py", line 14, in <module>
+    from scripts import verify_release_reviews as reviews
+  File "/Users/IDC2.5/Desktop/IDC-skills/scripts/verify_release_reviews.py", line 28, in <module>
+    from trust_root import TrustError, _git_bytes
+  File "/Users/IDC2.5/Desktop/IDC-skills/scripts/trust_root.py", line 709
+    input=signed_bytes,
+IndentationError: unexpected indent
+EXIT 1

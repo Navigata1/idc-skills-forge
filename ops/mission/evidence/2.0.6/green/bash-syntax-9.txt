@@ -1,0 +1,4 @@
+COMMAND ["bash", "-n", "skills/computer-use-smoke/scripts/smoke.sh"]
+
+EXIT 0
+SECONDS 0.003

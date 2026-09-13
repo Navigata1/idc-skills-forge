@@ -1,0 +1,28 @@
+BASE 68ce34a032484529104b570d417e29ac8156b080
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor) ... FAIL
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor) ... FAIL
+
+======================================================================
+FAIL: test_git_run_neutralizes_candidate_fsmonitor (tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_release_reviews.py", line 34, in test_git_run_neutralizes_candidate_fsmonitor
+    self.assertFalse(marker.exists(), "candidate fsmonitor executed in review verifier")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : candidate fsmonitor executed in review verifier
+
+======================================================================
+FAIL: test_git_run_neutralizes_candidate_fsmonitor (tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_release.py", line 36, in test_git_run_neutralizes_candidate_fsmonitor
+    self.assertFalse(marker.exists(), "candidate fsmonitor executed in publication verifier")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : candidate fsmonitor executed in publication verifier
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.354s
+
+FAILED (failures=2)
+EXIT 1

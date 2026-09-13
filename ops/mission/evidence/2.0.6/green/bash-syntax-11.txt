@@ -1,0 +1,4 @@
+COMMAND ["bash", "-n", "skills/wizard/template.sh"]
+
+EXIT 0
+SECONDS 0.003

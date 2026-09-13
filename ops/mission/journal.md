@@ -297,3 +297,10 @@
 - Claude's pause left no commit, tag, push, signature, publication, or install. The sequence-2 manifest matches current worktree bytes but the index is unstaged and the retained 2.0.3 signature fails it as intended. The prior construction correlators are historical after manifest regeneration; underlying evidence and package digests remain byte-identical.
 - A redacted gitleaks pass reported eighteen generic-key candidates. Each inspected hit is the public Forge `SHA256:` signing fingerprint in preserved tracked evidence, not a private credential. Two ignored Python cache files are non-release residue and will be removed before staging.
 - Canonical state now separates active scoped phase `R204` from deferred full-assurance `G6`. R204 gates only the owner-signed inventory, clean-clone plus protected GitHub CI/review, and matching GitHub/company/second-channel observations; G1-G6 remain pending without blocking or lending their labels to scoped publication.
+
+## 2026-09-13T23:04Z — K3-205 local security patch construction
+
+- Current public main and immutable 2.0.5 resolve to 68ce34a032484529104b570d417e29ac8156b080, tree ec2ee9b600aba60c46ca1a1f793484018ff78ea3. Prior phase rows above remain historical snapshots; they are not current release assertions.
+- Owner supplied Claude's 2.0.6 worklist for local implementation and commits only. Tier 2 orchestration separated guard, sealed-browser and evidence-verifier lanes; a fresh read-only internal review found clean-filter/external-diff execution and autosquash editor gaps, then the builder added red tests and repaired them. No internal agent is an independent acceptance seat.
+- 009 uses explicitly selected historical validation for the three original staging pins, never an invented public commit or an exact-acceptance claim. 010 binds captured artifacts but does not authenticate host identity.
+- Construction preserves 2.0.5 keys, manifest/signature, tag, external witnesses and K3 evidence store. Registry changes last; manifest generation is deferred to the owner per worklist section 5. Independent Claude certification and fresh Kimi acceptance remain outstanding.

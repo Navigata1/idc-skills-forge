@@ -1,0 +1,17 @@
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison
+test_git_run_rejects_executable_diff_before_comparison (tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison) ... FAIL
+
+======================================================================
+FAIL: test_git_run_rejects_executable_diff_before_comparison (tests.test_release_reviews.ReleaseReviewTests.test_git_run_rejects_executable_diff_before_comparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_release_reviews.py", line 38, in test_git_run_rejects_executable_diff_before_comparison
+    with self.assertRaisesRegex(reviews.ReviewError, "executable.*diff"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ReviewError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.134s
+
+FAILED (failures=1)
+EXIT 1

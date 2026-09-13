@@ -1,0 +1,4 @@
+COMMAND ["bash", "-n", "skills/agent-guardrails/scripts/block-dangerous-git.sh"]
+
+EXIT 0
+SECONDS 0.003

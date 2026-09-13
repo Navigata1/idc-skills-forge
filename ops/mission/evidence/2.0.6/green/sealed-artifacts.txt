@@ -1,0 +1,6 @@
+COMMAND ["node", "scripts/verify-sealed-artifacts.mjs", "--output", "/private/tmp/forge-206-baseline.4IY6If/integration-gates/sealed-browser.json"]
+verify-sealed-artifacts: PASS — no egress observed under interception in 8 exercised state(s); configured observation 1500 ms + settle 250 ms; actual load lifetimes 1811, 1805, 1805, 1807, 1787, 1785, 1786, 1786 ms; targets terminated; lifetime containment not proven
+  evidence: /private/tmp/forge-206-baseline.4IY6If/integration-gates/sealed-browser.json
+
+EXIT 0
+SECONDS 15.143

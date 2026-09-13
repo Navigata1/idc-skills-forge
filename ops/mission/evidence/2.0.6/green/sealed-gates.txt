@@ -1,0 +1,29 @@
+K3-205-007 / subframe 017 bounded regression evidence
+Node v22.22.3; Chrome/152.0.7977.83
+Verifier SHA-256: 25cd8e17a44276b73fcb96fc18665b169ed6a01783be0d75f92334d951a8a607
+
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --capture-dir=ops/mission/evidence/2.0.6/green
+  ok    missing Node WebSocket fails in an actionable preflight
+  ok    clean page proves the RTC guard and launch policy are active
+  ok    an RTCPeerConnection attempt is blocked and fails the state
+  ok    delayed attempt after initial observation fails during explicit settle interval
+  ok    about:blank child frame is rejected even when top-level RTC count is zero
+  ok    delayed HTTP navigation is intercepted and fails with zero loopback delivery
+  ok    overflowing elements fail even when root overflow is hidden
+RESULT pass=7 fail=0 unexpectedExternalDeliveries=0 (loopback HTTP sink only; no ICE packet capture)
+
+node --check scripts/verify-sealed-artifacts.mjs
+node --check skills/self-contained-ship/scripts/test-sealed-artifacts.mjs
+git diff --check
+All exit 0.
+
+Captured configured bounds: observation=300 ms, settle=250 ms.
+Actual navigation-to-target-disconnection intervals: clean=583 ms; delayed=580 ms; subframe=586 ms; delayed-http=582 ms; RTC=589 ms; overflow=583 ms.
+Every captured target has targetTerminated=true; lifetimeContainmentProven=false.
+delayed: initial RTC count=0, final RTC count=1 and host attempt recorded.
+delayed-http: one intercepted HTTP navigation; zero HTTP deliveries to the isolated loopback sink.
+subframe: one forbidden child attachment; top-level RTC count=0; state still fails closed.
+
+Enforced: interception/event collection from before navigation until target termination; post-settle re-probe; final verdict after target disappearance and socket close; any recorded request/RTC attempt fails; child frames rejected under the existing frame-src none profile.
+Limits: finite states and time bounds do not prove arbitrary future JavaScript, unexercised interactions/navigation/worker behavior or arbitrary child-target coverage. Child contexts are rejected, not certified. Packet-level WebRTC/ICE capture remains unverified. HTTP delivery counter is an isolated loopback fixture assertion, not a packet capture or proof about browser background traffic.
+No commits, registry/manifests, signing, release, fleet writes or external publication performed in this lane.

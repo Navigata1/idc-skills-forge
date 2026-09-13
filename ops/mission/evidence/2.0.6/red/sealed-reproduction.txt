@@ -1,0 +1,25 @@
+K3-205-007 / subframe 017 red evidence
+Source HEAD: 68ce34a032484529104b570d417e29ac8156b080
+Verifier SHA-256: 4ee49996699912963c71e298e47b34e20c24944c37293756a0dc76355922e655
+Node v22.22.3; Chrome/152.0.7977.83
+
+Before verifier source edits, new tests ran:
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --case=clean --capture-dir=ops/mission/evidence/2.0.6/red
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --case=delayed --capture-dir=ops/mission/evidence/2.0.6/red
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --case=subframe --capture-dir=ops/mission/evidence/2.0.6/red
+
+clean: verifier status=0, passed=true; new configured-bound assertion fails because observation is undefined.
+delayed: verifier status=0, passed=true; new rejection assertion fails (0 !== 1).
+subframe: verifier status=0, passed=true, top-level RTC attempts=0; new rejection assertion fails (0 !== 1).
+Each original verifier output: verify-sealed-artifacts: PASS — 1 artifact(s), 4-state sealed matrix
+The four-state wording was also inaccurate for this one-state config.
+
+Supplementary HTTP regression was then replayed against the unchanged baseline source clone:
+IDC_SEALED_VERIFY=/tmp/forge-206-baseline.4IY6If/repo/scripts/verify-sealed-artifacts.mjs node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --case=delayed-http --capture-dir=ops/mission/evidence/2.0.6/red
+delayed-http: verifier status=0, passed=true; new rejection assertion fails (0 !== 1).
+git -C /tmp/forge-206-baseline.4IY6If/repo diff -- scripts/verify-sealed-artifacts.mjs
+Result: no source diff. Baseline SHA-256 is the same value recorded above.
+
+The adjacent sealed-*.json captures retain exact fixture HTML, generated config, invoked command, verifier stdout/stderr/status and original browser evidence. Generated temp paths are ephemeral; rerun the harness case to recreate them.
+All captures: unexpectedExternalDeliveries=0 at the isolated loopback HTTP sink.
+Only loopback targets used. This is not packet-level ICE/UDP observation and is not a proof about browser background traffic.

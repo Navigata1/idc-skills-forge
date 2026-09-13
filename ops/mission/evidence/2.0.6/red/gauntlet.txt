@@ -1,0 +1,6 @@
+COMMAND ["python3", "-B", "scripts/verify_gauntlet_records.py"]
+BASE 68ce34a032484529104b570d417e29ac8156b080
+gauntlet records verified: 3 exact builder commits, 3 non-author same-family critiques, cross-family verdict not claimed
+
+EXIT 0
+SECONDS 0.022

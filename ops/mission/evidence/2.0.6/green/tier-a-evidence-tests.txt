@@ -1,0 +1,41 @@
+Local 009/010 implementation evidence; not qualified acceptance, certification, or platform host attestation.
+
+Command: python3 -B -m unittest tests.test_gauntlet_records tests.test_platform_evidence
+Exit: 0
+..............
+----------------------------------------------------------------------
+Ran 14 tests in 0.928s
+
+OK
+
+
+Integration command: python3 -B -m unittest tests.test_gauntlet_records tests.test_platform_evidence tests.test_runtime_boundaries
+Exit: 0
+...................
+----------------------------------------------------------------------
+Ran 19 tests in 0.950s
+
+OK
+
+
+Command: python3 -B scripts/verify_gauntlet_records.py
+Expected exit: 1 (the unchanged staging pins are absent)
+Actual exit: 1
+ERROR P0-T1-contract-critique.json: reviewedCommit does not resolve to a commit object
+ERROR P0-T2-validator-critique.json: reviewedCommit does not resolve to a commit object
+ERROR P0-T3-installer-critique.json: reviewedCommit does not resolve to a commit object
+
+
+Command: python3 -B scripts/verify_gauntlet_records.py --historical-records
+Expected exit: 0 (historical validation only)
+Actual exit: 0
+gauntlet historical records checked: 3 staging-only; not in public history; exact-commit acceptance and independent authorship not verified
+
+
+Disposition 009: explicit historical-records mode, restricted to exact known filenames/tasks/pins with literal staging-only provenance. Original critique fields and pin identities remain unchanged. Default exact-commit verification fails closed. reaccept selects and prints historical mode; this is not independent review or exact-commit acceptance.
+
+Disposition 010: outputArtifact is an absolute stable non-symlink regular JSON file of 1..8388608 bytes. outputSHA256 hashes all artifact bytes. Capture schema idc-platform-capture/v1 exactly includes candidateHead; platform/status/runner/osVersion/filesystem/python/bash/sshKeygen/command matching the record; integer exitCode=0; nonempty string output. Duplicate keys, mismatched head/command/metadata/status/hash, failed exit, empty output, and unsafe artifact paths are refused.
+
+Enforced: object lookup and actual nonempty string findings; artifact snapshot/hash/schema/semantic bindings. Not established: independent critique authorship, truth of reported findings, runner authenticity, genuine macOS/Windows/NTFS execution, release acceptance.
+
+Record schema remains idc-platform-evidence/v1 with newly required outputArtifact; former artifact-free records now fail closed. Capture schema is separately versioned. CLI success explicitly reports capture consistency and the authenticity limitation.

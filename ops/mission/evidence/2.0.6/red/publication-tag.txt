@@ -1,0 +1,41 @@
+BASE 68ce34a032484529104b570d417e29ac8156b080 (008 repaired; tag logic unchanged)
+COMMAND python3 -B -m unittest -v tests.test_public_release.PublicReleaseTests.test_matching_new_registry_release_passes tests.test_public_release.PublicReleaseTests.test_registry_release_mismatch_rejected tests.test_public_release.PublicReleaseTests.test_lightweight_release_tag_rejected
+test_matching_new_registry_release_passes (tests.test_public_release.PublicReleaseTests.test_matching_new_registry_release_passes) ... ERROR
+test_registry_release_mismatch_rejected (tests.test_public_release.PublicReleaseTests.test_registry_release_mismatch_rejected) ... FAIL
+test_lightweight_release_tag_rejected (tests.test_public_release.PublicReleaseTests.test_lightweight_release_tag_rejected) ... ok
+
+======================================================================
+ERROR: test_matching_new_registry_release_passes (tests.test_public_release.PublicReleaseTests.test_matching_new_registry_release_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_release.py", line 349, in test_matching_new_registry_release_passes
+    self.assertTrue(self.verify_fixture(path, repo, trust_args)["pass"])
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_release.py", line 75, in verify_fixture
+    return publication.verify(
+           ~~~~~~~~~~~~~~~~~~^
+        path,
+        ^^^^^
+    ...<11 lines>...
+        now=NOW,
+        ^^^^^^^^
+    )
+    ^
+  File "/Users/IDC2.5/Desktop/IDC-skills/scripts/verify_public_release.py", line 492, in verify
+    raise PublicationError("candidate tag must be 2.0.4")
+scripts.verify_public_release.PublicationError: candidate tag must be 2.0.4
+
+======================================================================
+FAIL: test_registry_release_mismatch_rejected (tests.test_public_release.PublicReleaseTests.test_registry_release_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_release.py", line 354, in test_registry_release_mismatch_rejected
+    with self.assertRaisesRegex(publication.PublicationError, "registry release"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: PublicationError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.696s
+
+FAILED (failures=1, errors=1)
+EXIT 1

@@ -1,0 +1,9 @@
+COMMAND python3 -B -m unittest -v tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_release_reviews.ReleaseReviewTests.test_git_run_neutralizes_candidate_fsmonitor) ... ok
+test_git_run_neutralizes_candidate_fsmonitor (tests.test_public_release.PublicReleaseTests.test_git_run_neutralizes_candidate_fsmonitor) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.102s
+
+OK
+EXIT 0

@@ -1,0 +1,108 @@
+COMMAND python3 -B -m unittest -v tests.test_security_patch_docs
+Warning: truncated output (original token count: 5408)
+Total output lines: 106
+
+test_full_profile_instructions_do_not_pin_a_construction_tag (tests.test_security_patch_docs.SecurityPatchDocsTests.test_full_profile_instructions_do_not_pin_a_construction_tag) ... FAIL
+test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) ... 
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=7969) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=8070) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=8097) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1034) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1159) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1186) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2106) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2153) ... FAIL
+  test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2177) ... FAIL
+
+======================================================================
+FAIL: test_full_profile_instructions_do_not_pin_a_construction_tag (tests.test_security_patch_docs.SecurityPatchDocsTests.test_full_profile_instructions_do_not_pin_a_construction_tag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 19, in test_full_profile_instructions_do_not_pin_a_construction_tag
+    self.assertNotIn("Run only after an annotated 2.0.4 tag", content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Run only after an annotated 2.0.4 tag' unexpectedly found in "# 2.0.4 release acceptance evidence\n\n> **Profile boundary:** this document defines the stronger production-threshold\n> acceptance ceremony. Stable 2.0.4 is being published under the narrower\n> [public content-authenticated profile](2.0.4-release-scope.md). None of the\n> production 2-of-3, complete Kimi, Windows/NTFS, freshness-authorized fleet,\n> publication-observer, or `readyToRun=true` conditions below is represented as\n> a 2.0.4 PASS. Completion of this document's full ceremony receives a later\n> immutable version identity.\n\nRelease evidence remains outside the candidate repository. Committing a receipt\nthat purports to approve its own eventual head creates a circular or stale\nclaim. Every external receipt is a bounded regular file, captured byte-for-byte,\nand named by absolute path, size, and SHA-256 in the corresponding record.\n\nThe repository verifiers prove that captured records are strict, internally\nconsistent, bound to the clean local candidate, and free of unresolved\nblocker/critical/high findings. They do not create independent authorship,\nadministrative separation, threshold custody, or network publication facts.\n\n## Exact-head review record\n\nRun from a clean checkout of the reviewed candidate with an absolute,\ndigest-pinned Git executable:\n\n```text\npython3 -I -B scripts/verify_release_reviews.py /external/reviews.json \\\n  --repo-root /candidate/idc-skills \\\n  --git /trusted/bin/git --git-sha256 sha256:<git-bytes> \\\n  --review-authorities /trusted/reviews/authorities.json \\\n  --review-authorities-sha256 sha256:<authority-record-bytes> \\\n  --ssh-keygen /trusted/bin/ssh-keygen \\\n  --ssh-keygen-sha256 sha256:<ssh-keygen-bytes> --json\n```\n\n`reviews.json` uses strict outer schema `idc-release-reviews/v2`. It contains one\ncandidate object (`base`, `commit`, `tree`), one external evidence-packet\nreceipt, and exactly two approvals: `cross-family` and `kimi-k3`. Each approval\nrepeats the exact candidate, identifies reviewer name, model, and family, sets\n`voidOnMove` to true, provides complete finding counts, and carries a `coverage`\nobject. Coverage must contain, in order, all 11 lanes `K3-204-0` through\n`K3-204-10`; every lane must be `complete` and name at least one indexed\nevidence artifact. It must also contain, in order, all 31 reconciliations\n`K3-203-001` through `K3-203-031`; each must provide a non-empty rationale, at\nleast one indexed evidence artifact, and exactly one accepted disposition:\n`fixed`, `false-positive`, `not-reproduced`, or `accepted-residual`. Any missing\nlane, finding, disposition/evidence, or unresolved blocker, critical, or high\nfinding refuses the gate.\n\nEach approval binds a strict `idc-independent-review-receipt/v2` payload to the\nsame evidence-packet digest. The payload repeats the exact candidate, review\nidentity, verdict, finding counts, timestamps, move policy, and detailed\ncoverage; it also names the packet digest and a non-empty string `limitations`\narray. Each outer receipt record binds the payload and its detached signature\nby absolute path, size, and digest. Reviewer names, families, and receipt\nidentities must be distinct.\n\nThe evidence packet is a bounded ZIP with exactly one\n`evidence-index.json`; every other regular entry is named, sized, and hashed in\nthat index. The index uses `idc-review-evidence-packet/v2`, repeats the exact\ncandidate, and declares exact ordered ID arrays for all 11 K3-204 lanes and all\n31 K3-203 reconciliations. Every evidence path used by either review's detailed\ncoverage must resolve to an indexed packet artifact. Traversal, links,\nduplicates, encryption, unsafe compression ratios, extra entries, and ignored\ncheckout payloads are refused.\n\nReviewer identity is not accepted from the receipt's self-description. The\nexternally pinned `idc-review-authorities/v1` file names one distinct non-OpenAI\nfamily, principal, and hash-bound allowed-signers file for each review kind.\nThe two authority principals, families, and underlying signing-key blobs must\nall be disjoint. Each `idc-independent-review-receipt/v2` is signed with\nOpenSSH namespace `idc-independent-review-receipt-v2`; the verifier checks that\ndetached signature with the pinned principal before interpreting the receipt.\nThese mechanisms prove authority-key possession and exact-byte binding. The\nhuman ceremony remains responsible for establishing that the keys and\nreviewers actually belong to independent seats.\n\n## Public release record\n\nRun only after an annotated 2.0.4 tag exists locally and resolves to the accepted\ncandidate:\n\n```text\npython3 -I -B scripts/verify_public_release.py /external/publication.json \\\n  --repo-root /candidate/idc-skills \\\n  --git /trusted/bin/git --git-sha256 sha256:<git-bytes> \\\n  --canonical-repository Island-Dev-Crew/idc-skill…1408 tokens truncated…L: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=7969)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in ' and passes 300/300 native macOS Bash 3.2 fixtures.\nThe independently approved s'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=8070)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in ' is committed at `04a5bd4`\nand passes 589/589 native macOS Bash 3.2 fixtures. Th'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='CHANGELOG.md', position=8097)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in '\nand passes 589/589 native macOS Bash 3.2 fixtures. The v3 manifest and detached'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1034)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in '; an integration replay on native macOS Bash 3.2 passes 300/300.\n- **The scanner'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1159)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in ', committed as\n  `04a5bd4`, passes 589/589 on native macOS Bash 3.2. Its three-f'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=1186)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in ', passes 589/589 on native macOS Bash 3.2. Its three-file review\n  scope and ope'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2106)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in '; scanner is 589/589 at approved diff `e98cfac6` committed as\n`04a5bd4`. The fin'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2153)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in ' committed as\n`04a5bd4`. The final candidate commit is established by the signed'
+
+======================================================================
+FAIL: test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) (file='docs/STATE-2.0.3-hardening.md', position=2177)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_security_patch_docs.py", line 15, in test_staging_commit_citations_are_explicitly_historical
+    self.assertIn("staging-only; not in public history", content[match.end():match.end()+80])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'staging-only; not in public history' not found in '. The final candidate commit is established by the signed v3 manifest\nand the ex'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=10)
+EXIT 1

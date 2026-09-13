@@ -1,0 +1,370 @@
+COMMAND ["python3", "-B", "-m", "unittest", "discover", "-s", "tests"]
+.............................................................EFF..FF.FFF.FFFF.EEFE.EEF.F.FF.........................................F.......................................................................................................................................................................................
+======================================================================
+ERROR: test_candidate_git_fsmonitor_is_never_executed (test_freshness.FreshnessTests.test_candidate_git_fsmonitor_is_never_executed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1157, in test_candidate_git_fsmonitor_is_never_executed
+    report = fixture.verify()
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+ERROR: test_offline_mode_is_content_only_and_has_distinct_nonready_exit (test_freshness.FreshnessTests.test_offline_mode_is_content_only_and_has_distinct_nonready_exit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1220, in test_offline_mode_is_content_only_and_has_distinct_nonready_exit
+    report = fixture.verify(mode="offline")
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+ERROR: test_private_stage_excludes_ignored_bytes_and_preserves_signed_mode (test_freshness.FreshnessTests.test_private_stage_excludes_ignored_bytes_and_preserves_signed_mode)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1297, in test_private_stage_excludes_ignored_bytes_and_preserves_signed_mode
+    report = fixture.verify(consumer_runner=consumer)
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+ERROR: test_real_captured_verifier_proves_content_before_external_readiness (test_freshness.FreshnessTests.test_real_captured_verifier_proves_content_before_external_readiness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1588, in test_real_captured_verifier_proves_content_before_external_readiness
+    report = fixture.verify(content_runner=run_real_verifier)
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+ERROR: test_same_sequence_equivocation_and_history_rewrite_are_rejected (test_freshness.FreshnessTests.test_same_sequence_equivocation_and_history_rewrite_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1039, in test_same_sequence_equivocation_and_history_rewrite_are_rejected
+    fixture.verify()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+ERROR: test_signed_index_and_captured_content_are_both_required_for_readiness (test_freshness.FreshnessTests.test_signed_index_and_captured_content_are_both_required_for_readiness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 729, in test_signed_index_and_captured_content_are_both_required_for_readiness
+    report = fixture.verify()
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 449, in verify
+    return fresh.verify_release(self.repo, self.config, **arguments)  # type: ignore[arg-type]
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1735, in verify_release
+    config = parse_config(config_data, repo_root=repo_root, config_path=config_path)
+  File "/Users/IDC2.5/Desktop/IDC-skills/bootstrap/idc_verify_fresh.py", line 1027, in parse_config
+    raise FreshnessError(
+        "threshold verifier or trust module differs from the launcher-pinned implementation"
+    )
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+======================================================================
+FAIL: test_captured_verifier_and_launcher_must_equal_signed_sources (test_freshness.FreshnessTests.test_captured_verifier_and_launcher_must_equal_signed_sources)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 898, in test_captured_verifier_and_launcher_must_equal_signed_sources
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError, "captured freshness launcher differs"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "captured freshness launcher differs" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_checkpoint_generation_lock_covers_consumer_completion (test_freshness.FreshnessTests.test_checkpoint_generation_lock_covers_consumer_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 789, in test_checkpoint_generation_lock_covers_consumer_completion
+    self.assertTrue(
+    ~~~~~~~~~~~~~~~^
+        old_consumer_entered.wait(10),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "old run did not reach its consumer",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: False is not true : old run did not reach its consumer
+
+======================================================================
+FAIL: test_external_authority_paths_may_not_resolve_inside_repository (test_freshness.FreshnessTests.test_external_authority_paths_may_not_resolve_inside_repository)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1082, in test_external_authority_paths_may_not_resolve_inside_repository
+    with self.assertRaisesRegex(fresh.FreshnessError, "outside the repository"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "outside the repository" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_fabricated_threshold_receipt_cannot_bypass_official_reproduction (test_freshness.FreshnessTests.test_fabricated_threshold_receipt_cannot_bypass_official_reproduction)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 674, in test_fabricated_threshold_receipt_cannot_bypass_official_reproduction
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError,
+        ^^^^^^^^^^^^^^^^^^^^^
+        "configured external-root verifier refused the threshold inputs",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "configured external-root verifier refused the threshold inputs" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_first_run_requires_externally_pinned_exact_index_digest (test_freshness.FreshnessTests.test_first_run_requires_externally_pinned_exact_index_digest)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1032, in test_first_run_requires_externally_pinned_exact_index_digest
+    with self.assertRaisesRegex(fresh.FreshnessError, "first-run index"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "first-run index" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_git_commit_rejects_extra_blob_drift_and_mode_drift (test_freshness.FreshnessTests.test_git_commit_rejects_extra_blob_drift_and_mode_drift)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 962, in test_git_commit_rejects_extra_blob_drift_and_mode_drift
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError, "signed repository closure differs"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "signed repository closure differs" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_in_tree_ready_field_is_rejected_even_when_false (test_freshness.FreshnessTests.test_in_tree_ready_field_is_rejected_even_when_false)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1574, in test_in_tree_ready_field_is_rejected_even_when_false
+    with self.assertRaisesRegex(fresh.FreshnessError, "improperly emitted"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "improperly emitted" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_index_expiry_is_rechecked_before_checkpoint_transition (test_freshness.FreshnessTests.test_index_expiry_is_rechecked_before_checkpoint_transition)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1191, in test_index_expiry_is_rechecked_before_checkpoint_transition
+    with self.assertRaisesRegex(fresh.FreshnessError, "expired"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "expired" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_launcher_pins_current_threshold_implementation_bytes (test_freshness.FreshnessTests.test_launcher_pins_current_threshold_implementation_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 648, in test_launcher_pins_current_threshold_implementation_bytes
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        fresh.EXPECTED_TRUST_ROOT_MODULE_SHA256,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        fresh.sha256_bytes((REPO / "scripts/trust_root.py").read_bytes()),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 'sha256:3ea9fcedcdca6ac643f44bd66aeb0556178537eb4d8c0f7e7ae63b58b99b9c47' != 'sha256:49a73f33c549f800154d66838a5daa8b57c1974bccffdf4b068ea4a8d2472728'
+- sha256:3ea9fcedcdca6ac643f44bd66aeb0556178537eb4d8c0f7e7ae63b58b99b9c47
++ sha256:49a73f33c549f800154d66838a5daa8b57c1974bccffdf4b068ea4a8d2472728
+
+
+======================================================================
+FAIL: test_linked_or_external_git_metadata_is_rejected (test_freshness.FreshnessTests.test_linked_or_external_git_metadata_is_rejected)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1172, in test_linked_or_external_git_metadata_is_rejected
+    with self.assertRaisesRegex(fresh.FreshnessError, "Git metadata"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Git metadata" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_manifest_floor_and_ci_source_are_required_without_downgrade (test_freshness.FreshnessTests.test_manifest_floor_and_ci_source_are_required_without_downgrade)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1202, in test_manifest_floor_and_ci_source_are_required_without_downgrade
+    with self.assertRaisesRegex(fresh.FreshnessError, "manifest floor"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "manifest floor" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_private_stage_is_rehashed_immediately_before_consumer (test_freshness.FreshnessTests.test_private_stage_is_rehashed_immediately_before_consumer)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 1315, in test_private_stage_is_rehashed_immediately_before_consumer
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError, "staged repository bytes changed before consumption"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "staged repository bytes changed before consumption" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_threshold_receipt_binds_the_content_signing_identity (test_freshness.FreshnessTests.test_threshold_receipt_binds_the_content_signing_identity)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 719, in test_threshold_receipt_binds_the_content_signing_identity
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError, "threshold-authorized content-signing fingerprint differs"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "threshold-authorized content-signing fingerprint differs" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_threshold_reproduction_must_match_pinned_receipt_bytes (test_freshness.FreshnessTests.test_threshold_reproduction_must_match_pinned_receipt_bytes)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 691, in test_threshold_reproduction_must_match_pinned_receipt_bytes
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError,
+        ^^^^^^^^^^^^^^^^^^^^^
+        "output differs from the pinned threshold receipt",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "output differs from the pinned threshold receipt" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_verifier_digest_mismatch_fails_before_content_execution (test_freshness.FreshnessTests.test_verifier_digest_mismatch_fails_before_content_execution)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 880, in test_verifier_digest_mismatch_fails_before_content_execution
+    with self.assertRaisesRegex(
+         ~~~~~~~~~~~~~~~~~~~~~~^
+        fresh.FreshnessError,
+        ^^^^^^^^^^^^^^^^^^^^^
+        "captured content verifier differs|signed repository file drifted|release tuple",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AssertionError: "captured content verifier differs|signed repository file drifted|release tuple" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_wrong_index_namespace_fails_before_content_execution (test_freshness.FreshnessTests.test_wrong_index_namespace_fails_before_content_execution)
+----------------------------------------------------------------------
+bootstrap.idc_verify_fresh.FreshnessError: threshold verifier or trust module differs from the launcher-pinned implementation
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_freshness.py", line 870, in test_wrong_index_namespace_fails_before_content_execution
+    with self.assertRaisesRegex(fresh.FreshnessError, "signature invalid"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "signature invalid" does not match "threshold verifier or trust module differs from the launcher-pinned implementation"
+
+======================================================================
+FAIL: test_installed_agent_guardrails_has_durable_strict_git_entrypoint (test_install.InstallerTests.test_installed_agent_guardrails_has_durable_strict_git_entrypoint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_install.py", line 513, in test_installed_agent_guardrails_has_durable_strict_git_entrypoint
+    self.assertIn(b"variable command dispatch", strict_result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'variable command dispatch' not found in b'BLOCKED: you do not have authority to run destructive git commands (matched: parameter-dispatched command word is unsupported in strict mode).\nIf this is intended, the human runs it.\n'
+
+----------------------------------------------------------------------
+Ran 316 tests in 65.704s
+
+FAILED (failures=17, errors=6)
+
+EXIT 1
+SECONDS 65.923

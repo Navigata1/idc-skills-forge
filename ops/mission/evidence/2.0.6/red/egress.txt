@@ -1,0 +1,635 @@
+COMMAND ["bash", "skills/self-contained-ship/scripts/test-scan-egress.sh"]
+BASE 68ce34a032484529104b570d417e29ac8156b080
+== scan-egress regressions ==
+  ok    clean tree passes
+  ok    non-fetching xmlns is not egress
+  ok    waived text passes
+  ok    extensionless script detected
+  ok    UPPERCASE .SH detected
+  ok    symlink flagged
+  ok    binary fails closed in isolation
+  ok    binary-only no set -u crash
+  ok    symlink-only no set -u crash
+  ok    binary embedded URL is scanned + fails
+  ok    newline-in-filename still enumerated
+  ok    binary waived by --allow-binary passes
+  ok    unmatched --allow-binary still fails
+== 2.0.3 self-red-team (adversarial panel) ==
+  ok    protocol-relative srcset fails (isolated)
+  ok    protocol-relative poster fails (isolated)
+  ok    meta-refresh protocol-relative fails
+  ok    DOCTYPE wrapper does not launder a URL
+  ok    WebRTC stun: scheme detected
+  ok    same-origin/data fetch + README pass
+  ok    FIFO in dir fails closed (no hang)
+  ok    direct FIFO target fails closed
+  ok    embedded-URL binary fails even if waived
+== 2.0.4 G3 red-team parser regressions ==
+  ok    data-first srcset cannot hide later candidate
+  ok    data-first imagesrcset cannot hide later candidate
+  ok    data-first ping cannot hide later candidate
+  ok    data-first setAttribute srcset cannot hide candidate
+  ok    bare meta refresh network path is scanned
+  ok    UTF-16 active markup defeats no binary waiver
+  ok    control-byte active markup defeats no binary waiver
+  ok    innerHTML markup sink is recursively scanned
+  ok    outerHTML markup sink is recursively scanned
+  ok    insertAdjacentHTML markup sink is recursively scanned
+  ok    document.write markup sink is recursively scanned
+  ok    prefixed webkit image-set is scanned
+  ok    XML stylesheet processing instruction is scanned
+  ok    inline waiver cannot dismiss UNCERT
+  ok    artifact-local inline waiver has no default authority
+  ok    every attributionsrc URL is scanned
+  ok    per-file byte ceiling fails explicitly
+  ok    aggregate byte ceiling fails explicitly
+== 2.0.4 post-review egress regressions ==
+  ok    quoted bare meta-refresh URL is scanned
+  ok    quoted url= meta-refresh URL is scanned
+  ok    entity-decoded quoted meta-refresh URL is scanned
+  ok    srcdoc property markup sink is recursively scanned
+  ok    formAction IDL property is scanned
+  ok    imageSrcset IDL property is scanned
+  ok    object data IDL property is scanned
+  ok    every attributionSrc IDL URL is scanned
+  ok    arbitrary receiver dot-location assignment is scanned
+  ok    arbitrary receiver bracket-location assignment is scanned
+  ok    unmatched call scan budget fails closed
+  ok    one legacy inline marker binds only one finding
+== 2.0.3-r4 (Codex round-3 exact-head) ==
+  ok    xmlns cannot launder a real fetch()
+  ok    xmlns variable is real egress
+  ok    genuine in-tag xmlns still benign
+  ok    NUL-free P6 rawbits classified binary
+  ok    object data protocol-relative fails
+  ok    navigator.sendBeacon fails
+  ok    XHR.open URL argument fails
+  ok    both srcset candidates flagged (count==2)
+  ok    srcset candidate A isolated fails
+  ok    srcset candidate B isolated fails
+  ok    leading whitespace in quoted attr fails
+  ok    multiline attribute fails
+  ok    multiline fetch literal fails
+== 2.0.3-r5 (Codex round-4 exact-head) ==
+  ok    late NUL cannot collapse the counts channel
+  ok    protocol-relative IPv6 literal host fails
+  ok    static import from external fails
+  ok    export-from external fails
+  ok    backtick-template fetch fails
+  ok    static tagged-template fetch fails
+  ok    bracket-global tagged fetch fails
+  ok    new Worker external script fails
+  ok    serviceWorker.register fails
+  ok    location.assign navigation fails
+  ok    backslash-normalized https URL fails
+  ok    dot-prefixed .src property still fails
+  ok    plain JS src variable is not egress
+  ok    plain JS data variable is not egress
+  ok    div data attribute is not egress
+  ok    second xmlns in one tag is still benign
+  ok    unreadable URL-binary fails despite waiver
+  ok    traversal error fails the tree closed
+== 2.0.3-r6 (Codex round-5 exact-head) ==
+  ok    compact import{a}from is caught
+  ok    compact export{a}from is caught
+  ok    compact import*as ... from is caught
+  ok    bare side-effect import is caught
+  ok    export const string is NOT egress
+  ok    S3 control byte in path is sanitized (raw ESC leaked)
+  ok    S3 sanitized SYMLINK still shown
+== 2.0.3-r7 (scanner attack-matrix) ==
+  ok    WHATWG triple-slash authority is caught
+  ok    WHATWG percent-decoded host is caught
+  ok    WHATWG empty-userinfo authority is caught
+  ok    WHATWG password-userinfo authority is caught
+  ok    WHATWG slash-slash-backslash is caught
+  ok    WHATWG slash-backslash authority is caught
+  ok    percent-encoded slash host is invalid, not egress
+  ok    leading-hyphen WHATWG host count==1
+  ok    leading-underscore WHATWG host count==1
+  ok    percent-encoded userinfo cannot hide host
+  ok    hex HTML entities in src are caught
+  ok    decimal HTML entities in src are caught
+  ok    named HTML entities in src are caught
+  ok    entity-encoded absolute URL count==1
+  ok    entity srcset candidates count==2
+  ok    entity meta-refresh URL is caught
+  ok    entity inline-CSS URL is caught
+  ok    entity in non-fetching title stays clean
+  ok    double-encoded entity is decoded only once
+  ok    entity in script is not HTML-decoded
+  ok    escaped markup stays ordinary text
+  ok    entity finding keeps source-line waiver
+  ok    comment between fetch and call cannot hide it
+  ok    commented bare import is still caught
+  ok    comments around export/from are still caught
+  ok    comments around full import clause are caught
+  ok    bracket location href navigation is caught
+  ok    window.open navigation is caught
+  ok    setAttribute src is caught
+  ok    setAttributeNS href is caught
+  ok    setAttribute srcset candidates count==2
+  ok    setAttribute action is caught
+  ok    setAttribute formaction is caught
+  ok    JS line-commented call stays clean
+  ok    JS block-commented module stays clean
+  ok    HTML-commented markup stays clean
+  ok    code-shaped ordinary string stays clean
+  ok    comment marker inside real URL still blocks
+  ok    plain triple-slash JS variable stays clean
+  ok    new URL construction alone stays clean
+  ok    unrelated db.open stays clean
+  ok    hash/local/title controls stay clean
+  ok    real CSS url() still blocks
+  ok    CSS-commented url() stays clean
+  ok    prose quote cannot mask live script body
+  ok    markup-shaped JS string stays clean
+  ok    optional fetch call count==1
+  ok    window bracket fetch count==1
+  ok    same-origin path containing double slash stays clean
+  ok    standalone JS markup string stays clean
+  ok    HTML body code example stays clean
+  ok    window.location assignment count==1
+  ok    document.location assignment count==1
+  ok    window bracket location count==1
+  ok    decoded srcdoc nested fetch count==1
+  ok    space-separated ping URLs count==2
+  ok    CSS image-set candidates count==2
+  ok    chained bracket location href count==1
+  ok    apostrophe-leading WHATWG host count==1
+  ok    bang-leading WHATWG host count==1
+  ok    unclosed script executes through EOF
+  ok    unclosed style parses through EOF
+  ok    nested srcdoc unclosed script count==1
+== 2.0.3-r8 (post-review parser boundaries) ==
+  ok    abrupt HTML comment exposes active markup
+  ok    end-bang HTML comment exposes active markup
+  ok    decoded srcdoc abrupt comment exposes markup
+  ok    decoded srcdoc end-bang comment exposes markup
+  ok    script end tag with attributes closes raw text
+  ok    style end tag with slash closes raw text
+  ok    script comment text cannot hide following markup
+  ok    legacy script comment ends at newline
+  ok    style comment text cannot hide following markup
+  ok    legacy style comment cannot hide live CSS
+  ok    comment opener in attribute stays attribute text
+  ok    script opener in attribute stays attribute text
+  ok    comment opener in unquoted attr stays text
+  ok    script opener in unquoted attr stays text
+  ok    template substitution executes nested fetch
+  ok    regex double slash cannot mask later fetch
+  ok    regex slash-star cannot mask later fetch
+  ok    regex after control close cannot mask fetch
+  ok    regex after block close cannot mask fetch
+  ok    regex after await cannot mask fetch
+  ok    regex after spread cannot mask fetch
+  ok    regex after export default cannot mask fetch
+  ok    regex after extends cannot mask fetch
+  ok    default property division keeps later fetch live
+  ok    await property division keeps later fetch live
+  ok    function-expression division keeps fetch live
+  ok    post-increment division keeps later fetch live
+  ok    post-decrement division keeps later fetch live
+  ok    regex used as division RHS cannot mask fetch
+  ok    nested function declaration permits regex goal
+  ok    labeled block close permits regex goal
+  ok    regex after import declaration stays visible
+  ok    regex after export declaration stays visible
+  ok    regex after break ASI stays visible
+  ok    regex after continue ASI stays visible
+  ok    regex after exported class stays visible
+  ok    regex after exported function stays visible
+  ok    regex after export-default function stays visible
+  ok    regex after optional-binding catch stays visible
+  ok    regex after TS interface stays visible
+  ok    regex after TS enum stays visible
+  ok    regex after TS namespace stays visible
+  ok    line comment after control close stays inert
+  ok    block comment after block close stays inert
+  ok    WHATWG one-slash HTTPS is caught
+  ok    WHATWG zero-slash HTTPS is caught
+  ok    binary one-slash HTTPS survives waiver as egress
+  ok    binary zero-slash HTTPS survives waiver as egress
+  ok    binary hyphen-host HTTPS survives waiver as egress
+  ok    binary underscore-host HTTPS survives waiver as egress
+  ok    binary bang-host HTTPS survives waiver as egress
+  ok    explicit HTML treats polyglot markup as active
+  ok    explicit JavaScript keeps markup string inert
+  ok    unknown media resolves HTML-JS ambiguity closed
+  ok    data and blob targets stay local controls
+  ok    executable data HTML is scanned as nested markup
+  ok    nested data HTML local path stays clean
+  ok    Worker data JavaScript is scanned recursively
+  ok    SharedWorker data JavaScript is scanned
+  ok    dynamic-import data JavaScript is scanned
+  ok    importScripts data JavaScript is scanned
+  ok    base64 executable Worker data fails closed
+  ok    link data HTML navigation is scanned
+  ok    window.open data HTML navigation is scanned
+  ok    location data HTML navigation is scanned
+  ok    generic src data HTML is scanned
+  ok    static-import data JavaScript is scanned
+  ok    unquoted CSS blob target stays local
+  ok    unquoted CSS data target stays local
+  ok    dynamic blob template target stays local
+  ok    same-origin path containing https token stays local
+  ok    dot-relative path containing https token stays local
+  ok    script src data JavaScript is scanned
+  ok    setAttribute src data JavaScript is scanned
+  ok    data CSS import is scanned recursively
+  ok    same-origin path containing stun token stays local
+  ok    relative path containing turn token stays local
+  ok    raw TAB in HTML URL scheme is normalized
+  ok    entity TAB in HTML URL scheme is normalized
+  ok    meta-refresh TAB URL scheme is normalized
+  ok    JavaScript hex escape is decoded before fetch
+  ok    JavaScript Unicode escape is decoded before fetch
+  ok    JavaScript line continuation is decoded
+  ok    globalThis bracket fetch is caught
+  ok    navigator bracket sendBeacon is caught
+  ok    chained bracket location assign is caught
+  ok    modulepreload data JavaScript is scanned
+  ok    meta-refresh data HTML is scanned
+  ok    oversized executable data payload fails closed
+  ok    stray quote cannot promote comment opener
+  ok    stray quote cannot promote script opener
+  ok    stray quote cannot hide script end tag
+  ok    stray quote cannot hide style end tag
+  ok    self bracket fetch is caught
+  ok    bracket location dot-assign is caught
+  ok    escaped fetch identifier is normalized
+  ok    escaped sendBeacon identifier is normalized
+  ok    first-char escaped fetch identifier is normalized
+  ok    escaped global fetch identifier is normalized
+  ok    first-char escaped beacon is normalized
+  ok    first-char escaped location is normalized
+  ok    escaped window location is normalized
+  ok    globalThis location assignment is caught
+  ok    self location assignment is caught
+  ok    top bracket location assignment is caught
+  ok    parent location assignment is caught
+  ok    leading decoded NUL is URL-trimmed
+  ok    leading decoded SOH is URL-trimmed
+  ok    leading decoded backspace is URL-trimmed
+  ok    leading decoded SOH before network path is trimmed
+  ok    interior numeric control cannot synthesize a scheme
+  ok    interior numeric control cannot synthesize network path
+  ok    interior numeric control meta URL stays local
+  ok    leading numeric control is URL-trimmed
+  ok    application x-javascript data script is scanned
+  ok    text javascript1.5 data import is scanned
+  ok    text x-javascript modulepreload is scanned
+  ok    data script fragment is not executable payload
+  ok    data import query remains executable payload
+  ok    modulepreload fragment is not executable payload
+  ok    percent-encoded URL metadata stays payload
+  ok    regex after anonymous export class stays visible
+  ok    regex after anonymous export function stays visible
+  ok    regex after anonymous export generator stays visible
+  ok    regex after anonymous export async stays visible
+  ok    anchor javascript URL payload is scanned
+  ok    iframe javascript URL payload is scanned
+  ok    meta javascript URL payload is scanned
+  ok    window open javascript URL payload is scanned
+  ok    location assign javascript URL is scanned
+  ok    location replace javascript URL is scanned
+  ok    direct location javascript URL is scanned
+  ok    href property javascript URL is scanned
+  ok    src property javascript URL is scanned
+  ok    setAttribute href javascript URL is scanned
+  ok    setAttribute src javascript URL is scanned
+  ok    ordinary javascript URL string stays inert
+  ok    non-fetching data-note javascript URL stays inert
+  ok    setAttribute title javascript URL stays inert
+  ok    optional location assign is caught
+  ok    optional location bracket replace is caught
+  ok    optional window location assign is caught
+  ok    optional window location bracket is caught
+  ok    optional global bracket location is caught
+  ok    optional location property without call stays inert
+  ok    replace object key without call stays inert
+  ok    classic data script with omitted MIME is scanned
+  ok    classic data script with text/plain is scanned
+  ok    classic data script ignores arbitrary MIME
+  ok    explicit classic type ignores response MIME
+  ok    empty script type remains classic
+  ok    module data script rejects omitted MIME
+  ok    module data script rejects text/plain
+  ok    module data script accepts JavaScript MIME
+  ok    non-JavaScript script type stays an inert data block
+  ok    classic Worker data omitted MIME is scanned
+  ok    classic Worker data text/plain is scanned
+  ok    classic SharedWorker data text/plain is scanned
+  ok    module Worker data text/plain stays inert
+  ok    module SharedWorker data text/plain stays inert
+  ok    module Worker JavaScript MIME is scanned
+  ok    module SharedWorker JavaScript MIME is scanned
+  ok    importScripts data omitted MIME is scanned
+  ok    importScripts data text/plain is scanned
+  ok    importScripts data JavaScript MIME is scanned
+  ok    dynamic import data omitted MIME stays inert
+  ok    dynamic import data text/plain stays inert
+  ok    bracket Worker uses classic data MIME policy
+  ok    bracket module SharedWorker keeps strict MIME
+  ok    tracked dynamic classic script src is scanned
+  ok    tracked dynamic classic script setter is scanned
+  ok    tracked dynamic module rejects text/plain
+  ok    tracked dynamic module accepts JavaScript MIME
+  ok    tracked setter module rejects text/plain
+  ok    tracked dynamic data-block src stays inert
+  ok    dynamic image src data payload stays non-executable
+  ok    immediate dynamic classic script src is scanned
+  ok    valueless first type keeps duplicate script classic
+  ok    valueless first language keeps script classic
+  ok    removeAttribute type restores classic script
+  ok    bracket type mutation restores classic script
+  ok    setAttributeNS module keeps strict response MIME
+  ok    removeAttributeNS type restores classic script
+  ok    toggleAttribute type fails closed to classic
+  ok    parameterized script type is a data block
+  ok    importScripts scans every URL argument
+  ok    bracket importScripts scans every URL argument
+  ok    tracked bracket script src is scanned
+  ok    tracked bracket script setter is scanned
+  ok    inline non-JavaScript script body stays inert
+  ok    module Worker trailing comma keeps strict MIME
+  ok    module Worker quoted type keeps strict MIME
+  ok    module Worker before static option keeps strict MIME
+  ok    immediate bracket script src is scanned
+  ok    immediate bracket script setter is scanned
+  ok    module Worker escaped type keeps strict MIME
+  ok    optional bracket importScripts scans every URL
+  ok    bracket removeAttribute restores classic script
+  ok    bracket removeAttributeNS restores classic script
+  ok    bracket toggleAttribute restores classic script
+  ok    bracket setAttribute module keeps strict MIME
+  ok    bracket setAttributeNS module keeps strict MIME
+  ok    Worker getter can override module to classic
+  ok    Worker setter-only override defaults classic
+  ok    shadowed image then script binding fails closed
+  ok    shadowed script then image binding fails closed
+  ok    shadowed script state fails closed
+  ok    this bracket importScripts scans every URL
+  ok    optional this importScripts scans every URL
+  ok    SharedWorker getter overrides module to classic
+  ok    bracket non-null namespace leaves script classic
+  ok    dot non-null namespace leaves script classic
+  ok    bracket non-null namespace leaves module intact
+  ok    dot non-null namespace leaves module intact
+  ok    empty namespace setAttributeNS updates script type
+  ok    import map remote target is caught
+  ok    import map executable data target is scanned
+  ok    speculation-rules prefetch target is caught
+  ok    conditional module mutation fails closed
+  ok    uncalled-function mutation fails closed
+  ok    conditional data-block mutation fails closed
+  ok    external script ignores inline child text
+  ok    called nested mutation stays conservatively unknown
+  ok    parenthesized this importScripts is caught
+  ok    parenthesized member callee importScripts is caught
+  ok    parenthesized fetch callee is caught
+  ok    parenthesized Worker constructor is caught
+  ok    parenthesized bracket Worker is caught
+  ok    parenthesized tracked script src is caught
+  ok    appendChild-returned script src is caught
+  ok    parenthesized removeAttribute restores classic
+  ok    optional receiver removeAttribute is caught
+  ok    optional call removeAttribute is caught
+  ok    uppercase NS local-name leaves script classic
+  ok    uppercase NS removal leaves module intact
+  ok    uppercase property does not mutate script type
+  ok    uppercase bracket property does not mutate type
+  ok    uppercase setter method does not mutate type
+  ok    uppercase bracket setter does not mutate type
+  ok    unrecognized remover ends the state proof
+  ok    nested parenthesized fetch is caught
+  ok    parenthesized optional location call is caught
+  ok    parenthesized optional window open is caught
+  ok    parenthesized service-worker register is caught
+  ok    parenthesized XHR open is caught
+  ok    parenthesized location bracket is caught
+  ok    parenthesized global location assignment is caught
+  ok    parenthesized appendChild script src is caught
+  ok    uppercase Worker option key stays classic
+  ok    uppercase Worker type value stays classic
+  ok    padded Worker type value stays classic
+  ok    grouped fetch argument is caught
+  ok    grouped importScripts key and value are caught
+  ok    grouped location key and value are caught
+  ok    grouped tracked script key and value are caught
+  ok    grouped dot-assignment value is caught
+  ok    grouped setter key and arguments are caught
+  ok    grouped ordinary string remains inert
+  ok    grouped Worker module option keeps strict MIME
+  ok    grouped script type assignment keeps strict MIME
+  ok    grouped script type setter keeps strict MIME
+  ok    CSS import url data payload is scanned
+  ok    unquoted CSS import url data payload is scanned
+  ok    ordinary CSS url data payload is not executed as CSS
+  ok    stylesheet link data CSS is scanned
+  ok    alternate stylesheet data CSS is scanned
+  ok    icon link data payload is not executed as CSS
+  ok    preload link data payload is not executed as CSS
+  ok    direct remote icon href is still egress
+  ok    dot XLink setter scans namespace and target
+  ok    bracket XLink setter scans namespace and target
+  ok    arbitrary namespaced href is not a known fetch sink
+  ok    known dynamic image data HTML remains non-executable
+  ok    known bracket image data HTML remains non-executable
+  ok    known image setter data HTML remains non-executable
+  ok    known dynamic image remote URL is still egress
+  ok    unknown data src stays conservative
+  ok    known iframe data document is scanned
+  ok    grouped module Worker options keep strict MIME
+  ok    comma Worker options remain conservative
+  ok    ASI module assignment keeps strict MIME
+  ok    conditional ASI mutation stays conservative
+  ok    import-map URL-like key does not fetch
+  ok    import-map scope key does not fetch
+  ok    escaped CSS url identifier is normalized
+  ok    escaped CSS import at-keyword is normalized
+  ok    escaped CSS data scheme is normalized
+  ok    escaped ordinary CSS string remains inert
+  ok    vertical-tab rel byte is not HTML whitespace
+  ok    NBSP rel character is not HTML whitespace
+  ok    em-space rel character is not HTML whitespace
+  ok    ASCII-tab rel separator activates stylesheet
+  ok    direct type expression stays conservative
+  ok    bracket type expression stays conservative
+  ok    newline-continuation type stays conservative
+  ok    bare-CR ASI module assignment keeps strict MIME
+  ok    bare-CR conditional mutation stays conservative
+  ok    lexically shadowed image stays conservative
+  ok    parameter-shadowed image stays conservative
+  ok    unknown namespace href stays conservative
+  ok    CSS escaped line continuation is normalized
+  ok    concatenated type assignment stays conservative
+  ok    arrow-shadowed image stays conservative
+  ok    bracket unknown namespace href stays conservative
+  ok    unquoted CSS data URL escapes are normalized
+  ok    unquoted CSS remote URL escapes are normalized
+  ok    CSS identifier escape may not cross a newline
+  ok    CSS function escape may not cross a newline
+  ok    CSS bad-string newline exposes following URL
+  ok    image identity requires the complete initializer
+  ok    script identity requires the complete initializer
+  ok    iframe identity requires the complete initializer
+  ok    array-destructured image shadow stays conservative
+  ok    object-destructured image shadow stays conservative
+  ok    nested-default image shadow stays conservative
+  ok    dynamic template direct type stays conservative
+  ok    dynamic template bracket type stays conservative
+  ok    dynamic template setter type stays conservative
+  ok    dynamic template setter name stays conservative
+  ok    dynamic template element name stays conservative
+  ok    unquoted CSS token escape may not cross a newline
+  ok    CSS bad-string form feed exposes following URL
+  ok    script alias shadow ends tracked state
+  ok    mutable non-script identity cannot authorize later use
+  ok    iframe lexical alias to script stays conservative
+  ok    iframe arrow alias to script stays conservative
+  ok    script lexical alias to iframe stays conservative
+  ok    script arrow alias to iframe stays conservative
+  ok    intervening statement ends script state proof
+  ok    setter argument side effect ends state proof
+  ok    namespaced setter side effect ends state proof
+  ok    remover extra-argument side effect ends state proof
+  ok    toggle argument side effect ends state proof
+  ok    static non-type DOM operations preserve module state
+  ok    CSS custom-property slashes cannot hide later URL
+  ok    CSS custom-property HTML opener cannot hide later URL
+  ok    CSS custom-property backtick cannot hide later URL
+  ok    escaped CSS space stays inside the at-keyword
+  ok    escaped CSS space cannot counterfeit import grammar
+  ok    escaped CSS space remains inside a function name
+  ok    mid-name escaped CSS space remains inside the name
+  ok    escaped CSS NBSP remains inside a function name
+  ok    hyphenated non-url function remains inert
+  ok    hyphenated non-image function remains inert
+  ok    hyphenated non-image-set function remains inert
+  ok    regex after abstract class keeps later fetch visible
+  ok    regex after declare class keeps later fetch visible
+  ok    regex after const enum keeps later fetch visible
+  ok    regex after type alias keeps later fetch visible
+  ok    regex after decorated class keeps later fetch visible
+  ok    shadowed document cannot grant script identity
+  ok    property-suffix document cannot grant script identity
+  ok    shadowed document cannot grant image identity
+  ok    parameter-shadowed document stays conservative
+  ok    destructured document stays conservative
+  ok    regex after generic interface keeps fetch visible
+  ok    regex after extended interface keeps fetch visible
+  ok    regex after intersection type keeps fetch visible
+  ok    regex after generic-default type keeps fetch visible
+  ok    regex after ambient module keeps fetch visible
+  ok    regex after object decorator keeps fetch visible
+  ok    loop-bound document stays conservative
+  ok    method-parameter document stays conservative
+  ok    destructured parameter document stays conservative
+  ok    defaulted destructured document stays conservative
+  ok    generator parameter document stays conservative
+  ok    dotless-i escape cannot counterfeit CSS import
+  ok    dotted-I escape cannot counterfeit CSS import
+  ok    dotless-i escape cannot counterfeit CSS image
+  ok    long-s escape cannot counterfeit an HTTP scheme
+  ok    long-s escape cannot counterfeit a STUN scheme
+  ok    uppercase ASCII HTTPS remains external
+  ok    CommonJS module object keeps slash as division
+  ok    global object assignment keeps slash as division
+  ok    namespace property keeps slash as division
+  ok    bare direct eval disables document identity
+  ok    grouped direct eval disables document identity
+  ok    nested grouped eval disables document identity
+  ok    with statement disables document identity
+  ok    regex after generic class keeps fetch visible
+  ok    regex after implemented class keeps fetch visible
+  ok    regex after default interface keeps fetch visible
+  ok    regex after constrained interface keeps fetch visible
+  ok    regex after tuple type keeps fetch visible
+  ok    regex after union type keeps fetch visible
+  ok    regex after ambient const keeps fetch visible
+  ok    type declaration cannot swallow same-line division
+  ok    ambient declaration cannot swallow same-line division
+  ok    final declaration in a same-line sequence stays visible
+  ok    multiline type with later fetch fails as uncertainty
+  ok    newline type tail cannot hide runtime division
+  ok    newline ambient tail cannot hide runtime division
+  ok    benign multiline type boundary is explicitly uncertain
+  ok    terminated multiline type is a proved regex boundary
+  ok    terminated multiline ambient is a proved regex boundary
+  ok    terminated multiline type keeps later fetch visible
+  ok    classic script shadow propagates across script blocks
+  ok    unknown file load order propagates document ambiguity
+  ok    direct global document stays precise across script blocks
+  ok    bare-CR line comment exposes following fetch
+  ok    bare-CR legacy HTML comment exposes following fetch
+  ok    bare-CR import boundary keeps later fetch visible
+  ok    bare-CR export boundary keeps later fetch visible
+  ok    bare-CR next-line waiver cannot launder prior egress
+  ok    bare-CR same-line waiver remains bounded and valid
+  ok    U+2028 ends a JavaScript line comment
+  ok    U+2029 ends a JavaScript line comment
+  ok    U+2028 ends a legacy HTML line comment
+  ok    U+2028 import boundary keeps later fetch visible
+  ok    U+2029 export boundary keeps later fetch visible
+  ok    U+2028 next-line waiver cannot launder prior egress
+  ok    U+2029 same-line waiver remains bounded and valid
+  ok    U+2028 JavaScript line continuation is decoded
+  ok    U+2029 JavaScript line continuation is decoded
+  ok    U+2028 ASI preserves direct module state
+  ok    U+2029 conditional mutation stays conservative
+  ok    U+2028 in block comment preserves ASI state
+  ok    ECMAScript UTF-8 whitespace nbsp is normalized
+  ok    ECMAScript UTF-8 whitespace ogham is normalized
+  ok    ECMAScript UTF-8 whitespace enquad is normalized
+  ok    ECMAScript UTF-8 whitespace emquad is normalized
+  ok    ECMAScript UTF-8 whitespace enspace is normalized
+  ok    ECMAScript UTF-8 whitespace emspace is normalized
+  ok    ECMAScript UTF-8 whitespace threeperem is normalized
+  ok    ECMAScript UTF-8 whitespace fourperem is normalized
+  ok    ECMAScript UTF-8 whitespace sixperem is normalized
+  ok    ECMAScript UTF-8 whitespace figure is normalized
+  ok    ECMAScript UTF-8 whitespace punctuation is normalized
+  ok    ECMAScript UTF-8 whitespace thin is normalized
+  ok    ECMAScript UTF-8 whitespace hair is normalized
+  ok    ECMAScript UTF-8 whitespace nnbsp is normalized
+  ok    ECMAScript UTF-8 whitespace medium-math is normalized
+  ok    ECMAScript UTF-8 whitespace ideographic is normalized
+  ok    ECMAScript UTF-8 whitespace bom is normalized
+  ok    non-whitespace Unicode nel cannot counterfeit grammar
+  ok    non-whitespace Unicode mongolian-vowel cannot counterfeit grammar
+  ok    non-whitespace Unicode zero-width cannot counterfeit grammar
+  ok    non-whitespace Unicode word-joiner cannot counterfeit grammar
+  ok    decoded entity U+2028 ends inline-handler comment
+  ok    decoded entity U+2029 ends inline-handler comment
+  ok    decoded entity NBSP separates inline-handler tokens
+  ok    decoded entity BOM separates inline-handler tokens
+  ok    decoded srcdoc U+2028 ends nested script comment
+  ok    decoded U+2028 waiver cannot cross handler runtime line
+  ok    decoded U+2029 waiver cannot cross srcdoc runtime line
+  ok    decoded CSS CR waiver cannot cross runtime line
+  ok    decoded CSS LF waiver cannot cross runtime line
+  ok    decoded CSS FF waiver cannot cross runtime line
+  ok    decoded U+2028 waiver still works after the line boundary
+  ok    decoded CSS CR waiver still works after the line boundary
+  ok    raw CSS FF waiver cannot cross source line
+  ok    raw CSS FF same-line waiver remains valid
+  ok    prepass and findings share one stable snapshot
+  ok    S1 counts accept 0 0 0
+  ok    S1 counts accept 3 1 2
+  ok    S1 counts accept 9-digit max
+  ok    S1 counts reject leading-zero 08
+  ok    S1 counts reject overflow
+  ok    S1 counts reject 10-digit field
+  ok    S1 counts reject extra line
+  ok    S1 counts reject no newline
+  ok    S1 counts reject trailing junk
+  ok    S1 counts reject embedded NUL
+  ok    S1 counts reject 2 fields
+  ok    S1 counts reject 4 fields
+  ok    S1 counts reject non-ASCII
+
+RESULT pass=619 fail=0
+
+EXIT 0
+SECONDS 54.82

@@ -4,6 +4,10 @@
 
 # Forge 50
 
+> **2.0.6 security-patch construction:** this branch's repaired bytes require a new
+> manifest, owner signature and exact-head acceptance. The signed 2.0.5 baseline
+> below does not authenticate this changed checkout. See the [2.0.6 scope](docs/2.0.6-release-scope.md).
+
 **Velocity, welded to proof.**
 
 Fifty fused agent skills for building, researching, operating, verifying, and shipping—designed to increase velocity without loosening quality, control, or security boundaries.
@@ -16,7 +20,7 @@ Fifty fused agent skills for building, researching, operating, verifying, and sh
 
 <div align="center">
 
-| REGISTERED SKILLS | OPENAI SIDECARS | RELEASE LINE | CONTENT INTEGRITY | FULL FRESHNESS |
+| REGISTERED SKILLS | OPENAI SIDECARS | PUBLISHED BASELINE | BASELINE CONTENT INTEGRITY | FULL FRESHNESS |
 |:---:|:---:|:---:|:---:|:---:|
 | **50** | **50** | **2.0.5** | **signed · 5/5** | **deferred** |
 

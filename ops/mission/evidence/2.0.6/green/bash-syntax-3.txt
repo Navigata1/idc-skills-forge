@@ -1,0 +1,4 @@
+COMMAND ["bash", "-n", "scripts/test-skill-integrity.sh"]
+
+EXIT 0
+SECONDS 0.003

@@ -1,0 +1,126 @@
+test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) ... 
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash HEAD', strict=True) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash=HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash=HEAD', strict=True) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup amend:HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup amend:HEAD', strict=True) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=amend:HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=amend:HEAD', strict=True) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup reword:HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup reword:HEAD', strict=True) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=reword:HEAD', strict=False) ... FAIL
+  test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=reword:HEAD', strict=True) ... FAIL
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash=HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--squash=HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup amend:HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup amend:HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=amend:HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=amend:HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup reword:HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup reword:HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=reword:HEAD', strict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+======================================================================
+FAIL: test_autosquash_editor_semantics (tests.test_git_guard_grammar.GitGuardGrammarTests.test_autosquash_editor_semantics) (argument='--fixup=reword:HEAD', strict=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_git_guard_grammar.py", line 168, in test_autosquash_editor_semantics
+    self.assertEqual(result.returncode, expected, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+
+----------------------------------------------------------------------
+Ran 1 test in 1.367s
+
+FAILED (failures=12)

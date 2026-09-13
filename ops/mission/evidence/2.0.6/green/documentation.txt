@@ -1,0 +1,9 @@
+COMMAND python3 -B -m unittest -v tests.test_security_patch_docs
+test_full_profile_instructions_do_not_pin_a_construction_tag (tests.test_security_patch_docs.SecurityPatchDocsTests.test_full_profile_instructions_do_not_pin_a_construction_tag) ... ok
+test_staging_commit_citations_are_explicitly_historical (tests.test_security_patch_docs.SecurityPatchDocsTests.test_staging_commit_citations_are_explicitly_historical) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+EXIT 0

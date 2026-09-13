@@ -1,0 +1,38 @@
+INTENTIONAL TRANSITION TEST: new 2.0.6/5 contract against unchanged 2.0.5/4 registry; not a security finding.
+COMMAND python3 -B -m unittest -v tests.test_public_front_door.PublicFrontDoorTests.test_security_candidate_and_published_baseline_are_distinct tests.test_release_artifacts.ReleaseArtifactBuilderTests.test_registry_parser_accepts_the_committed_producer_format
+test_security_candidate_and_published_baseline_are_distinct (tests.test_public_front_door.PublicFrontDoorTests.test_security_candidate_and_published_baseline_are_distinct) ... FAIL
+test_registry_parser_accepts_the_committed_producer_format (tests.test_release_artifacts.ReleaseArtifactBuilderTests.test_registry_parser_accepts_the_committed_producer_format) ... FAIL
+
+======================================================================
+FAIL: test_security_candidate_and_published_baseline_are_distinct (tests.test_public_front_door.PublicFrontDoorTests.test_security_candidate_and_published_baseline_are_distinct)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_public_front_door.py", line 145, in test_security_candidate_and_published_baseline_are_distinct
+    self.assertEqual(registry["release"], "2.0.6")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '2.0.5' != '2.0.6'
+- 2.0.5
+?     ^
++ 2.0.6
+?     ^
+
+
+======================================================================
+FAIL: test_registry_parser_accepts_the_committed_producer_format (tests.test_release_artifacts.ReleaseArtifactBuilderTests.test_registry_parser_accepts_the_committed_producer_format)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/IDC2.5/Desktop/IDC-skills/tests/test_release_artifacts.py", line 431, in test_registry_parser_accepts_the_committed_producer_format
+    self.assertEqual(registry["release"], "2.0.6")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '2.0.5' != '2.0.6'
+- 2.0.5
+?     ^
++ 2.0.6
+?     ^
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)
+EXIT 1

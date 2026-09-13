@@ -1,0 +1,63 @@
+LOCAL CONSTRUCTION GATES — not independent acceptance or publication authority
+Base 68ce34a032484529104b570d417e29ac8156b080
+Repair code collected at 997368ed1baa0bbe9495f572d17d70550bb17a14.
+Final release-control commit/tree is identified outside this candidate by the hand-back receipt.
+
+python3 -B -m unittest discover -s tests
+Ran 316 tests in 54.275s
+OK — exit 0. green/python-full.txt
+
+python3 -B -m unittest tests.test_git_guard_grammar
+Ran 18 tests
+OK — red/green cases include process-group timeout <2s, 48KiB accept/96KiB reject.
+green/guard-autosquash-grammar.txt; final combined suite also includes this module.
+
+bash skills/agent-guardrails/scripts/test-block-dangerous-git.sh
+RESULT pass=434 fail=0 — exit 0. green/guard-matrix.txt
+
+bash skills/self-contained-ship/scripts/test-scan-egress.sh
+RESULT pass=619 fail=0 — exit 0. green/egress-corpus.txt
+
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs
+RESULT pass=7 fail=0 unexpectedExternalDeliveries=0 — exit 0.
+Loopback HTTP sink only; no ICE packet capture. green/sealed-fixtures.txt
+
+node scripts/verify-sealed-artifacts.mjs --output <external-evidence>/sealed-browser.json
+PASS — 8 exercised states under interception; 1500ms configured observation +250ms settle.
+Targets terminated, lifetime containment NOT proven. green/sealed-artifacts.txt
+
+python3 -B -m unittest tests.test_release_reviews tests.test_public_release tests.test_trust_root tests.test_gauntlet_records tests.test_platform_evidence tests.test_runtime_boundaries
+Ran 76 tests
+OK — same tests are included in the full 316-test capture.
+
+python3 -B scripts/verify_gauntlet_records.py
+ERROR for each of the 3 reviewedCommit values: does not resolve to a commit object.
+EXPECTED REFUSAL — exit 1. green/gauntlet-strict.txt
+
+python3 -B scripts/verify_gauntlet_records.py --historical-records
+gauntlet historical records checked: 3 staging-only; not in public history; exact-commit acceptance and independent authorship not verified
+HISTORICAL STRUCTURE ONLY — exit 0. green/gauntlet-historical.txt
+
+python3 -I -B scripts/validate_skills.py --json
+skillsLoaded=50 passedSkills=50 errors=0 warnings=13 valid=true — exit 0.
+green/canonical.txt
+
+python3 -B scripts/verify_forge_50.py --json
+skills=50 validationErrors=0 pass=true — exit 0. green/forge-50.txt
+
+bash -n <each of 12 release shell surfaces>
+All exit 0. green/bash-syntax-0.txt through green/bash-syntax-11.txt contain exact paths.
+shellcheck <the same 12 release shell surfaces>
+exit 0. green/shellcheck.txt
+
+Manifest dry run: NOT RUN. Worklist section 5 explicitly says stop before regeneration.
+Production manifest/signature/key files remain byte-identical to 2.0.5; content verification
+on the repaired candidate must refuse. Owner ceremony follows independent certification.
+No protected CI, independent acceptance, real Windows, publication or fleet gate is claimed.
+
+python3 -m unittest discover -s tests
+Fresh detached clone at 997368ed1baa0bbe9495f572d17d70550bb17a14: Ran 316 tests, OK, exit0.
+green/python-bare.txt. Bytecode pollution stays confined to this disposable fixture clone.
+
+Final unsigned exact-head replay is recorded outside the candidate tree;
+check that receipt before treating the builder handoff as complete.
