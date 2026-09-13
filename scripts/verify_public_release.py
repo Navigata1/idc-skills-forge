@@ -26,6 +26,7 @@ if str(SCRIPT_DIRECTORY) not in sys.path:
 from trust_root import (
     RELEASE_NAMESPACE,
     TrustError,
+    _git_bytes,
     load_trusted_root,
     parse_envelope_bytes,
     parse_release,
@@ -411,25 +412,9 @@ def https(value: Any, label: str, expected_host: str | None = None) -> str:
 
 def git_run(git: Path, repo: Path, *arguments: str) -> str:
     try:
-        process = subprocess.run(
-            [str(git), "-C", str(repo), "-c", "core.autocrlf=false", "-c", "core.hooksPath=/dev/null", *arguments],
-            text=True,
-            capture_output=True,
-            check=False,
-            env={
-                "GIT_CONFIG_NOSYSTEM": "1",
-                "GIT_CONFIG_GLOBAL": os.devnull,
-                "GIT_NO_REPLACE_OBJECTS": "1",
-                "LC_ALL": "C",
-                "PATH": str(git.parent),
-            },
-            timeout=10,
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
+        return _git_bytes(git, repo, *arguments).decode("utf-8").strip()
+    except (TrustError, UnicodeError) as exc:
         raise PublicationError(f"Git command could not run: {exc}") from exc
-    if process.returncode != 0:
-        raise PublicationError(f"Git command failed: {' '.join(arguments)}")
-    return process.stdout.strip()
 
 
 def release_payload(data: bytes) -> Mapping[str, Any]:
@@ -503,13 +488,23 @@ def verify(
     candidate = exact(record["candidate"], {"commit", "tag", "tree"}, "candidate")
     if not all(isinstance(candidate[field], str) and HEX40.fullmatch(candidate[field]) for field in ("commit", "tree")):
         raise PublicationError("candidate commit or tree differs")
-    if candidate["tag"] != "2.0.4":
-        raise PublicationError("candidate tag must be 2.0.4")
-    local_tag = git_run(git, repo, "rev-parse", "--verify", candidate["tag"])
-    if git_run(git, repo, "cat-file", "-t", candidate["tag"]) != "tag":
+    try:
+        registry = json.loads(
+            git_run(git, repo, "show", "HEAD:skills/registry.json"),
+            object_pairs_hook=reject_duplicates,
+        )
+    except json.JSONDecodeError as exc:
+        raise PublicationError("committed registry is not valid JSON") from exc
+    release = registry.get("release") if isinstance(registry, dict) else None
+    if not isinstance(release, str) or not release or candidate["tag"] != release:
+        raise PublicationError("candidate tag must equal the committed registry release")
+    tag_ref = f"refs/tags/{release}"
+    git_run(git, repo, "check-ref-format", tag_ref)
+    local_tag = git_run(git, repo, "rev-parse", "--verify", tag_ref)
+    if git_run(git, repo, "cat-file", "-t", tag_ref) != "tag":
         raise PublicationError("release tag must be an annotated tag object")
-    local_commit = git_run(git, repo, "rev-parse", "--verify", f"{candidate['tag']}^{{commit}}")
-    local_tree = git_run(git, repo, "rev-parse", "--verify", f"{candidate['tag']}^{{tree}}")
+    local_commit = git_run(git, repo, "rev-parse", "--verify", f"{tag_ref}^{{commit}}")
+    local_tree = git_run(git, repo, "rev-parse", "--verify", f"{tag_ref}^{{tree}}")
     if local_commit != candidate["commit"] or local_tree != candidate["tree"]:
         raise PublicationError("local tag does not resolve to the published candidate")
     if git_run(git, repo, "rev-parse", "--verify", "HEAD^{commit}") != candidate["commit"]:

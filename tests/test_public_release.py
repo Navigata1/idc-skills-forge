@@ -4,6 +4,7 @@ import copy
 import datetime as dt
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -22,6 +23,60 @@ NOW = dt.datetime(2026, 8, 23, 1, 0, tzinfo=dt.timezone.utc)
 
 
 class PublicReleaseTests(unittest.TestCase):
+    def test_git_run_rejects_executable_clean_filters_before_status(self) -> None:
+        for included in (False, True):
+            with self.subTest(included=included), tempfile.TemporaryDirectory() as temporary:
+                repo = Path(temporary) / "repo"
+                repo.mkdir()
+                subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+                subject = repo / "file.txt"
+                subject.write_text("base\n")
+                subprocess.run([str(GIT), "-C", str(repo), "add", "file.txt"], check=True)
+                marker = Path(temporary) / "filter-marker"
+                command = f"touch '{marker}'; cat"
+                config = repo / ".git/config"
+                if included:
+                    config = Path(temporary) / "included.config"
+                    subprocess.run([str(GIT), "-C", str(repo), "config", "include.path", str(config)], check=True)
+                subprocess.run([str(GIT), "config", "--file", str(config), "filter.probe.clean", command], check=True)
+                (repo / ".git/info/attributes").write_text("file.txt filter=probe\n")
+                subject.write_text("evil\n")
+                os.utime(subject, (1, 1))
+                with self.assertRaisesRegex(publication.PublicationError, "executable.*filter"):
+                    publication.git_run(GIT, repo, "status", "--porcelain=v1")
+                self.assertFalse(marker.exists(), "clean filter executed before rejection")
+
+    def test_git_run_disables_candidate_hooks(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary) / "repo"
+            repo.mkdir()
+            subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+            hooks = Path(temporary) / "hooks"
+            hooks.mkdir()
+            marker = Path(temporary) / "hook-marker"
+            hook = hooks / "pre-commit"
+            hook.write_text(f"#!/bin/sh\nprintf owned > '{marker}'\nexit 1\n")
+            hook.chmod(0o700)
+            subprocess.run([str(GIT), "-C", str(repo), "config", "core.hooksPath", str(hooks)], check=True)
+            publication.git_run(GIT, repo, "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+                          "-c", "commit.gpgsign=false", "commit", "--allow-empty", "-qm", "safe fixture")
+            self.assertFalse(marker.exists())
+            self.assertEqual(publication.git_run(GIT, repo, "status", "--porcelain=v1"), "")
+
+    def test_git_run_neutralizes_candidate_fsmonitor(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary) / "repo"
+            repo.mkdir()
+            subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+            marker = Path(temporary) / "fsmonitor-marker"
+            hook = Path(temporary) / "fsmonitor"
+            hook.write_text(f"#!/bin/sh\nprintf owned > '{marker}'\n", encoding="utf-8")
+            hook.chmod(0o700)
+            subprocess.run([str(GIT), "-C", str(repo), "config", "core.fsmonitor", str(hook)], check=True)
+            self.assertEqual(publication.git_run(GIT, repo, "status", "--porcelain=v1"), "")
+            self.assertFalse(marker.exists(), "candidate fsmonitor executed in publication verifier")
+            self.assertEqual(publication.git_run(GIT, repo, "rev-parse", "--is-inside-work-tree"), "true")
+
     @staticmethod
     def generate_key(path: Path) -> tuple[Path, str, dict[str, object]]:
         subprocess.run(
@@ -74,7 +129,7 @@ class PublicReleaseTests(unittest.TestCase):
             now=NOW,
         )
 
-    def fixture(self, root: Path):
+    def fixture(self, root: Path, release: str = "2.0.4", registry_release: str | None = None):
         repo = root / "repo"
         external = root / "external"
         repo.mkdir()
@@ -83,12 +138,14 @@ class PublicReleaseTests(unittest.TestCase):
         subprocess.run([str(GIT), "-C", str(repo), "config", "user.name", "Fixture"], check=True)
         subprocess.run([str(GIT), "-C", str(repo), "config", "user.email", "fixture@example.invalid"], check=True)
         (repo / "tracked.txt").write_text("release\n", encoding="utf-8")
-        subprocess.run([str(GIT), "-C", str(repo), "add", "tracked.txt"], check=True)
+        (repo / "skills").mkdir()
+        (repo / "skills/registry.json").write_text(json.dumps({"release": registry_release or release}))
+        subprocess.run([str(GIT), "-C", str(repo), "add", "tracked.txt", "skills/registry.json"], check=True)
         subprocess.run([str(GIT), "-C", str(repo), "commit", "-qm", "release"], check=True)
-        subprocess.run([str(GIT), "-C", str(repo), "tag", "-a", "-m", "release", "2.0.4"], check=True)
+        subprocess.run([str(GIT), "-C", str(repo), "tag", "-a", "-m", "release", release], check=True)
         commit = subprocess.check_output([str(GIT), "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
         tree = subprocess.check_output([str(GIT), "-C", str(repo), "rev-parse", "HEAD^{tree}"], text=True).strip()
-        candidate = {"commit": commit, "tag": "2.0.4", "tree": tree}
+        candidate = {"commit": commit, "tag": release, "tree": tree}
         assets = {
             name: {"sha256": "sha256:" + hashlib.sha256(name.encode()).hexdigest(), "size": len(name)}
             for name in ("archive", "freshnessIndex", "installInventory", "manifest", "registry")
@@ -132,7 +189,7 @@ class PublicReleaseTests(unittest.TestCase):
             "contentSigning": trust.content_signing_record(content_public, content_allowed),
             "expires": "2027-01-01T00:00:00Z",
             "git": candidate,
-            "release": "2.0.4",
+            "release": release,
             "releaseSequence": 2,
             "rootVersion": 1,
             "schema": "idc-skills-release-statement/v1",
@@ -181,7 +238,7 @@ class PublicReleaseTests(unittest.TestCase):
             },
             "github": {
                 "assets": [{"name": name, **value} for name, value in assets.items()],
-                "releaseURL": "https://github.com/Island-Dev-Crew/idc-skills/releases/tag/2.0.4",
+                "releaseURL": f"https://github.com/Island-Dev-Crew/idc-skills/releases/tag/{release}",
                 "repository": "Island-Dev-Crew/idc-skills",
                 "releaseReceipt": make_json_receipt(
                     "github.json",
@@ -190,7 +247,7 @@ class PublicReleaseTests(unittest.TestCase):
                         "assets": [{"name": name, **value} for name, value in assets.items()],
                         "candidate": candidate,
                         "observedAt": "2026-08-23T00:00:00Z",
-                        "releaseURL": "https://github.com/Island-Dev-Crew/idc-skills/releases/tag/2.0.4",
+                        "releaseURL": f"https://github.com/Island-Dev-Crew/idc-skills/releases/tag/{release}",
                         "repository": "Island-Dev-Crew/idc-skills",
                     },
                 ),
@@ -200,7 +257,7 @@ class PublicReleaseTests(unittest.TestCase):
                         "schema": "idc-tag-verification-receipt/v1",
                         "candidate": candidate,
                         "observedAt": "2026-08-23T00:00:00Z",
-                        "tagObject": subprocess.check_output([str(GIT), "-C", str(repo), "rev-parse", "2.0.4"], text=True).strip(),
+                        "tagObject": subprocess.check_output([str(GIT), "-C", str(repo), "rev-parse", f"refs/tags/{release}"], text=True).strip(),
                         "verified": True,
                     },
                 ),
@@ -223,7 +280,7 @@ class PublicReleaseTests(unittest.TestCase):
                         "candidate": candidate,
                         "landingURL": "https://islanddevcrew.com/skills/forge",
                         "observedAt": "2026-08-23T00:00:00Z",
-                        "releaseURL": "https://github.com/Island-Dev-Crew/idc-skills/releases/tag/2.0.4",
+                        "releaseURL": f"https://github.com/Island-Dev-Crew/idc-skills/releases/tag/{release}",
                         "root": {"sha256": root_digest, "version": 1},
                     },
                 ),
@@ -324,6 +381,26 @@ class PublicReleaseTests(unittest.TestCase):
             report = self.verify_fixture(path, repo, trust_args)
             self.assertTrue(report["pass"])
             self.assertEqual(report["assets"], 5)
+
+    def test_matching_new_registry_release_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo, _, path, trust_args = self.fixture(Path(temporary), release="2.0.6")
+            # A same-named branch must not make tag resolution ambiguous.
+            subprocess.run([str(GIT), "-C", str(repo), "branch", "2.0.6"], check=True)
+            self.assertTrue(self.verify_fixture(path, repo, trust_args)["pass"])
+
+    def test_registry_release_mismatch_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo, _, path, trust_args = self.fixture(Path(temporary), registry_release="2.0.6")
+            with self.assertRaisesRegex(publication.PublicationError, "registry release"):
+                self.verify_fixture(path, repo, trust_args)
+
+    def test_lightweight_release_tag_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo, record, path, trust_args = self.fixture(Path(temporary))
+            subprocess.run([str(GIT), "-C", str(repo), "update-ref", "refs/tags/2.0.4", record["candidate"]["commit"]], check=True)
+            with self.assertRaisesRegex(publication.PublicationError, "annotated tag"):
+                self.verify_fixture(path, repo, trust_args)
 
     def test_channel_or_asset_mismatch_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

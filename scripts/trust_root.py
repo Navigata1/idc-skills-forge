@@ -989,7 +989,9 @@ def parse_release(envelope: ParsedEnvelope) -> Mapping[str, Any]:
     return release
 
 
-def _git_bytes(git: Path, repo: Path, *arguments: str) -> bytes:
+def _git_bytes(
+    git: Path, repo: Path, *arguments: str, expected: tuple[int, ...] = (0,)
+) -> bytes:
     git_directory = repo / ".git"
     try:
         metadata = os.lstat(git_directory)
@@ -1018,13 +1020,14 @@ def _git_bytes(git: Path, repo: Path, *arguments: str) -> bytes:
                 "LC_ALL": "C",
                 "PATH": str(git.parent),
             }
-            completed = subprocess.run(
-                [
+            command = [
                     str(git),
                     f"--git-dir={git_directory}",
                     f"--work-tree={repo}",
                     "-c",
                     "core.fsmonitor=false",
+                    "-c",
+                    "core.autocrlf=false",
                     "-c",
                     "core.untrackedCache=false",
                     "-c",
@@ -1035,8 +1038,25 @@ def _git_bytes(git: Path, repo: Path, *arguments: str) -> bytes:
                     f"core.hooksPath={empty_hooks}",
                     "-c",
                     "submodule.recurse=false",
-                    *arguments,
-                ],
+                ]
+            # Porcelain status can run clean/process filters; even --quiet diff
+            # may run an external driver when trustExitCode is configured. Read
+            # effective config (including local includes) without using either
+            # operation, and refuse executable conversion rather than trusting
+            # candidate code to normalize the bytes being verified.
+            configured = subprocess.run(
+                [*command, "config", "--null", "--get-regexp",
+                 r"^(filter\..*\.(clean|smudge|process)|diff\.external|diff\..*\.(command|textconv))$"],
+                cwd=repo, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                timeout=10, check=False, env=environment,
+            )
+            if configured.returncode == 0:
+                raise TrustError("executable filter/diff configuration is unsupported in verification")
+            if configured.returncode != 1:
+                raise TrustError("Git executable-configuration preflight failed")
+            completed = subprocess.run(
+                [*command, *arguments],
+                cwd=repo,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 timeout=10,
@@ -1045,7 +1065,7 @@ def _git_bytes(git: Path, repo: Path, *arguments: str) -> bytes:
             )
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise TrustError(f"Git identity check could not run: {exc}") from exc
-    if completed.returncode != 0:
+    if completed.returncode not in expected:
         detail = completed.stderr.decode("utf-8", errors="replace").strip()
         raise TrustError(f"Git identity check failed: {detail}")
     return completed.stdout

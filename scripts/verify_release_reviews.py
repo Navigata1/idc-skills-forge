@@ -21,6 +21,11 @@ from pathlib import Path
 from pathlib import PurePosixPath
 from typing import Any, Mapping, Sequence
 
+SCRIPT_DIRECTORY = Path(__file__).resolve().parent
+if str(SCRIPT_DIRECTORY) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIRECTORY))
+
+from trust_root import TrustError, _git_bytes
 
 SCHEMA = "idc-release-reviews/v2"
 RECEIPT_SCHEMA = "idc-independent-review-receipt/v2"
@@ -128,27 +133,10 @@ def validate_tool(
 
 
 def git_run(git: Path, repo: Path, *arguments: str, expected: tuple[int, ...] = (0,)) -> str:
-    environment = {
-        "GIT_CONFIG_NOSYSTEM": "1",
-        "GIT_CONFIG_GLOBAL": os.devnull,
-        "GIT_NO_REPLACE_OBJECTS": "1",
-        "LC_ALL": "C",
-        "PATH": str(git.parent),
-    }
     try:
-        process = subprocess.run(
-            [str(git), "-C", str(repo), "-c", "core.autocrlf=false", "-c", "core.hooksPath=/dev/null", *arguments],
-            text=True,
-            capture_output=True,
-            check=False,
-            env=environment,
-            timeout=10,
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
+        return _git_bytes(git, repo, *arguments, expected=expected).decode("utf-8").strip()
+    except (TrustError, UnicodeError) as exc:
         raise ReviewError(f"Git command could not run: {exc}") from exc
-    if process.returncode not in expected:
-        raise ReviewError(f"Git command failed: {' '.join(arguments)}")
-    return process.stdout.strip()
 
 
 def timestamp(value: Any, label: str) -> None:

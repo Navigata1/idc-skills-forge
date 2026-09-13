@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -20,6 +21,78 @@ SSH_KEYGEN_SHA256 = "sha256:" + hashlib.sha256(SSH_KEYGEN.read_bytes()).hexdiges
 
 
 class ReleaseReviewTests(unittest.TestCase):
+    def test_git_run_rejects_executable_diff_before_comparison(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary) / "repo"
+            repo.mkdir()
+            subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+            for content in ("base", "next"):
+                (repo / "file.txt").write_text(content)
+                subprocess.run([str(GIT), "-C", str(repo), "add", "file.txt"], check=True)
+                subprocess.run([str(GIT), "-C", str(repo), "-c", "user.name=Fixture", "-c",
+                                "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false",
+                                "commit", "-qm", content], check=True)
+            marker = Path(temporary) / "diff-marker"
+            subprocess.run([str(GIT), "-C", str(repo), "config", "diff.external", f"touch '{marker}'; :"], check=True)
+            subprocess.run([str(GIT), "-C", str(repo), "config", "diff.trustExitCode", "true"], check=True)
+            with self.assertRaisesRegex(reviews.ReviewError, "executable.*diff"):
+                reviews.git_run(GIT, repo, "diff", "--quiet", "HEAD^", "HEAD", expected=(0, 1))
+            self.assertFalse(marker.exists())
+
+    def test_git_run_rejects_executable_clean_filters_before_status(self) -> None:
+        for included in (False, True):
+            with self.subTest(included=included), tempfile.TemporaryDirectory() as temporary:
+                repo = Path(temporary) / "repo"
+                repo.mkdir()
+                subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+                subject = repo / "file.txt"
+                subject.write_text("base\n")
+                subprocess.run([str(GIT), "-C", str(repo), "add", "file.txt"], check=True)
+                marker = Path(temporary) / "filter-marker"
+                command = f"touch '{marker}'; cat"
+                config = repo / ".git/config"
+                if included:
+                    config = Path(temporary) / "included.config"
+                    subprocess.run([str(GIT), "-C", str(repo), "config", "include.path", str(config)], check=True)
+                subprocess.run([str(GIT), "config", "--file", str(config), "filter.probe.clean", command], check=True)
+                (repo / ".git/info/attributes").write_text("file.txt filter=probe\n")
+                subject.write_text("evil\n")
+                os.utime(subject, (1, 1))
+                with self.assertRaisesRegex(reviews.ReviewError, "executable.*filter"):
+                    reviews.git_run(GIT, repo, "status", "--porcelain=v1")
+                self.assertFalse(marker.exists(), "clean filter executed before rejection")
+
+    def test_git_run_disables_candidate_hooks(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary) / "repo"
+            repo.mkdir()
+            subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+            hooks = Path(temporary) / "hooks"
+            hooks.mkdir()
+            marker = Path(temporary) / "hook-marker"
+            hook = hooks / "pre-commit"
+            hook.write_text(f"#!/bin/sh\nprintf owned > '{marker}'\nexit 1\n")
+            hook.chmod(0o700)
+            subprocess.run([str(GIT), "-C", str(repo), "config", "core.hooksPath", str(hooks)], check=True)
+            reviews.git_run(GIT, repo, "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+                          "-c", "commit.gpgsign=false", "commit", "--allow-empty", "-qm", "safe fixture")
+            self.assertFalse(marker.exists())
+            self.assertEqual(reviews.git_run(GIT, repo, "status", "--porcelain=v1"), "")
+
+    def test_git_run_neutralizes_candidate_fsmonitor(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary) / "repo"
+            repo.mkdir()
+            subprocess.run([str(GIT), "init", "-q", str(repo)], check=True)
+            marker = Path(temporary) / "fsmonitor-marker"
+            hook = Path(temporary) / "fsmonitor"
+            hook.write_text(f"#!/bin/sh\nprintf owned > '{marker}'\n", encoding="utf-8")
+            hook.chmod(0o700)
+            subprocess.run([str(GIT), "-C", str(repo), "config", "core.fsmonitor", str(hook)], check=True)
+            self.assertEqual(reviews.git_run(GIT, repo, "status", "--porcelain=v1"), "")
+            self.assertFalse(marker.exists(), "candidate fsmonitor executed in review verifier")
+            self.assertEqual(reviews.git_run(GIT, repo, "rev-parse", "--is-inside-work-tree"), "true")
+
     @staticmethod
     def verify_fixture(path: Path, repo: Path, authority_args: dict[str, object]):
         return reviews.verify(
