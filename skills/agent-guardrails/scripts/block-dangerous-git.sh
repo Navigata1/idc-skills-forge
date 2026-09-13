@@ -156,6 +156,14 @@ SHORT_ARG = {
     "restore": set("s"),                            # -s <source-tree>
     "clean": set("e"),                              # -e <exclude-pattern>
     "branch": set("u"),                             # -u <upstream>
+    "commit": set("mFCct"),
+    "merge": set("mFsX"),
+    "tag": set("mFu"),
+    "clone": set("ubotcj"),
+    "fetch": set("jo"),
+    "pull": set("sXjo"),
+    "ls-remote": set("o"),
+    "archive": set("o"),
 }
 # Long subcommand options that consume the following argv token when no `=value` is attached.
 # This matters when that value is literally `--`: it is then data, not the pathspec separator, and
@@ -173,6 +181,28 @@ LONG_ARG = {
         "set-upstream-to", "contains", "no-contains", "merged", "no-merged",
         "sort", "points-at", "format",
     },
+    "commit": {
+        "message", "file", "reuse-message", "reedit-message", "fixup", "squash",
+        "author", "date", "template", "cleanup", "trailer", "pathspec-from-file",
+    },
+    "merge": {"message", "file", "strategy", "strategy-option", "cleanup", "into-name"},
+    "tag": {"message", "file", "local-user", "format", "sort", "points-at", "cleanup"},
+    "clone": {
+        "upload-pack", "branch", "origin", "template", "reference", "reference-if-able",
+        "depth", "shallow-since", "shallow-exclude", "separate-git-dir", "config",
+        "jobs", "filter", "server-option", "revision", "bundle-uri", "ref-format",
+    },
+    "fetch": {
+        "upload-pack", "depth", "deepen", "shallow-since", "shallow-exclude", "jobs",
+        "filter", "server-option", "refmap", "negotiation-tip", "recurse-submodules-default",
+    },
+    "pull": {
+        "upload-pack", "depth", "deepen", "shallow-since", "shallow-exclude", "jobs",
+        "filter", "server-option", "strategy", "strategy-option", "cleanup",
+    },
+    "ls-remote": {"upload-pack", "server-option", "sort"},
+    "send-pack": {"receive-pack", "exec", "push-option"},
+    "archive": {"remote", "exec", "format", "prefix", "output", "add-file", "add-virtual-file"},
 }
 # shell reserved words that can lead a segment before the real command word (`then git push`).
 SHELL_KEYWORDS = {
@@ -374,16 +404,19 @@ def short_option_takes_next(sub, token):
     return False
 
 
-def split_subcommand_args(sub, rest):
+def split_subcommand_args(sub, rest, *, long_values=None):
     # Return actual option tokens and unconsumed operands. Git's `--` ends option parsing only when
     # it is not the required value of a preceding option. Keeping consumed values out of both sets
     # prevents `-e -f` (exclude pattern named `-f`) from impersonating force, while a later live
-    # `--force` remains visible after `-e --` consumes the first double dash.
+    # `--force` remains visible after `-e --` consumes the first double dash. Callers needing
+    # value-sensitive semantics can supply a map to receive actual long-option values.
     options, operands = [], []
     after_separator = False
     consume_next = False
     for token in rest:
         if consume_next:
+            if long_values is not None and options[-1].startswith("--"):
+                long_values[options[-1]] = token
             consume_next = False
             continue
         if after_separator:
@@ -394,6 +427,8 @@ def split_subcommand_args(sub, rest):
             continue
         if token.startswith("--") and len(token) > 2:
             options.append(token)
+            if long_values is not None and "=" in token:
+                long_values[token] = token.split("=", 1)[1]
             consume_next = long_option_takes_next(sub, token)
             continue
         if token.startswith("-") and token != "-":
@@ -413,6 +448,14 @@ def argv_danger(tokens):
     rest = tokens[idx + 1:]
     option_rest, operands = split_subcommand_args(sub, rest)
     flags = effective_flags(sub, option_rest)       # decoded short-flag bundles, arg-values excluded
+    if sub in {"clone", "fetch", "pull", "ls-remote"} and (
+        has_long_opt(option_rest, "upload-pack") or (sub == "clone" and "u" in flags)
+    ):
+        return "git %s supplies an upload-pack program" % sub
+    if (sub in {"push", "send-pack"} or (
+        sub == "archive" and has_long_opt(option_rest, "remote")
+    )) and any(has_long_opt(option_rest, name) for name in ("receive-pack", "exec")):
+        return "git %s supplies a remote transport program" % sub
     if sub == "push":
         return "git push"
     if sub == "reset":
@@ -920,10 +963,9 @@ def strict_grammar_issue(command):
         return "command exceeds the bounded strict grammar"
     if "$(" in command or BACKTICK in command:
         return "dynamic command substitution is unsupported in strict mode"
-    if re.search(r"(^|[;&|()\n][ \t]*)(?:eval|source|\.|bash|sh|zsh|fish)[ \t]+", command):
-        return "dynamic shell evaluation or sourced code is unsupported in strict mode"
-    if re.search(r"(^|[;&|()\n][ \t]*)(?:[A-Za-z_][A-Za-z0-9_]*=\S+[ \t;]*)*\$[A-Za-z_]", command):
-        return "variable command dispatch is unsupported in strict mode"
+    # Command-position checks run on the existing tokenized segments in classify_segment.
+    # In particular, do not regex-match assignment runs across semicolons: overlapping word /
+    # separator quantifiers made tiny failing inputs exponential (K3-205-005).
     # The word boundary on both function-name forms is load-bearing. Without it, the second
     # alternative restarts a greedy identifier match at every byte of one long token and turns a
     # strict PreToolUse check quadratic before the shell tokenizer ever sees the command.
@@ -1451,22 +1493,32 @@ def executable_git_environment_danger(git_slice, eff):
         return None
     sub = git_slice[idx]
     rest = git_slice[idx + 1:]
-
-    editor_suppressed = any(
-        token == "--no-edit"
-        or token in ("-m", "-F", "-C")
-        or (token.startswith("-m") and token != "-m")
-        or token.startswith("--message=")
-        or token.startswith("--file=")
-        or token.startswith("--reuse-message=")
-        or token.startswith("--fixup=")
-        or token.startswith("--squash=")
-        for token in rest
+    long_values = {}
+    options, _ = split_subcommand_args(sub, rest, long_values=long_values)
+    flags = effective_flags(sub, options)
+    # --edit reopens the editor even with an explicit message. Inspect only actual options:
+    # `-m --edit` is message data, and pathspecs after `--` cannot reopen an editor.
+    editor_requested = "e" in flags or has_long_opt(options, "edit")
+    fixup_values = [
+        value for option, value in long_values.items() if has_long_opt([option], "fixup")
+    ]
+    # Only plain --fixup supplies a complete message without editing. --squash still opens
+    # the editor by default, as do the amend:/reword: fixup modes (separate or equals forms).
+    plain_fixup = bool(fixup_values) and not any(
+        value.startswith(("amend:", "reword:")) for value in fixup_values
+    )
+    editor_suppressed = not editor_requested and (
+        "--no-edit" in options
+        or bool(flags & {"m", "F", "C"})
+        or plain_fixup
+        or any(has_long_opt(options, name) for name in (
+            "message", "file", "reuse-message",
+        ))
     )
     editor_command = (
         (sub == "commit" and not editor_suppressed)
         or (sub == "merge" and not editor_suppressed)
-        or (sub == "tag" and not editor_suppressed and any(t in ("-a", "-s", "-u") for t in rest))
+        or (sub == "tag" and not editor_suppressed and bool(flags & {"a", "s", "u"}))
         or (sub == "config" and any(t in ("-e", "--edit") for t in rest))
         or (sub == "notes" and any(t in ("edit", "append") for t in rest))
     )
@@ -1492,8 +1544,8 @@ def executable_git_environment_danger(git_slice, eff):
     if eff.get("GIT_EXTERNAL_DIFF", "") and sub in {"diff", "log", "show", "format-patch"}:
         return "Git may execute GIT_EXTERNAL_DIFF for this subcommand"
 
-    network_subs = {"clone", "fetch", "pull", "push", "ls-remote", "submodule"}
-    if sub in network_subs:
+    network_subs = {"clone", "fetch", "pull", "push", "ls-remote", "submodule", "send-pack"}
+    if sub in network_subs or (sub == "archive" and has_long_opt(options, "remote")):
         for name in (
             "GIT_SSH", "GIT_SSH_COMMAND", "GIT_ASKPASS", "SSH_ASKPASS", "GIT_PROXY_COMMAND",
         ):
@@ -1581,7 +1633,13 @@ def classify_segment(tokens, depth=0, base_env=None):
     if STRICT and (
         UNQUOTED_PARAM_MARKER in tokens[ci] or QUOTED_PARAM_MARKER in tokens[ci]
     ):
-        return "parameter-dispatched command word is unsupported in strict mode"
+        return "variable command dispatch (parameter-dispatched command word) is unsupported in strict mode"
+    if STRICT and re.split(r"[\\/]", tokens[ci])[-1] in {
+        "eval", "source", ".", "bash", "sh", "zsh", "fish",
+    }:
+        # The shared command scan consumes assignments, compound prefixes, redirections and
+        # wrappers once. Quoted argument text such as `echo '; eval text'` never reaches here.
+        return "dynamic shell evaluation or sourced code is unsupported in strict mode"
     if not is_git_word(tokens[ci]):
         return None
     if STRICT:
