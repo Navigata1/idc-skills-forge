@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Captured-artifact consistency only; does not attest runner authenticity or actual platform execution. outputSHA256 hashes the complete idc-platform-capture/v1 JSON artifact.",
   "additionalProperties": false,
   "properties": {
     "candidateHead": {
@@ -14,6 +15,7 @@
           "command": { "minLength": 1, "type": "string" },
           "filesystem": { "minLength": 1, "type": "string" },
           "osVersion": { "minLength": 1, "type": "string" },
+          "outputArtifact": { "description": "Absolute path to a stable non-symlink regular idc-platform-capture/v1 JSON file, at most 8 MiB. Its exact head, command, environment, status, successful integer exitCode, and non-empty output are checked by the verifier.", "minLength": 1, "type": "string" },
           "outputSHA256": { "pattern": "^sha256:[0-9a-f]{64}$", "type": "string" },
           "platform": { "enum": ["macos", "windows"] },
           "python": { "minLength": 1, "type": "string" },
@@ -21,7 +23,7 @@
           "sshKeygen": { "minLength": 1, "type": "string" },
           "status": { "const": "passed" }
         },
-        "required": ["platform", "status", "runner", "osVersion", "filesystem", "python", "bash", "sshKeygen", "command", "outputSHA256"],
+        "required": ["platform", "status", "runner", "osVersion", "filesystem", "python", "bash", "sshKeygen", "command", "outputSHA256", "outputArtifact"],
         "type": "object"
       },
       "maxItems": 2,

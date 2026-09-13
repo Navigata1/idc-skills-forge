@@ -1,6 +1,7 @@
 {
   "taskId": "P0-T1",
   "reviewedCommit": "ca4257bb2790ddfea59175e850c6438fee3445e7",
+  "provenance": "staging-only; not in public history",
   "criticSeat": "OpenAI Codex",
   "independence": "same-family blind artifact critique; not a cross-family verdict",
   "disposition": "changes-requested",

@@ -29,11 +29,11 @@ class RuntimeBoundaryTests(unittest.TestCase):
                 tool, "sha256:" + "0" * 64, REPO
             )
 
-    def test_platform_evidence_binds_both_real_platform_records_and_head(self) -> None:
+    def test_platform_evidence_binds_captures_and_head_without_host_attestation(self) -> None:
         head = "a" * 40
         record = {
             "status": "passed",
-            "runner": "real-host",
+            "runner": "synthetic-test-fixture",
             "osVersion": "fixture",
             "filesystem": "APFS",
             "python": "3.12",
@@ -50,14 +50,24 @@ class RuntimeBoundaryTests(unittest.TestCase):
                 {"platform": "windows", **record, "filesystem": "NTFS", "bash": "n/a"},
             ],
         }
-        platform_evidence.validate(value, head)
-        with self.assertRaisesRegex(
-            platform_evidence.PlatformEvidenceError, "exact candidate head"
-        ):
-            platform_evidence.validate(value, "c" * 40)
-        value["records"][1]["filesystem"] = "simulated"
-        with self.assertRaisesRegex(platform_evidence.PlatformEvidenceError, "NTFS"):
+        with tempfile.TemporaryDirectory(prefix="idc-runtime-platform-") as temporary:
+            for item in value["records"]:
+                capture = {key: field for key, field in item.items() if key != "outputSHA256"}
+                capture.update(schema="idc-platform-capture/v1", candidateHead=head,
+                               exitCode=0, output="synthetic capture fixture passed")
+                path = Path(temporary) / f"{item['platform']}.json"
+                data = json.dumps(capture).encode("utf-8")
+                path.write_bytes(data)
+                item["outputArtifact"] = str(path)
+                item["outputSHA256"] = skill_integrity.sha256_bytes(data)
             platform_evidence.validate(value, head)
+            with self.assertRaisesRegex(
+                platform_evidence.PlatformEvidenceError, "exact candidate head"
+            ):
+                platform_evidence.validate(value, "c" * 40)
+            value["records"][1]["filesystem"] = "simulated"
+            with self.assertRaisesRegex(platform_evidence.PlatformEvidenceError, "NTFS"):
+                platform_evidence.validate(value, head)
 
     def test_runtime_contract_accepts_supported_and_rejects_old_python(self) -> None:
         data = (REPO / "runtime-requirements.json").read_bytes()

@@ -77,7 +77,10 @@ def main() -> int:
         raise RuntimeError("signed integrity gate did not bind all 50 skills")
 
     _python("verify_harness_support.py")
-    _python("verify_gauntlet_records.py")
+    # These three retained staging critiques are historical record checks,
+    # not exact-commit release acceptance or independent review receipts.
+    historical = _python("verify_gauntlet_records.py", "--historical-records")
+    print(historical.stdout.strip())
     _python("verify_validation_records.py")
     _run(
         [
