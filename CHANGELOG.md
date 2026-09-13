@@ -121,8 +121,8 @@ version identity when completed.
 Signed-content reconciliation: the anti-rollback implementation is exact at
 `a58f59e` with Claude Opus + OpenAI Codex **APPROVE**, 100 unit tests plus 20
 subtests, and canonical validation 50/50. The independently approved guard
-lineage closes at `d0fac44` and passes 300/300 native macOS Bash 3.2 fixtures.
-The independently approved scanner diff `e98cfac6` is committed at `04a5bd4`
+lineage closes at `d0fac44` (staging-only; not in public history) and passes 300/300 native macOS Bash 3.2 fixtures.
+The independently approved scanner diff `e98cfac6` (staging-only; not in public history) is committed at `04a5bd4` (staging-only; not in public history)
 and passes 589/589 native macOS Bash 3.2 fixtures. The v3 manifest and detached
 signature bind release 2.0.3 at sequence 1 and 5/5. Public main, annotated tag,
 and installed fleet later converged on commit

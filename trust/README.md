@@ -1,8 +1,8 @@
 # IDC external threshold trust
 
-## 2.0.4 publication boundary
+## Scoped publication boundary
 
-The stable 2.0.4 public content-authenticated release ships this threshold
+The limited-trust public content-authenticated profile ships this threshold
 machinery as tested source but does not represent it as production-activated.
 Its public trust anchor is the existing Forge content-signing fingerprint,
 published with the exact release identity through two channels outside GitHub.
@@ -12,10 +12,11 @@ It does not emit or claim the production threshold result
 Production 2-of-3 custody, threshold release signatures, the disjoint
 publication observer, completed Kimi acceptance, Windows/NTFS evidence, and
 freshness-authorized fleet parity remain open for a later immutable release.
-See the [2.0.4 release scope](../docs/2.0.4-release-scope.md).
+See the historical [2.0.4 release scope](../docs/2.0.4-release-scope.md) and the
+scope document corresponding to the candidate registry release.
 
 Every command example below belongs to that deferred full-assurance profile and
-uses `<next-full-assurance-version>` instead of reusing the immutable 2.0.4 tag.
+uses `<next-full-assurance-version>` instead of reusing an immutable scoped-release tag.
 
 This directory defines public formats and tooling. It deliberately contains no
 production root metadata and no private key. A repository cannot appoint the

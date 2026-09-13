@@ -18,9 +18,9 @@ the Kimi → Codex → Claude loop.
   OpenAI Codex independently returned **APPROVE**. Its matrix is 100 unit tests
   plus 20 subtests, and the canonical validator is 50/50.
 - **The guard is accepted.** Its approved component lineage closes at
-  `d0fac44`; an integration replay on native macOS Bash 3.2 passes 300/300.
-- **The scanner is accepted.** Exact reviewed diff `e98cfac6`, committed as
-  `04a5bd4`, passes 589/589 on native macOS Bash 3.2. Its three-file review
+  `d0fac44` (staging-only; not in public history); an integration replay on native macOS Bash 3.2 passes 300/300.
+- **The scanner is accepted.** Exact reviewed diff `e98cfac6` (staging-only; not in public history), committed as
+  `04a5bd4` (staging-only; not in public history), passes 589/589 on native macOS Bash 3.2. Its three-file review
   scope and opening/closing hashes matched.
 - **The content candidate is signed.** The checked-in v3 manifest and detached
   signature bind release 2.0.3, `manifestSequence: 1`, and verify at 5/5.
@@ -39,8 +39,8 @@ ceremony remain separate release gates.
 
 Registry release `2.0.3` and `manifestSequence: 1` are final candidate values.
 Anti-rollback is approved at `a58f59e`; guard is 300/300 at approved component
-`d0fac44`; scanner is 589/589 at approved diff `e98cfac6` committed as
-`04a5bd4`. The final candidate commit is established by the signed v3 manifest
+`d0fac44` (staging-only; not in public history); scanner is 589/589 at approved diff `e98cfac6` (staging-only; not in public history) committed as
+`04a5bd4` (staging-only; not in public history). The final candidate commit is established by the signed v3 manifest
 and the external release receipt rather than a self-referential SHA embedded in
 its own source tree. The checked-in v3 manifest/signature establishes 2.0.3
 content authority only. This paragraph makes no `readyToRun`, release, merge,

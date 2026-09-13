@@ -1,11 +1,11 @@
-# 2.0.4 release acceptance evidence
+# Full-profile release acceptance evidence
 
 > **Profile boundary:** this document defines the stronger production-threshold
-> acceptance ceremony. Stable 2.0.4 is being published under the narrower
-> [public content-authenticated profile](2.0.4-release-scope.md). None of the
+> acceptance ceremony. Scoped releases use the narrower
+> public content-authenticated profile (see its [2.0.4 origin](2.0.4-release-scope.md)). None of the
 > production 2-of-3, complete Kimi, Windows/NTFS, freshness-authorized fleet,
 > publication-observer, or `readyToRun=true` conditions below is represented as
-> a 2.0.4 PASS. Completion of this document's full ceremony receives a later
+> a scoped-release PASS. Completion of this document's full ceremony receives a later
 > immutable version identity.
 
 Release evidence remains outside the candidate repository. Committing a receipt
@@ -77,7 +77,7 @@ reviewers actually belong to independent seats.
 
 ## Public release record
 
-Run only after an annotated 2.0.4 tag exists locally and resolves to the accepted
+Run only after an annotated tag matching the committed registry release exists locally and resolves to the accepted
 candidate:
 
 ```text
