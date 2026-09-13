@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Dependency-free Chrome DevTools zero-egress verifier for local HTML artifacts. */
+/** Bounded Chrome DevTools observation under interception for local HTML artifacts. */
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -12,10 +12,12 @@ const EXPECTED_CSP = "default-src 'none'; base-uri 'none'; form-action 'none'; f
 const WEBRTC_IP_POLICY = "disable_non_proxied_udp";
 const WEBRTC_IP_POLICY_FLAG = `--force-webrtc-ip-handling-policy=${WEBRTC_IP_POLICY}`;
 const RTC_GUARD_SOURCE = `(() => {
+  const reportAttempt = globalThis.__idcSealedRtcAttempt;
   let attempts = 0;
   let installed = false;
   const blocked = function RTCPeerConnection() {
     attempts += 1;
+    reportAttempt('RTCPeerConnection');
     throw new DOMException('RTCPeerConnection is disabled by the sealed-artifact verifier', 'SecurityError');
   };
   Object.defineProperty(globalThis, '__idcSealedRtcGuard', {
@@ -61,6 +63,10 @@ if (config.schema !== "idc-sealed-artifacts/v1" || !Array.isArray(config.artifac
 }
 if (!Number.isInteger(config.observationMs) || config.observationMs < 250 || config.observationMs > 10000) {
   usage("observationMs must be an integer from 250 through 10000");
+}
+const settleMs = config.settleMs ?? 250;
+if (!Number.isInteger(settleMs) || settleMs < 0 || settleMs > 10000) {
+  usage("settleMs must be an integer from 0 through 10000");
 }
 
 const chromeCandidates = [
@@ -190,6 +196,12 @@ async function verifyState(port, artifactPath, state, observationMs) {
   const attempts = [];
   const consoleErrors = [];
   const serviceWorkerEvents = [];
+  const forbiddenFrames = [];
+  const rtcAttempts = [];
+  let report;
+  let loadStarted;
+  let targetTerminated = false;
+  let targetClosedAt;
   cdp.on("Fetch.requestPaused", (event) => {
     const url = event.request?.url ?? "";
     if (!safeScheme(url)) attempts.push({ url, method: event.request?.method ?? "?", resourceType: event.resourceType ?? "?" });
@@ -202,6 +214,12 @@ async function verifyState(port, artifactPath, state, observationMs) {
     if (["error", "warning"].includes(event.entry?.level)) consoleErrors.push(event.entry.text);
   });
   cdp.on("ServiceWorker.workerRegistrationUpdated", (event) => serviceWorkerEvents.push(event.registrations ?? []));
+  // This profile forbids child contexts (including about:blank/srcdoc). Do not
+  // certify them by consulting only the main world's RTC counter.
+  cdp.on("Page.frameAttached", (event) => forbiddenFrames.push(event));
+  cdp.on("Runtime.bindingCalled", (event) => {
+    if (event.name === "__idcSealedRtcAttempt") rtcAttempts.push({ executionContextId: event.executionContextId });
+  });
 
   try {
     await Promise.all([
@@ -212,6 +230,7 @@ async function verifyState(port, artifactPath, state, observationMs) {
       cdp.send("Fetch.enable", { patterns: [{ urlPattern: "*" }] }),
       cdp.send("ServiceWorker.enable"),
     ]);
+    await cdp.send("Runtime.addBinding", { name: "__idcSealedRtcAttempt" });
     await cdp.send("Page.addScriptToEvaluateOnNewDocument", { source: RTC_GUARD_SOURCE });
     const browserCommandLine = await cdp.send("Browser.getBrowserCommandLine");
     const rtcLaunchPolicyApplied =
@@ -228,6 +247,7 @@ async function verifyState(port, artifactPath, state, observationMs) {
       features: [{ name: "prefers-reduced-motion", value: "reduce" }],
     });
     const loaded = cdp.once("Page.loadEventFired");
+    loadStarted = performance.now();
     await cdp.send("Page.navigate", { url: pathToFileURL(artifactPath).href });
     await loaded;
     await evaluate(
@@ -235,7 +255,7 @@ async function verifyState(port, artifactPath, state, observationMs) {
       `(() => { document.querySelectorAll('details').forEach((node) => { node.open = true; }); scrollTo(0, document.documentElement.scrollHeight); return true; })()`,
     );
     await delay(observationMs);
-    const page = await evaluate(
+    const probe = () => evaluate(
       cdp,
       `(async () => {
         let registrations = 0;
@@ -282,14 +302,64 @@ async function verifyState(port, artifactPath, state, observationMs) {
       })()`,
       true,
     );
+    const initialPage = await probe();
+    // A documented settle interval and second probe exercise another bounded
+    // state; they cannot establish what arbitrary timers would do in the future.
+    await delay(settleMs);
+    const page = await probe();
     const printModeEmulated = state.media === "print";
-    const artifactServiceWorkers = serviceWorkerEvents
-      .flat(2)
-      .filter((registration) => !String(registration.scopeURL ?? "").startsWith("chrome-extension://"));
-    const passed =
-      attempts.length === 0 &&
-      consoleErrors.length === 0 &&
-      artifactServiceWorkers.length === 0 &&
+    report = {
+      state, attempts, consoleErrors, serviceWorkerEvents,
+      forbiddenFrames, rtcAttempts, page, initialPage, printModeEmulated, rtcLaunchPolicyApplied,
+    };
+  } finally {
+    // Closing the CDP socket first would detach Fetch interception while the
+    // artifact can still execute. Keep both interception and event collection
+    // armed until Chrome confirms the target has gone and its event stream ends.
+    try {
+      const disconnected = new Promise((accept, reject) => {
+        if (cdp.socket.readyState === WebSocket.CLOSED) return reject(new Error("DevTools detached before target termination"));
+        const timer = setTimeout(() => reject(new Error("target event stream did not close")), 5000);
+        cdp.socket.addEventListener("close", () => { targetClosedAt = performance.now(); clearTimeout(timer); accept(); }, { once: true });
+      });
+      // Attach a rejection handler immediately while the HTTP close is pending.
+      disconnected.catch(() => {});
+      const closed = await fetch(`http://127.0.0.1:${port}/json/close/${target.id}`, {
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!closed.ok) throw new Error(`target termination failed: HTTP ${closed.status}`);
+      await disconnected;
+      const listing = await fetch(`http://127.0.0.1:${port}/json/list`, { signal: AbortSignal.timeout(5000) });
+      if (!listing.ok || (await listing.json()).some((entry) => entry.id === target.id)) {
+        throw new Error("target remains alive after close");
+      }
+      targetTerminated = true;
+    } finally {
+      cdp.close();
+    }
+  }
+  const { page, attempts: observedAttempts, consoleErrors: observedErrors, rtcLaunchPolicyApplied } = report;
+  report.artifactServiceWorkers = serviceWorkerEvents
+    .flat(2)
+    .filter((registration) => !String(registration.scopeURL ?? "").startsWith("chrome-extension://"));
+  report.observation = {
+    configuredObservationMs: observationMs,
+    configuredSettleMs: settleMs,
+    actualLoadLifetimeMs: Math.ceil(targetClosedAt - loadStarted),
+    targetTerminated,
+    lifetimeContainmentProven: false,
+    claim: "no egress observed within the recorded load lifetime under interception, only when passed",
+    limitations: "finite initial-load, expanded-details, scroll and settle states; unexercised timers, interactions, navigations and packet-level ICE are not proven",
+  };
+  // Decide only after termination: events arriving during re-probe or teardown
+  // remain evidence and cannot be hidden behind an already-computed verdict.
+  report.passed =
+      observedAttempts.length === 0 &&
+      observedErrors.length === 0 &&
+      forbiddenFrames.length === 0 &&
+      rtcAttempts.length === 0 &&
+      targetTerminated &&
+      report.artifactServiceWorkers.length === 0 &&
       page.registrationCount === 0 &&
       page.readyState === "complete" &&
       page.csp === EXPECTED_CSP &&
@@ -300,23 +370,7 @@ async function verifyState(port, artifactPath, state, observationMs) {
       page.rtcGuard.attempts === 0 &&
       rtcLaunchPolicyApplied === true &&
       page.bodyTextBytes > 0;
-    return {
-      state,
-      passed,
-      attempts,
-      consoleErrors,
-      serviceWorkerEvents,
-      artifactServiceWorkers,
-      page,
-      printModeEmulated,
-      rtcLaunchPolicyApplied,
-    };
-  } finally {
-    cdp.close();
-    await fetch(`http://127.0.0.1:${port}/json/close/${target.id}`, {
-      signal: AbortSignal.timeout(5000),
-    }).catch(() => {});
-  }
+  return report;
 }
 
 const profile = mkdtempSync(join(tmpdir(), "idc-sealed-chrome-"));
@@ -379,7 +433,8 @@ try {
     schema: "idc-sealed-browser-evidence/v1",
     generatedAt: new Date().toISOString(),
     enforced: {
-      network: "all non-local request attempts intercepted and failed",
+      network: "observed non-local requests in the attached target intercepted and failed until confirmed target termination",
+      frames: "child frame contexts fail closed; frame-src none remains required; no claim of arbitrary child-target coverage",
       serviceWorkers: "disabled by ephemeral browser launch and asserted empty",
       webrtc: {
         ipHandlingPolicy: WEBRTC_IP_POLICY,
@@ -388,6 +443,9 @@ try {
       },
       csp: EXPECTED_CSP,
       observationMs: config.observationMs,
+      settleMs,
+      lifetimeContainmentProven: false,
+      limitation: "finite observation cannot prove arbitrary JavaScript never communicates later; inspect each state's actualLoadLifetimeMs",
     },
     browser: { product: version.Browser, protocolVersion: version["Protocol-Version"], executable: chromePath },
     passed: artifacts.every((artifact) => artifact.passed),
@@ -413,5 +471,5 @@ if (!evidence.passed) {
   if (evidence.error) console.error(`  ${evidence.error}`);
   process.exit(1);
 }
-console.log(`verify-sealed-artifacts: PASS — ${evidence.artifacts.length} artifact(s), 4-state sealed matrix`);
+console.log(`verify-sealed-artifacts: PASS — no egress observed under interception in ${evidence.artifacts.reduce((count, artifact) => count + artifact.states.length, 0)} exercised state(s); configured observation ${config.observationMs} ms + settle ${settleMs} ms; actual load lifetimes ${evidence.artifacts.flatMap((artifact) => artifact.states.map((state) => state.observation.actualLoadLifetimeMs)).join(", ")} ms; targets terminated; lifetime containment not proven`);
 console.log(`  evidence: ${outputPath}`);
