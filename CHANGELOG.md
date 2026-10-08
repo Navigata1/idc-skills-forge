@@ -31,11 +31,18 @@ witnesses must precede publication. No skill swap and no threshold activation.
 - K3-205-026/031: staging citations are labeled in historical docs; generated
   bytecode no longer breaks canonical validation while invalid source still fails.
   Documentation and validator fixtures capture both transitions.
+- 2026-10-07 construction follow-up: remove two unclassified fixture references
+  from the guard and sealed-browser test harnesses. The clone operand is local;
+  the ephemeral loopback sink URL is assembled at runtime. The new tracked-tree
+  reference-policy regression identifies both sources on `3efdb65` and passes
+  after repair. All 319 Python tests, 434 guard cases and seven browser fixtures
+  pass; an authorized scratch manifest dry run prints `MANIFEST OK`. The remote
+  reference allowlist and production manifest/signature are unchanged.
 
 All repairs remain pending qualified exact-head certification; source finding
 severities/statuses are not rewritten. See
 [`CHANGES.md`](ops/mission/evidence/2.0.6/CHANGES.md) for red/green evidence,
-local repair commits, retained residuals and the deliberate owner-only manifest stop.
+local repair commits, retained residuals and the authorized October scratch dry run.
 The intended registry release is `2.0.6`, manifest sequence 5. The published
 2.0.5 manifest, signature, tag and external witnesses remain unchanged.
 

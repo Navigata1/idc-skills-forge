@@ -1,0 +1,5 @@
+COMMAND ["node", "--check", "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/green
+
+EXIT 0
+SECONDS 0.029

@@ -1,0 +1,36 @@
+COMMAND ["python3", "-B", "-m", "unittest", "tests.test_manifest_reference_policy", "-v"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/red
+test_all_tracked_skill_references_are_classified (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_all_tracked_skill_references_are_classified) ... FAIL
+test_classified_reference_still_requires_the_correct_skill (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_classified_reference_still_requires_the_correct_skill) ... ok
+test_classifier_rejects_unknown_remote_and_loopback_literals (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_classifier_rejects_unknown_remote_and_loopback_literals) ... ok
+
+======================================================================
+FAIL: test_all_tracked_skill_references_are_classified (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_all_tracked_skill_references_are_classified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/forge-206-oct07.ygQivJ/red/tests/test_manifest_reference_policy.py", line 43, in test_all_tracked_skill_references_are_classified
+    self.assertEqual(failures, [], '\n'.join(failures))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['agent-guardrails/scripts/test-block-dang[247 chars]mpt'] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+'agent-guardrails/scripts/test-block-dangerous-git.sh:637: unclassified https://x/y'
+
++ []
+- ['agent-guardrails/scripts/test-block-dangerous-git.sh:637: unclassified '
+-  'https://x/y',
+-  'agent-guardrails/scripts/test-block-dangerous-git.sh:638: unclassified '
+-  'https://x/y',
+-  'self-contained-ship/scripts/test-sealed-artifacts.mjs:39: unclassified '
+-  'http://127.0.0.1:${sink.address().port}/attempt'] : agent-guardrails/scripts/test-block-dangerous-git.sh:637: unclassified https://x/y
+agent-guardrails/scripts/test-block-dangerous-git.sh:638: unclassified https://x/y
+self-contained-ship/scripts/test-sealed-artifacts.mjs:39: unclassified http://127.0.0.1:${sink.address().port}/attempt
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.259s
+
+FAILED (failures=1)
+
+EXIT 1
+SECONDS 0.363

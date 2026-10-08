@@ -1,4 +1,4 @@
-LOCAL CONSTRUCTION GATES — not independent acceptance or publication authority
+SEPTEMBER 13 HISTORICAL CONSTRUCTION GATES — not independent acceptance or publication authority
 Base 68ce34a032484529104b570d417e29ac8156b080
 Repair code collected at 997368ed1baa0bbe9495f572d17d70550bb17a14.
 Final release-control commit/tree is identified outside this candidate by the hand-back receipt.
@@ -61,3 +61,46 @@ green/python-bare.txt. Bytecode pollution stays confined to this disposable fixt
 
 Final unsigned exact-head replay is recorded outside the candidate tree;
 check that receipt before treating the builder handoff as complete.
+
+OCTOBER 7 CONTINUATION — scratch clones based on 3efdb65 plus the narrow fixture repair.
+Final refrozen commit/tree and replay are recorded in the new external handoff.
+
+python3 -B -m unittest tests.test_manifest_reference_policy -v
+RED at 3efdb65: Ran 3 tests; FAILED (failures=1), exit 1.
+Three unclassified occurrences from two files; unknown-reference/wrong-skill controls OK.
+GREEN: Ran 3 tests; OK, exit 0.
+red/2026-10-07/reference-policy.txt -> green/2026-10-07/reference-policy.txt
+The separately labeled initial helper-name error is not discriminating evidence.
+
+bash skills/agent-guardrails/scripts/test-block-dangerous-git.sh
+RESULT pass=434 fail=0 — exit 0. green/2026-10-07/guard-matrix.txt
+
+node skills/self-contained-ship/scripts/test-sealed-artifacts.mjs --capture-dir=<external-output>/sealed
+RESULT pass=7 fail=0 unexpectedExternalDeliveries=0 — exit 0; real Chrome, no skip.
+green/2026-10-07/sealed-fixtures.txt; packet-level ICE capture remains unverified.
+
+python3 -B -m unittest discover -s tests
+Ran 319 tests in 88.117s; OK — exit 0. green/2026-10-07/python-full.txt
+
+python3 -m unittest discover -s tests
+Ran 319 tests in 88.442s; OK — exit 0, separate scratch clone.
+green/2026-10-07/python-bare.txt
+
+python3 -I -B scripts/validate_skills.py --json
+skillsLoaded=50 errors=0 warnings=13 valid=true — exit 0. green/2026-10-07/canonical.txt
+
+python3 -B scripts/verify_forge_50.py --json
+skills=50 validationErrors=0 pass=true — exit 0. green/2026-10-07/forge-50.txt
+
+shellcheck skills/agent-guardrails/scripts/test-block-dangerous-git.sh
+bash -n skills/agent-guardrails/scripts/test-block-dangerous-git.sh
+node --check skills/self-contained-ship/scripts/test-sealed-artifacts.mjs
+All exit 0. green/2026-10-07/shellcheck.txt, bash-syntax.txt, node-syntax.txt
+
+python3 -I -B scripts/skill_integrity.py manifest --out <external-output>/m.json
+RED at 3efdb65: unclassified external reference: agent-guardrails: https://x/y — exit 1.
+GREEN: MANIFEST OK — profile=release skills=50 references=19 networkCommands=743 — exit 0.
+red/2026-10-07/manifest.txt -> green/2026-10-07/manifest.txt
+Authorized scratch dry run only; no production manifest or signature replacement.
+
+No independent certification, signing, protected CI, tag, push, release, DNS or fleet operation.

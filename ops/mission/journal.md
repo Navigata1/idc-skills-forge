@@ -304,3 +304,11 @@
 - Owner supplied Claude's 2.0.6 worklist for local implementation and commits only. Tier 2 orchestration separated guard, sealed-browser and evidence-verifier lanes; a fresh read-only internal review found clean-filter/external-diff execution and autosquash editor gaps, then the builder added red tests and repaired them. No internal agent is an independent acceptance seat.
 - 009 uses explicitly selected historical validation for the three original staging pins, never an invented public commit or an exact-acceptance claim. 010 binds captured artifacts but does not authenticate host identity.
 - Construction preserves 2.0.5 keys, manifest/signature, tag, external witnesses and K3 evidence store. Registry changes last; manifest generation is deferred to the owner per worklist section 5. Independent Claude certification and fresh Kimi acceptance remain outstanding.
+
+## 2026-10-07 — Track A fixture-reference continuation
+
+- Re-derived `v2.0.6-security-patch` at `3efdb658b4a8c1b09e2a619af53c77d2d95808e9`, tree `6f37e858c5702f33f9e694bf3d0e84f078ed1789`; live public main/tag remain the immutable 2.0.5 identity. Track B stays parked.
+- Owner's October prompt authorizes both fixture corrections and scratch-only manifest construction. The supplied patch hash matches `0238ca293473630c93c3ae86df2916f474be5b9256344dd055685d06bf8df2b1`. The clone operand is local and the ephemeral loopback URL is assembled from fragments; no policy widening.
+- A new regression uses the manifest builder's actual reference classifier and policy checks over tracked skill files. A corrected red replay on the pristine frozen clone identifies both source files; green passes. The initial helper-name error remains labeled, without a closure claim.
+- Tier 2: one inline implementation and one fresh internal read-only verifier. The verifier found no concrete issue and issued no acceptance. Separate scratch clones pass both 319-test Python modes, 434 guard cases, seven browser fixtures, canonical 50/50 with 13 warnings, Forge-50, ShellCheck/syntax and `MANIFEST OK`.
+- Production manifest, signature, policy, keys, owner briefs, old evidence and 2.1.0 branch are preserved. Final refrozen identity and replay evidence live in a new external handoff; Claude certification precedes owner signing and Kimi acceptance before publication.

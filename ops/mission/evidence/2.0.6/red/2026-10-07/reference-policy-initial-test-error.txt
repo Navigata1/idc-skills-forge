@@ -1,0 +1,22 @@
+COMMAND ["python3", "-B", "-m", "unittest", "tests.test_manifest_reference_policy", "-v"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/red
+test_all_tracked_skill_references_are_classified (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_all_tracked_skill_references_are_classified) ... ERROR
+test_classified_reference_still_requires_the_correct_skill (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_classified_reference_still_requires_the_correct_skill) ... ok
+test_classifier_rejects_unknown_remote_and_loopback_literals (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_classifier_rejects_unknown_remote_and_loopback_literals) ... ok
+
+======================================================================
+ERROR: test_all_tracked_skill_references_are_classified (tests.test_manifest_reference_policy.ManifestReferencePolicyTests.test_all_tracked_skill_references_are_classified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/forge-206-oct07.ygQivJ/red/tests/test_manifest_reference_policy.py", line 34, in test_all_tracked_skill_references_are_classified
+    for name in skill_integrity._tracked_repository_files(ROOT):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.skill_integrity' has no attribute '_tracked_repository_files'. Did you mean: '_tracked_repository_paths'?
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (errors=1)
+
+EXIT 1
+SECONDS 0.114

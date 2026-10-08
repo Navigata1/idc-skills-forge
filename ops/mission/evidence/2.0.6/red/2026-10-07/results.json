@@ -1,0 +1,33 @@
+[
+  {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tests.test_manifest_reference_policy",
+      "-v"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/red",
+    "exit": 1,
+    "expectedExit": 1,
+    "expectedResultObserved": true,
+    "seconds": 0.363
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "-B",
+      "scripts/skill_integrity.py",
+      "manifest",
+      "--out",
+      "/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/red/m.json"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/red",
+    "exit": 1,
+    "expectedExit": 1,
+    "expectedResultObserved": true,
+    "seconds": 0.367
+  }
+]

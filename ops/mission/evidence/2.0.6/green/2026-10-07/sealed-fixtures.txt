@@ -1,0 +1,13 @@
+COMMAND ["node", "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs", "--capture-dir=/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/green/sealed"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/green
+  ok    missing Node WebSocket fails in an actionable preflight
+  ok    clean page proves the RTC guard and launch policy are active
+  ok    an RTCPeerConnection attempt is blocked and fails the state
+  ok    delayed attempt after initial observation fails during explicit settle interval
+  ok    about:blank child frame is rejected even when top-level RTC count is zero
+  ok    delayed HTTP navigation is intercepted and fails with zero loopback delivery
+  ok    overflowing elements fail even when root overflow is hidden
+RESULT pass=7 fail=0 unexpectedExternalDeliveries=0 (loopback HTTP sink only; no ICE packet capture)
+
+EXIT 0
+SECONDS 9.266

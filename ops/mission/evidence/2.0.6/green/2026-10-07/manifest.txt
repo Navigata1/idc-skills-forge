@@ -1,0 +1,6 @@
+COMMAND ["python3", "-I", "-B", "scripts/skill_integrity.py", "manifest", "--out", "/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/green/m.json"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/green
+MANIFEST OK — profile=release skills=50 references=19 networkCommands=743 path=/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/green/m.json
+
+EXIT 0
+SECONDS 0.512

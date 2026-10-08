@@ -1,0 +1,22 @@
+COMMAND ["python3", "-B", "scripts/verify_forge_50.py", "--json"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/green
+{
+  "compatibilityAdvisories": 13,
+  "pass": true,
+  "provenance": {
+    "pass": true,
+    "registrySkills": 50,
+    "schema": "idc-provenance-report/v1",
+    "sources": 4,
+    "toolFamilies": 18,
+    "vendoredProtocolFiles": 18
+  },
+  "schema": "idc-forge-50-closure/v1",
+  "semanticRecords": 50,
+  "skills": 50,
+  "validationErrors": 0,
+  "vendoredProtocolContracts": 5
+}
+
+EXIT 0
+SECONDS 0.793

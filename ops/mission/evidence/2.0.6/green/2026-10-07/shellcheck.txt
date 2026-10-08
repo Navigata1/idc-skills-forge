@@ -1,0 +1,5 @@
+COMMAND ["shellcheck", "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/green
+
+EXIT 0
+SECONDS 0.415

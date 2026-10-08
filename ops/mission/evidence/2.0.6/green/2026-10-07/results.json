@@ -1,0 +1,134 @@
+[
+  {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tests.test_manifest_reference_policy",
+      "-v"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.411
+  },
+  {
+    "command": [
+      "bash",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 24.606
+  },
+  {
+    "command": [
+      "node",
+      "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs",
+      "--capture-dir=/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/green/sealed"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 9.266
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 88.443
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "-B",
+      "scripts/validate_skills.py",
+      "--json"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.494
+  },
+  {
+    "command": [
+      "python3",
+      "-B",
+      "scripts/verify_forge_50.py",
+      "--json"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.793
+  },
+  {
+    "command": [
+      "shellcheck",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.415
+  },
+  {
+    "command": [
+      "bash",
+      "-n",
+      "skills/agent-guardrails/scripts/test-block-dangerous-git.sh"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.007
+  },
+  {
+    "command": [
+      "node",
+      "--check",
+      "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.029
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "-B",
+      "scripts/skill_integrity.py",
+      "manifest",
+      "--out",
+      "/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/green/m.json"
+    ],
+    "cwd": "/private/tmp/forge-206-oct07.ygQivJ/green",
+    "exit": 0,
+    "expectedExit": 0,
+    "expectedResultObserved": true,
+    "seconds": 0.512
+  }
+]

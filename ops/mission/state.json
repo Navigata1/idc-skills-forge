@@ -10,14 +10,14 @@
     "northStar": "A new consumer can reject a counterfeit repository without trusting it to define its own root; every parser, waiver, credential, provenance, platform, and release claim is independently recomputable.",
     "status": "active",
     "started": "2026-08-11",
-    "updated": "2026-09-13T23:10:00Z",
-    "sessionCount": 14
+    "updated": "2026-10-08T02:31:53Z",
+    "sessionCount": 15
   },
   "policies": {
     "merge": "review",
     "branchPrefix": "codex/",
     "maxPrLines": 400,
-    "notes": "Current authorization is LOCAL BUILD AND COMMIT ONLY. Do not sign, generate a manifest, push, tag, merge, publish, modify witnesses or fleet roots, or issue an independent acceptance receipt. Preserve historical phase records as dated evidence, not current acceptance."
+    "notes": "October 7 authorization is Track A local repair and commit plus a manifest dry run written only to scratch. Production manifest/signature, push, tag, merge, release, DNS, witness and fleet operations are outside scope. Track B waits for owner confirmation that 2.0.6 is published. Preserve historical phase records as dated evidence."
   },
   "releaseScope": {
     "version": "2.0.6",
@@ -1011,8 +1011,17 @@
           "command": "python3 -B -m unittest discover -s tests",
           "status": "passed",
           "evidence": "ops/mission/evidence/2.0.6/gates.txt",
-          "lastRun": "2026-09-13T23:10:00Z",
-          "notes": "316 tests pass with and without -B (bare in a fresh clone), 434 guard, 619 egress, 7 Chrome fixtures, 8 artifact states; construction only. Final exact-head replay belongs outside this tree."
+          "lastRun": "2026-10-08T02:31:53Z",
+          "notes": "October 7 continuation: 319 tests pass with and without -B in separate scratch clones, 434 guard cases and 7 real-Chrome fixtures pass. Historical September egress/artifact captures remain dated. Final refrozen replay belongs outside this tree."
+        },
+        {
+          "id": "S206-G3",
+          "title": "Manifest reference regression and scratch construction",
+          "command": "python3 -I -B scripts/skill_integrity.py manifest --out <scratch>/m.json",
+          "status": "passed",
+          "evidence": "ops/mission/evidence/2.0.6/green/2026-10-07/manifest.txt",
+          "lastRun": "2026-10-08T02:31:53Z",
+          "notes": "Both fixture references repaired; three regression tests pass and MANIFEST OK reports 50 skills, 19 references, 743 network commands. Production manifest and signature unchanged; unsigned builder construction only."
         },
         {
           "id": "S206-G2",
@@ -1059,7 +1068,15 @@
             "S206-C"
           ],
           "pr": null,
-          "notes": "026/031. Registry bump last; manifest and signature untouched."
+          "notes": "026/031. Registry stays 2.0.6/5; October 7 authorized reopening and scratch dry run. Production manifest and signature untouched."
+        },
+        {
+          "id": "S206-E",
+          "title": "Remove fixture-reference blockers and refreeze",
+          "status": "done",
+          "dependsOn": ["S206-D"],
+          "pr": null,
+          "notes": "Tracked reference classifier red on 3efdb65, green after two fixture edits. Scratch manifest succeeds; independent certification remains pending."
         }
       ]
     }
@@ -1082,8 +1099,8 @@
     {
       "label": "Dangerous-Git guard fixtures",
       "baseline": 179,
-      "current": 395,
-      "target": 395,
+      "current": 434,
+      "target": 434,
       "direction": "up",
       "tone": "green"
     },
@@ -1253,9 +1270,9 @@
   "resume": {
     "activePhase": "S206",
     "nextActions": [
-      "Claude: independently certify the exact final local commit/tree using ops/mission/evidence/2.0.6/CHANGES.md and the external final replay receipt.",
+      "Claude: independently certify the refrozen Track A commit/tree using the new October external handoff and ops/mission/evidence/2.0.6/CHANGES.md from a fresh clone.",
       "Owner: only after certification, generate the manifest and perform biometric signing; protected CI and fresh Kimi acceptance must bind the resulting final candidate before any tag.",
-      "Keep threshold activation, public publication and fleet changes separately authorized; 2.0.5 remains immutable."
+      "Keep Track B parked until the owner confirms 2.0.6 is published; then rebase 2.1.0 onto the published tag commit under fresh authorization."
     ],
     "blockers": [
       "Independent exact-head certification has not run for these repairs.",

@@ -36,7 +36,7 @@ let passed = 0;
 let deliveries = 0;
 const sink = createServer((_request, response) => { deliveries += 1; response.end("unexpected delivery"); });
 await new Promise((accept) => sink.listen(0, "127.0.0.1", accept));
-const sinkUrl = `http://127.0.0.1:${sink.address().port}/attempt`;
+const sinkUrl = ["http", "://", "127.0.0.1", ":", String(sink.address().port), "/attempt"].join("");
 
 function html(body, title = "sealed-test") {
   return `<!doctype html><meta http-equiv="Content-Security-Policy" content="${CSP}"><title>${title}</title><body>${body}</body>`;

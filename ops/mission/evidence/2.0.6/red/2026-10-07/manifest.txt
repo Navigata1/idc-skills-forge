@@ -1,0 +1,6 @@
+COMMAND ["python3", "-I", "-B", "scripts/skill_integrity.py", "manifest", "--out", "/Users/IDC2.5/.idc-trust/evidence/k3-206-construction-2026-10-07.qN7NSy/red/m.json"]
+CWD /private/tmp/forge-206-oct07.ygQivJ/red
+MANIFEST REFUSED — unclassified external reference: agent-guardrails: https://x/y
+
+EXIT 1
+SECONDS 0.367
