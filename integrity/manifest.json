@@ -120,8 +120,8 @@
       "size": 1238
     },
     "CHANGELOG.md": {
-      "sha256": "sha256:2f118836eaaa7b75e0a6eb79c1f9ff70c0861bd15b9576b058087795356428bf",
-      "size": 14128
+      "sha256": "sha256:c33efae0dcf5b1bf29fe36f1ed553dbbf3d61fdfd28c7d46a8dff50d60cefd64",
+      "size": 17477
     },
     "CONTEXT.md": {
       "sha256": "sha256:d76252202de4147ffc7c4d061a3feec9b5ac76b418e89d698ff3e0bed3a23f7a",
@@ -136,15 +136,15 @@
       "size": 41914
     },
     "README.md": {
-      "sha256": "sha256:385cfa5ea3ba919d7d463722ab70c1d5efb3114bff14e21c6b1f870034a6e16f",
-      "size": 11283
+      "sha256": "sha256:2edac5c53237ead64e54d5d3121d055718b87f0346d01c056bfcbc409a16cb0c",
+      "size": 11569
     },
     "THIRD-PARTY-NOTICES.md": {
       "sha256": "sha256:be54368cbd2a9b7d4bfc812f3fb2544d43172609600914c04578268c44ae0324",
       "size": 3827
     },
     "bootstrap/idc_verify_fresh.py": {
-      "sha256": "sha256:94ea1b3238d58462dc7663d7fe59a60d955067ae38f6996061a2b38fded5592f",
+      "sha256": "sha256:94f4676f243797d4c6cca07ebc3a28c21a17903ce14363ca8519b9543d71897a",
       "size": 91200
     },
     "console/assemble.sh": {
@@ -180,8 +180,8 @@
       "size": 82
     },
     "ops/mission/evidence/platform-evidence.schema.json": {
-      "sha256": "sha256:535ef95acc4b89610267ed8d60878c5744ada5e4c322e50ee9e9caa2fbba4de8",
-      "size": 1269
+      "sha256": "sha256:cd97bd56169b288c1a8544b31aa660a3fa5239cb9ec889ca9628e850796f6b48",
+      "size": 1786
     },
     "ops/mission/sealed-artifacts.json": {
       "sha256": "sha256:1ea13034c2c345ea28bdc6d58e4d3af13862cbd4eee8b20ac8b856abd7da1db1",
@@ -216,8 +216,8 @@
       "size": 7795
     },
     "scripts/reaccept.py": {
-      "sha256": "sha256:f49a60ae5953fb06a5b34e7e2605d978317ba5bef4f4173dae3096b7b5ecf181",
-      "size": 5945
+      "sha256": "sha256:6844fb75675f337a9f7acbabbf8e1ad3d9f705212eeda014a2525ac12ac4800f",
+      "size": 6168
     },
     "scripts/render_validation_report.py": {
       "sha256": "sha256:eeee39cd09066cb6335fdfd44074c3fa2b73d8bf8d7c244976c4a51fa7a41fab",
@@ -236,8 +236,8 @@
       "size": 328
     },
     "scripts/verify-sealed-artifacts.mjs": {
-      "sha256": "sha256:4ee49996699912963c71e298e47b34e20c24944c37293756a0dc76355922e655",
-      "size": 17070
+      "sha256": "sha256:25cd8e17a44276b73fcb96fc18665b169ed6a01783be0d75f92334d951a8a607",
+      "size": 21119
     },
     "scripts/verify_fleet_parity.py": {
       "sha256": "sha256:f520d2551aed912101441def57f945f4d687a0fbcbc1097373e33a01697d04c0",
@@ -248,20 +248,20 @@
       "size": 2715
     },
     "scripts/verify_platform_evidence.py": {
-      "sha256": "sha256:82514e5d64426d5de9db22cf85fd11e8eb8a00f6ccd80e52ccbd41f63918444c",
-      "size": 3463
+      "sha256": "sha256:6507bfda10b545748478e991c7e50cd739cb54f0e1b18c1aff1d4edd9ec88767",
+      "size": 7452
     },
     "scripts/verify_provenance.py": {
       "sha256": "sha256:74083bbbfd14f8d88febfba1479bb67861ab45dbee363894b2a320172aeec698",
       "size": 6720
     },
     "scripts/verify_public_release.py": {
-      "sha256": "sha256:139c6ee28c570971ad6fe783a10126e193ecd81f62019d0055568641368e3b3a",
-      "size": 31141
+      "sha256": "sha256:c3453d9c475f183791b9a443015bb41e4ea8b2f0b40472970019ffa9d3811dfa",
+      "size": 31061
     },
     "scripts/verify_release_reviews.py": {
-      "sha256": "sha256:774a7ade1b9b2570ebc5bd87d66953d366a47b39a7cd665c5f79eaaba3007894",
-      "size": 27611
+      "sha256": "sha256:eaf87636ac156384637702e894a1d9f3297e83db69bb544018a74f3f3acecd18",
+      "size": 27238
     },
     "scripts/verify_runtime_requirements.py": {
       "sha256": "sha256:c662037657c411c27c146b7b8cbbc19d8baece01c307822aeb072e3463f430f5",
@@ -272,7 +272,7 @@
       "size": 8421
     },
     "skills/registry.json": {
-      "sha256": "sha256:9fee630a34f4ea4c5d31d6c84bacf339164cac965f1eb127340265bbd2f75b3b",
+      "sha256": "sha256:9958a45564e32350bf727f645670bae1c0cf3888e70d5928ac18a7e46e789270",
       "size": 33552
     },
     "tests/test_archipelago_protocol.py": {
@@ -300,16 +300,16 @@
       "size": 2818
     },
     "tests/test_public_release.py": {
-      "sha256": "sha256:6c0f309c413c27ce4c8d44e136749e23fd4fdf21bf34d8320b2b737b4aa9e3bd",
-      "size": 26640
+      "sha256": "sha256:bb02059b33816a79f86ff7a0eab0831f946bf1e46b5a8b71d922a8ca7f049621",
+      "size": 31588
     },
     "tests/test_release_reviews.py": {
-      "sha256": "sha256:93545758d3887d593bfe8f96236c053455387f9e51f56c6ac6eee6f91284faca",
-      "size": 20322
+      "sha256": "sha256:a25cf51374c9943a4917ac41d3f1e527059b46b384ed7659f20a371daf259e78",
+      "size": 24928
     },
     "tests/test_runtime_boundaries.py": {
-      "sha256": "sha256:db6ac44e5c4249aff415d5415acd6126c83d82e0046ca982390d466472d69ccf",
-      "size": 4937
+      "sha256": "sha256:29274ae6f8c529bc8d968c66e1b9b8b3467646ccf2c327537a9ccdda65347df2",
+      "size": 5675
     },
     "tests/test_security_scripts.py": {
       "sha256": "sha256:1d0d737f487defdbcedf8e51dced25dfb8a61efc43d028af1c9cd3856d6518cc",
@@ -328,13 +328,13 @@
       "size": 6388
     }
   },
-  "manifestSequence": 4,
+  "manifestSequence": 5,
   "policy": {
     "path": "integrity/policy.json",
     "sha256": "sha256:f0635ac1343fd7f4d472b6976f4c41eaf26180c479b3f492db327fa4aba7457f"
   },
   "profile": "release",
-  "release": "2.0.5",
+  "release": "2.0.6",
   "remoteObservations": [],
   "repositoryFiles": {
     ".gitattributes": {
@@ -359,8 +359,8 @@
     },
     "CHANGELOG.md": {
       "posixMode": 420,
-      "sha256": "sha256:2f118836eaaa7b75e0a6eb79c1f9ff70c0861bd15b9576b058087795356428bf",
-      "size": 14128
+      "sha256": "sha256:c33efae0dcf5b1bf29fe36f1ed553dbbf3d61fdfd28c7d46a8dff50d60cefd64",
+      "size": 17477
     },
     "CLAUDE.md": {
       "posixMode": 420,
@@ -404,8 +404,8 @@
     },
     "README.md": {
       "posixMode": 420,
-      "sha256": "sha256:385cfa5ea3ba919d7d463722ab70c1d5efb3114bff14e21c6b1f870034a6e16f",
-      "size": 11283
+      "sha256": "sha256:2edac5c53237ead64e54d5d3121d055718b87f0346d01c056bfcbc409a16cb0c",
+      "size": 11569
     },
     "SECURITY.md": {
       "posixMode": 420,
@@ -429,7 +429,7 @@
     },
     "bootstrap/idc_verify_fresh.py": {
       "posixMode": 420,
-      "sha256": "sha256:94ea1b3238d58462dc7663d7fe59a60d955067ae38f6996061a2b38fded5592f",
+      "sha256": "sha256:94f4676f243797d4c6cca07ebc3a28c21a17903ce14363ca8519b9543d71897a",
       "size": 91200
     },
     "console/assemble.sh": {
@@ -472,6 +472,11 @@
       "sha256": "sha256:0572da3b43c7367d40b3c6ec3570e53dcdfd9177596c0ad127e32772cb6cc878",
       "size": 5318
     },
+    "docs/2.0.6-release-scope.md": {
+      "posixMode": 420,
+      "sha256": "sha256:32c71369a09cf786af8277638a30c84649f7e06bffeb583869eb0fadb257f9af",
+      "size": 5185
+    },
     "docs/HANDOFF-2.0.0.md": {
       "posixMode": 420,
       "sha256": "sha256:e7b29ca4ad74874184e666e4e78be83fe0bb99be99b16ae47c99b94c82de0feb",
@@ -484,8 +489,8 @@
     },
     "docs/STATE-2.0.3-hardening.md": {
       "posixMode": 420,
-      "sha256": "sha256:76e21afe41406f9b955b53a87b1964b4bd203a52a533644a6b88b4788cd35316",
-      "size": 3538
+      "sha256": "sha256:1682fdc6038aa7ce24f9df2178ca124a520e0cccdf3d9b0b8b7a4ce84ecf7507",
+      "size": 3766
     },
     "docs/catalog.md": {
       "posixMode": 420,
@@ -514,8 +519,8 @@
     },
     "docs/release-acceptance-evidence.md": {
       "posixMode": 420,
-      "sha256": "sha256:a77c69eab1ca7a30b705e996473d0c38e8fba50918d7b4439a455b17b471841b",
-      "size": 10220
+      "sha256": "sha256:912cd4776d3e53aa62d16977501cf77ff35f9785836b4250815f280e293890b3",
+      "size": 10275
     },
     "docs/report.html": {
       "posixMode": 420,
@@ -529,8 +534,8 @@
     },
     "docs/verification.md": {
       "posixMode": 420,
-      "sha256": "sha256:4392bdef1740ba2382ab3ba2285eae6cebc3d581862b177a877308db783a7cca",
-      "size": 3582
+      "sha256": "sha256:735509e904cd0f5a28bceeba93c870cbe27afb6b6ceb72bc4670986dda577702",
+      "size": 3913
     },
     "docs/walkthrough.html": {
       "posixMode": 420,
@@ -569,18 +574,18 @@
     },
     "ops/gauntlet/reviews/P0-T1-contract-critique.json": {
       "posixMode": 420,
-      "sha256": "sha256:a0a9bad137917fc1674f333c6aac24b0845c5542c5f91d55fd9ad2641c17d5a2",
-      "size": 7643
+      "sha256": "sha256:f26db64543349d9690ba611bd73b88412c647932d9ccde2a1ce342a14e2a0db5",
+      "size": 7698
     },
     "ops/gauntlet/reviews/P0-T2-validator-critique.json": {
       "posixMode": 420,
-      "sha256": "sha256:0191f979d27fd1cfeb0915521b712a5a0612969e07b7d5cc5c6fc2d5bee2613f",
-      "size": 6202
+      "sha256": "sha256:dc792cb8e10942f62acaa0a5d9460873a02e3081e8aff418787c926238468fe0",
+      "size": 6257
     },
     "ops/gauntlet/reviews/P0-T3-installer-critique.json": {
       "posixMode": 420,
-      "sha256": "sha256:67bf91fe4c95c162719fbfba0766c117783b45d08fe10aae1babb5c43003a227",
-      "size": 8830
+      "sha256": "sha256:7ecc0a5e17252a0d9f029db542fd603114e836e080efe262b5364461057ac9c7",
+      "size": 8885
     },
     "ops/mission/brief.md": {
       "posixMode": 420,
@@ -1347,6 +1352,461 @@
       "sha256": "sha256:93c5d36e266698dda592c834082cba6113570e3e8898eee7bc35c9dfffb8df25",
       "size": 10799
     },
+    "ops/mission/evidence/2.0.6/CHANGES.md": {
+      "posixMode": 420,
+      "sha256": "sha256:78f960e660ec43935818d97d2f8db8e1816585ea6015d652a1fa02f3cf2068be",
+      "size": 13578
+    },
+    "ops/mission/evidence/2.0.6/gates.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7fb26fdd493b5a78e86c44379159326605d23ad9c6506e7de116273919a2a3e1",
+      "size": 5589
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/bash-syntax.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:e2b56615cd1e63f5e8a58e21128b2390474e24404920312b4cae0311b928bb60",
+      "size": 154
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/canonical.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:79701e532302409778c1605a30b45106e9013c1205ed81e9cf8d72a4eb2f8c28",
+      "size": 5767
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/forge-50.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:651c734b4e6cbdfd61887a858c01b5a55f990cacdf4fe5cc1998b82d2d88f084",
+      "size": 508
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/guard-matrix.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:dd76cdad400a903a9100ffadf90699a889263c997612104d91f584776289b7de",
+      "size": 23325
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/manifest.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:1fd4735693d3d66a0aa5ada4a136b5a722c65b8a176d6a4a437851e423df0842",
+      "size": 405
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/node-syntax.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:926669b65324e270f3e74fceaf1a615a4524f4729241ce129f8adf98f851d440",
+      "size": 160
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/python-bare.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7ba73dc76ab9601f4bc7033bc5d87ec3055bc65314340626253943ce82bbe088",
+      "size": 553
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/python-full.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:56dba8b06f513da752b5f492d2f18083242bb0a3b0e135a58f66f43e4d11a777",
+      "size": 560
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/reference-policy.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:12a5c466745378a57af95c7ef9ae97a81af169d9dcd62ee9478f2f37e2f08641",
+      "size": 819
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/results.json": {
+      "posixMode": 420,
+      "sha256": "sha256:c239ee0b49f3648a1356c6628e2a033e73d51c98778714136ee766aded67eb69",
+      "size": 2994
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/sealed-fixtures.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:0e69022cb47142c32b344d82c22227a4d602da45c3c35569ecb9293cee4f6b7c",
+      "size": 876
+    },
+    "ops/mission/evidence/2.0.6/green/2026-10-07/shellcheck.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:130ba7463fcc11ec0487a90a72b2909f91abb1a2a3b6ca41d4bd1e00f4108341",
+      "size": 154
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-0.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:8084d114444774e884122f4900de01fb6c693fb612b14d549e004b8bdec0b7bd",
+      "size": 68
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-1.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:523e560aeb086a8d2216703c6150b47ff6d3adc27f0b52b6b4ced6d3cbc0b21b",
+      "size": 67
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-10.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:6b568092ed35d49eac983076fc1402aa423a90c4ed9c15c36be00b95cb2ec28c",
+      "size": 86
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-11.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:8fc466af26ab24352de614cb7aa31e72ca3cbe3cbd0cf3e07055fd2489f2ff92",
+      "size": 74
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-2.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ccf86d4f8c3e6b168ca015cb3008ee9d3fdd5d8c2335bcfe29e3ea45e1833838",
+      "size": 80
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-3.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:375069bf67fefa3bc144228c334c94832a88b04df876ae14d2e3b1fb18fe00a1",
+      "size": 80
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-4.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:d3596c9421cd1ff43c2bfe6c2f1eb879f3421e3db246eb2add1923ff1c270164",
+      "size": 103
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-5.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:20317e2089c93e0ca056025d578da98eec27d796e477f4a134be45aa91255c36",
+      "size": 110
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-6.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:c4826d89ebf9ac818ef37dcc2a8c31e873cc1c902d90b9ff9fd1b69d5da29c8f",
+      "size": 108
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-7.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:9b48962a8df519a37e26c4f608b8e3b4b7d8e34032b1111a42a0502f6b44589e",
+      "size": 98
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-8.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ea6f421b667b98f48a2af8e927a23a5ebf5156f6f00269591012a30f568aaf25",
+      "size": 103
+    },
+    "ops/mission/evidence/2.0.6/green/bash-syntax-9.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:49031abc9184518de95352f6e248b876efa34cbc170e8c59d1238ec4a03fa8a6",
+      "size": 91
+    },
+    "ops/mission/evidence/2.0.6/green/bytecode.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:e500844b05c5a147838803246b27fc5ed14d19ed91e6e022e49ad770a0cebb82",
+      "size": 417
+    },
+    "ops/mission/evidence/2.0.6/green/canonical.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7210004c055a439eb1fc151d107cbb734ff3682ed25ccc937dfed7eea73e9d40",
+      "size": 5712
+    },
+    "ops/mission/evidence/2.0.6/green/documentation.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:a44205b55a756c9eb14d9981e2f8d5f5e614889ae905716f121bd3670b3eb9c8",
+      "size": 530
+    },
+    "ops/mission/evidence/2.0.6/green/egress-corpus.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:b4330586fd8b88c5bb77fccf5ccddce301580f7592d154404a21c50d7ab02813",
+      "size": 32214
+    },
+    "ops/mission/evidence/2.0.6/green/forge-50.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:b09677a468a674fd29c1e2a2c4a8d60543d3dd65fbc39f8a478ffecad1725ead",
+      "size": 462
+    },
+    "ops/mission/evidence/2.0.6/green/gauntlet-historical.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:164d443eacf80102f383f42a474e79206677666c75c44a059dc95c2a8b6ad081",
+      "size": 250
+    },
+    "ops/mission/evidence/2.0.6/green/gauntlet-strict.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:d5ba7f1820da5269a509bf893cd0218302fbeda05981c1af2b362ad23bd7f24b",
+      "size": 349
+    },
+    "ops/mission/evidence/2.0.6/green/git-executable-config-first-attempt-failed.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:753ccd6467fbd3bbd9049dc02aa8f746035eb17e0eafbecbc5e8d0dd92ba106e",
+      "size": 2393
+    },
+    "ops/mission/evidence/2.0.6/green/git-executable-config.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:140a5445b226c086e87a077a1f115ea0aba0e5c2d1a3fc1a2c0ba1c796380365",
+      "size": 965
+    },
+    "ops/mission/evidence/2.0.6/green/git-isolation-first-attempt-failed.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:fcddac48766a739a83ccf628470c0e787d8b86d05a1edcba0060a5be74ed5976",
+      "size": 2020
+    },
+    "ops/mission/evidence/2.0.6/green/git-isolation.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:2dfaee87d382583b0ab5ae9b89a8e8196ef3d8536352a4daed6f1d184a37a2db",
+      "size": 609
+    },
+    "ops/mission/evidence/2.0.6/green/guard-autosquash-grammar.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:e5a7031800b9d6a09df5252ef0c1b325529fe1e514276ab7388ee65ef30c6fdd",
+      "size": 3053
+    },
+    "ops/mission/evidence/2.0.6/green/guard-autosquash-matrix.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:0cdfdb952a651c8793f1550658ec63aa295d035549ac0b3b14dfd994f3c8fe62",
+      "size": 23176
+    },
+    "ops/mission/evidence/2.0.6/green/guard-compatibility.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ead9c2ea24f8b308d8396a53d5b36d6ea607baac8571c0288fc6e1c8a5c88822",
+      "size": 415
+    },
+    "ops/mission/evidence/2.0.6/green/guard-construction.md": {
+      "posixMode": 420,
+      "sha256": "sha256:35ddd15b2d7ce504738d36e89c5ed29542a29ccd2e3e4c4cc6917ed01fde5a26",
+      "size": 5494
+    },
+    "ops/mission/evidence/2.0.6/green/guard-grammar.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:bd4004550efc995429ae86718c1204fb2fec62fab8265e14837c0d759bd1010b",
+      "size": 2757
+    },
+    "ops/mission/evidence/2.0.6/green/guard-matrix.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:d67d68304400e9595fd06be2c09dd78a496ae2ece0b8a0e997c6c7be4aee5ee4",
+      "size": 23279
+    },
+    "ops/mission/evidence/2.0.6/green/integration-results.json": {
+      "posixMode": 420,
+      "sha256": "sha256:eb2bf6c96c57bedfee864ddc58d94e74f4f761c3777a488312ab6abe92af0517",
+      "size": 5349
+    },
+    "ops/mission/evidence/2.0.6/green/publication-tag.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7f722a65e3c92ca6282665c646abfa089f278e2ce0ff027b37b51e465cd6aed6",
+      "size": 796
+    },
+    "ops/mission/evidence/2.0.6/green/python-bare.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:c36b28b37a01ee096915f263515b8dfc294a07856d08af09fa43e5fcff4089ee",
+      "size": 505
+    },
+    "ops/mission/evidence/2.0.6/green/python-full.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:619ede526e1847e83eb0f890d48d3f3cadb1f1c9f8183cb5b0633350d77b73e1",
+      "size": 511
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-artifacts.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:9820ecb38f2e4575aaf0850b003939fd939a62d873accf2beccce0a97842ba17",
+      "size": 530
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-clean.json": {
+      "posixMode": 420,
+      "sha256": "sha256:6ae32efdffb8870c4dc10c4410262589a00ee7f6f155072608b47e7e26f34ca9",
+      "size": 6578
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-delayed-http.json": {
+      "posixMode": 420,
+      "sha256": "sha256:7347ed432c22bae6c658366630d86b4048ac32dc409d90bb91442657d8e68253",
+      "size": 6475
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-delayed.json": {
+      "posixMode": 420,
+      "sha256": "sha256:237783b3fb7594453d1e09f0bf68ccd3cb0dbf04599f55ce2b047cbb1d9dc3ac",
+      "size": 6976
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-fixtures.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:95938862e641925cf3cef4e2e7ab6a9dfbaaa4677e7e0904df66f2889b4c9858",
+      "size": 728
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-gates.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ceb8e855d20229f11ffcc8b66a9f4157a33dae190cc244b3697988fc3ce32d9e",
+      "size": 2406
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-overflow.json": {
+      "posixMode": 420,
+      "sha256": "sha256:90461e07f180bc2b8b0780a4aa89ffbbebf403f3fbb29e725e72576b05d7f085",
+      "size": 6934
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-rtc-attempt.json": {
+      "posixMode": 420,
+      "sha256": "sha256:f68071fad866386188e7032c4aac041c8d56174ce55e17842aea68edf899ce02",
+      "size": 6644
+    },
+    "ops/mission/evidence/2.0.6/green/sealed-subframe.json": {
+      "posixMode": 420,
+      "sha256": "sha256:e2cfeb18f39c6c012856d7c81b16dbec70ac08c67c83819c1059ac6fdd5a737e",
+      "size": 7310
+    },
+    "ops/mission/evidence/2.0.6/green/shellcheck.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:a39caf2364bedd314deadd43a1d4fd56f948cf12bf8c9c984ff45ef042fee96b",
+      "size": 573
+    },
+    "ops/mission/evidence/2.0.6/green/tier-a-evidence-tests.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:44299a6ceb74d07e2927d6fc02375066b9ee6b37b64a48d33253c95e71a53cf5",
+      "size": 2609
+    },
+    "ops/mission/evidence/2.0.6/red/2026-10-07/manifest.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ee5202c54f79565296e9737e04b407b4a4910493975509096c5ab1ed87a4154c",
+      "size": 319
+    },
+    "ops/mission/evidence/2.0.6/red/2026-10-07/reference-policy-initial-test-error.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:4be2bd3b172dd687a93cd47da4d0e1e23d5ef778a38c2263dd18dd0749e2116c",
+      "size": 1598
+    },
+    "ops/mission/evidence/2.0.6/red/2026-10-07/reference-policy.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:0b012a6bd1f82ab223f03f224f744c0c1541ab5fe3c5d0bb359c4ac1130fb1cf",
+      "size": 2310
+    },
+    "ops/mission/evidence/2.0.6/red/2026-10-07/results.json": {
+      "posixMode": 420,
+      "sha256": "sha256:e5b7c6f1bca3a2695428a69402716eee8e4040c457e0d7c6af50a88ff919a48b",
+      "size": 684
+    },
+    "ops/mission/evidence/2.0.6/red/base-content-integrity.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:aa9ec872ded37afa7cbd90bc5c6363136abd8d6a605350d4ceaa3cd8841a2e2e",
+      "size": 1576
+    },
+    "ops/mission/evidence/2.0.6/red/bytecode-polluted-content-integrity.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:15d66d0c042d4722fa657562ee152120aade3f1feea108393c0e2ca3e852a642",
+      "size": 2149
+    },
+    "ops/mission/evidence/2.0.6/red/bytecode.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:16c5665fd09b1bb6029b2836e4fe662628e867e50127c38dc744ad6d73e0f0cf",
+      "size": 1061
+    },
+    "ops/mission/evidence/2.0.6/red/canonical.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:133813cdb643aed2af4d57a1ba5136a3f4c126c0ae6fbe0ec6ccdb87352f5982",
+      "size": 5769
+    },
+    "ops/mission/evidence/2.0.6/red/documentation.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:fe9bb0d23300a9ccb62adf00aa0eaf7e09b66b239aa028118436a95fb8b456c3",
+      "size": 16179
+    },
+    "ops/mission/evidence/2.0.6/red/egress.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:663fc7cb5f9f84cc99e9087d4e2a39d409c2070516b07c4172cea4c4f003afe9",
+      "size": 32259
+    },
+    "ops/mission/evidence/2.0.6/red/gauntlet.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:da0d2315865c49b0ccecba9ff2ba784eb38d88f0f6a0ee0b887f290311cf02f4",
+      "size": 253
+    },
+    "ops/mission/evidence/2.0.6/red/git-external-diff.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:6e6a3f67e945c04760836548a24cf4cb5f8894f709575e2bb4ab3a27a95f00b7",
+      "size": 1091
+    },
+    "ops/mission/evidence/2.0.6/red/git-filters.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:64f786a1cc78c5368c9388b809c74f0496179e80249407bda515029297ef6f73",
+      "size": 4427
+    },
+    "ops/mission/evidence/2.0.6/red/git-isolation.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:b2e9d91c8cd11663611c3fe038f2fb1f2f9c23feccb0724265ea8a71bb47514b",
+      "size": 2117
+    },
+    "ops/mission/evidence/2.0.6/red/guard-autosquash-grammar.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:882e2df760d16981af0422c9ecb3fdc763609478886429907b257c664677ab81",
+      "size": 9794
+    },
+    "ops/mission/evidence/2.0.6/red/guard-compatibility.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:edaff7186411a16c6cface86e581e8f90163123ef3542d5b4ea09cea6656ddb9",
+      "size": 1276
+    },
+    "ops/mission/evidence/2.0.6/red/guard-grammar.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:4c439ae8c9c35d63f96e07dc53ab3494d685710ebee38078617666981d05fe5f",
+      "size": 57847
+    },
+    "ops/mission/evidence/2.0.6/red/guard-matrix.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:139a5b5f40675a81087fd2c7685daa953e327844a3870ab777e5f4657d41fbaa",
+      "size": 23183
+    },
+    "ops/mission/evidence/2.0.6/red/guard.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:d2eb5a1bf06c279a7d3f4a6782497ffed05b2fcb2a473920111ab71c17ed03da",
+      "size": 21892
+    },
+    "ops/mission/evidence/2.0.6/red/integration-pin-and-message-regressions.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7699f1d1299769e39c766a25831991d81acd2804f12b35b1866cc0d51a882005",
+      "size": 25570
+    },
+    "ops/mission/evidence/2.0.6/red/publication-tag.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:fab9df91ff223c49899aa78dadb8e92b737a6c91f67ad3dd00c12fb843a33eba",
+      "size": 2621
+    },
+    "ops/mission/evidence/2.0.6/red/python-bare.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:7911ee5bebcbd63a938071d22f233a68f74b8cde7cca7b5909b9d5ae9c01f1cb",
+      "size": 1075
+    },
+    "ops/mission/evidence/2.0.6/red/python-no-bytecode.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:13c6092264327715c3cd0454dc1136f49a84d4c8fd8288c51dba886edd1c3ec2",
+      "size": 521
+    },
+    "ops/mission/evidence/2.0.6/red/release-control-transition.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:3185d3e7c9a569f8834942a08f9e0d6b4105e5b6df9ffe682901536db10d4be6",
+      "size": 2211
+    },
+    "ops/mission/evidence/2.0.6/red/sealed-clean.json": {
+      "posixMode": 420,
+      "sha256": "sha256:499481d0b06bd3f71e034e00e2c68c0e82821919cbba0516abb8cd82dccfcba9",
+      "size": 4562
+    },
+    "ops/mission/evidence/2.0.6/red/sealed-delayed-http.json": {
+      "posixMode": 420,
+      "sha256": "sha256:faae39f57af4c6101c2bf03e297886f09964a63725e5041193414659988f176e",
+      "size": 4724
+    },
+    "ops/mission/evidence/2.0.6/red/sealed-delayed.json": {
+      "posixMode": 420,
+      "sha256": "sha256:9f67b74c7254bbe45a041546858f2ee205e82fd2aab2b1e29806dab4dad931b8",
+      "size": 4734
+    },
+    "ops/mission/evidence/2.0.6/red/sealed-reproduction.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:0a30ccee4ef8b31503bc866a11dee45e30f3ba0d868bfa04feafb7761756297f",
+      "size": 2117
+    },
+    "ops/mission/evidence/2.0.6/red/sealed-subframe.json": {
+      "posixMode": 420,
+      "sha256": "sha256:8a9135a7b6732a641d575fb41b6a2fd8fd8cea820099e07c11f80fae57003b6e",
+      "size": 4798
+    },
+    "ops/mission/evidence/2.0.6/red/tier-a-evidence-tests.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:ccfe531b0dc6892cdd70d7c0ac356088807d2a2c51a6ece2f2c5e22b9d2366a9",
+      "size": 13786
+    },
+    "ops/mission/evidence/2.0.6/repair-diffstat.txt": {
+      "posixMode": 420,
+      "sha256": "sha256:a5559a34fa28f67505df5c8863eecba2b56241a3e6bd496e95fd3eb0e28bdcd9",
+      "size": 2127
+    },
+    "ops/mission/evidence/2.0.6/run_gates.py": {
+      "posixMode": 420,
+      "sha256": "sha256:c4c59a6bce47180edc5d81c16bfa1c1967abc95e694b273790ae2c8f3de791e4",
+      "size": 2731
+    },
+    "ops/mission/evidence/2.0.6/run_gates_oct07.py": {
+      "posixMode": 420,
+      "sha256": "sha256:44688250ff156f5af9b04906f847034a54535cc428e74431647c8dbbddac7bff",
+      "size": 3218
+    },
     "ops/mission/evidence/evidence-schema-v2.json": {
       "posixMode": 420,
       "sha256": "sha256:1f8ed06824ae5c17989d4c28dd5d4894feee0790749f63e473561aaa8bfc9fdc",
@@ -1369,8 +1829,8 @@
     },
     "ops/mission/evidence/platform-evidence.schema.json": {
       "posixMode": 420,
-      "sha256": "sha256:535ef95acc4b89610267ed8d60878c5744ada5e4c322e50ee9e9caa2fbba4de8",
-      "size": 1269
+      "sha256": "sha256:cd97bd56169b288c1a8544b31aa660a3fa5239cb9ec889ca9628e850796f6b48",
+      "size": 1786
     },
     "ops/mission/evidence/release-2.0.3-final.json": {
       "posixMode": 420,
@@ -1384,8 +1844,8 @@
     },
     "ops/mission/journal.md": {
       "posixMode": 420,
-      "sha256": "sha256:f6a3eee87713b6bd191a982bdd6ac3f23341b6e21c24709f734efd4fc461656a",
-      "size": 49984
+      "sha256": "sha256:cb847069f6bc961875930c17a5cef7e91028ef23a6cc7328002ae56f719a958c",
+      "size": 52615
     },
     "ops/mission/plan-2.0.4.md": {
       "posixMode": 420,
@@ -1404,13 +1864,13 @@
     },
     "ops/mission/state-of-the-union.html": {
       "posixMode": 420,
-      "sha256": "sha256:72ce26b33a1cfaa439801d60368594ceeaa6c96bed0e3afd62595ddcd182793e",
-      "size": 155704
+      "sha256": "sha256:a3093ea9c0f13c50da4f88d6f4f3a86d954df9464cd0e760a6bd02d7b6c84b53",
+      "size": 141424
     },
     "ops/mission/state.json": {
       "posixMode": 420,
-      "sha256": "sha256:d9d4327f2bb2c3ff22fe777cfd37b57a1e37e6b3d4d2ee4404de7db3d5e98cca",
-      "size": 63068
+      "sha256": "sha256:c876b76ce3a96cd22a6e237c5661808facf5501e52f88b70bbd424ff6077180d",
+      "size": 66136
     },
     "ops/research/pocock-gap-analysis-2026-08-19.md": {
       "posixMode": 420,
@@ -1484,8 +1944,8 @@
     },
     "scripts/reaccept.py": {
       "posixMode": 420,
-      "sha256": "sha256:f49a60ae5953fb06a5b34e7e2605d978317ba5bef4f4173dae3096b7b5ecf181",
-      "size": 5945
+      "sha256": "sha256:6844fb75675f337a9f7acbabbf8e1ad3d9f705212eeda014a2525ac12ac4800f",
+      "size": 6168
     },
     "scripts/render_catalog.py": {
       "posixMode": 420,
@@ -1519,8 +1979,8 @@
     },
     "scripts/trust_root.py": {
       "posixMode": 493,
-      "sha256": "sha256:3ea9fcedcdca6ac643f44bd66aeb0556178537eb4d8c0f7e7ae63b58b99b9c47",
-      "size": 58038
+      "sha256": "sha256:49a73f33c549f800154d66838a5daa8b57c1974bccffdf4b068ea4a8d2472728",
+      "size": 59210
     },
     "scripts/validate_evidence.py": {
       "posixMode": 420,
@@ -1529,13 +1989,13 @@
     },
     "scripts/validate_skills.py": {
       "posixMode": 420,
-      "sha256": "sha256:bfa9c6f431b167dadd12b9a80c441fd38912f8a94f1a0794a4443ed96a575a73",
-      "size": 41683
+      "sha256": "sha256:d15079a6805bddb0a30d14d843e1b29ed4bd0162a549c231e91d3b30e4eacf68",
+      "size": 42217
     },
     "scripts/verify-sealed-artifacts.mjs": {
       "posixMode": 493,
-      "sha256": "sha256:4ee49996699912963c71e298e47b34e20c24944c37293756a0dc76355922e655",
-      "size": 17070
+      "sha256": "sha256:25cd8e17a44276b73fcb96fc18665b169ed6a01783be0d75f92334d951a8a607",
+      "size": 21119
     },
     "scripts/verify_external_root.py": {
       "posixMode": 493,
@@ -1554,8 +2014,8 @@
     },
     "scripts/verify_gauntlet_records.py": {
       "posixMode": 420,
-      "sha256": "sha256:7c1119ad2741b75d91cd0aca401cb0d722de24b5380aa03b3db61fe8871057e8",
-      "size": 4104
+      "sha256": "sha256:f71a087ba59ee8878409871e670ae89cf540ebfec00fdba56c1d201f70d01e23",
+      "size": 6817
     },
     "scripts/verify_harness_support.py": {
       "posixMode": 420,
@@ -1564,8 +2024,8 @@
     },
     "scripts/verify_platform_evidence.py": {
       "posixMode": 493,
-      "sha256": "sha256:82514e5d64426d5de9db22cf85fd11e8eb8a00f6ccd80e52ccbd41f63918444c",
-      "size": 3463
+      "sha256": "sha256:6507bfda10b545748478e991c7e50cd739cb54f0e1b18c1aff1d4edd9ec88767",
+      "size": 7452
     },
     "scripts/verify_provenance.py": {
       "posixMode": 493,
@@ -1574,13 +2034,13 @@
     },
     "scripts/verify_public_release.py": {
       "posixMode": 493,
-      "sha256": "sha256:139c6ee28c570971ad6fe783a10126e193ecd81f62019d0055568641368e3b3a",
-      "size": 31141
+      "sha256": "sha256:c3453d9c475f183791b9a443015bb41e4ea8b2f0b40472970019ffa9d3811dfa",
+      "size": 31061
     },
     "scripts/verify_release_reviews.py": {
       "posixMode": 493,
-      "sha256": "sha256:774a7ade1b9b2570ebc5bd87d66953d366a47b39a7cd665c5f79eaaba3007894",
-      "size": 27611
+      "sha256": "sha256:eaf87636ac156384637702e894a1d9f3297e83db69bb544018a74f3f3acecd18",
+      "size": 27238
     },
     "scripts/verify_runtime_requirements.py": {
       "posixMode": 493,
@@ -1609,8 +2069,8 @@
     },
     "skills/agent-guardrails/scripts/block-dangerous-git.sh": {
       "posixMode": 493,
-      "sha256": "sha256:09d84588195ddcab375a4c87e6fcd43ad81fc0b15b67e6fcbdf343dab3f0b621",
-      "size": 78092
+      "sha256": "sha256:f228b68bf34ede252e355cfc208416e3c4a83a71fffe34fa6d6d66e20ce113ee",
+      "size": 81461
     },
     "skills/agent-guardrails/scripts/dangerous-patterns.txt": {
       "posixMode": 420,
@@ -1624,8 +2084,8 @@
     },
     "skills/agent-guardrails/scripts/test-block-dangerous-git.sh": {
       "posixMode": 493,
-      "sha256": "sha256:f94fa58ae1394cd0f2ba490f5b6f3a6f1c41622a426bece96b4c10fc3116837c",
-      "size": 52063
+      "sha256": "sha256:9f0f5ecf3bc7b42e50f86f8e030162af6c5ae8728b2a7af2f22a08a70009a94d",
+      "size": 55247
     },
     "skills/agent-schedule/SKILL.md": {
       "posixMode": 420,
@@ -2069,7 +2529,7 @@
     },
     "skills/registry.json": {
       "posixMode": 420,
-      "sha256": "sha256:9fee630a34f4ea4c5d31d6c84bacf339164cac965f1eb127340265bbd2f75b3b",
+      "sha256": "sha256:9958a45564e32350bf727f645670bae1c0cf3888e70d5928ac18a7e46e789270",
       "size": 33552
     },
     "skills/research/SKILL.md": {
@@ -2084,8 +2544,8 @@
     },
     "skills/self-contained-ship/SKILL.md": {
       "posixMode": 420,
-      "sha256": "sha256:2fcacf0c47ad5d42d683f703ee02d4a354337626ba6a33a9dff7552a26c849db",
-      "size": 26095
+      "sha256": "sha256:f2599fc42d982dd2777fcda3fec75dceea7fdb012bdef2e403d365931c11ac5e",
+      "size": 27315
     },
     "skills/self-contained-ship/TEST-MATERIAL.md": {
       "posixMode": 420,
@@ -2109,8 +2569,8 @@
     },
     "skills/self-contained-ship/scripts/test-sealed-artifacts.mjs": {
       "posixMode": 493,
-      "sha256": "sha256:255da143fdd143e80934632647b187654c884b184c40c5cc3ccd8339d76a0052",
-      "size": 5218
+      "sha256": "sha256:2762e9409bbb0e5098a78a7df7bc9c59bd7f346aa7e1091b58746715cbbc6547",
+      "size": 9073
     },
     "skills/self-contained-ship/scripts/verify-egress-policy.py": {
       "posixMode": 493,
@@ -2317,6 +2777,11 @@
       "sha256": "sha256:c58339bc6646977d2b3b6f816fd1a28c2a54fde06a40bf3766acac1098654c52",
       "size": 124
     },
+    "tests/__init__.py": {
+      "posixMode": 420,
+      "sha256": "sha256:3e11a934026442be67a398554652985bd5fec8dea1e03f3eb71a3a4e12eb49cc",
+      "size": 117
+    },
     "tests/test_archipelago_protocol.py": {
       "posixMode": 420,
       "sha256": "sha256:7e943abec98f5adb9a5c930148f620a97c79276a99ac4ae9283ead2b339fadd3",
@@ -2352,10 +2817,15 @@
       "sha256": "sha256:7601061123cb3b372b66e5c8fc44b6de0254cc62d6eff1d17be4ae41c1e8d716",
       "size": 67220
     },
+    "tests/test_gauntlet_records.py": {
+      "posixMode": 420,
+      "sha256": "sha256:d6e48126a90b580a962625cb302ec804693c0cd96692a9316dd02788679d1a6c",
+      "size": 4427
+    },
     "tests/test_git_guard_grammar.py": {
       "posixMode": 420,
-      "sha256": "sha256:e514822cbeeb0480c78161e8d07bd0cb8d4c748486ae1cdb894c5a1223b1a995",
-      "size": 4617
+      "sha256": "sha256:72b1be98c0bb576e5664dc96d2ce3b0ec315239f29acee831d0a50d5fe8a5a4d",
+      "size": 11607
     },
     "tests/test_install.py": {
       "posixMode": 420,
@@ -2367,6 +2837,16 @@
       "sha256": "sha256:69b297a63d468e09fd9e14acefbc3eecd413c90fc49ebca683b8ef9e1a236471",
       "size": 4071
     },
+    "tests/test_manifest_reference_policy.py": {
+      "posixMode": 420,
+      "sha256": "sha256:25b3da02df1bb227b5e222422940e4cc0003c63d5d42b2c7402d9dd019a94dbe",
+      "size": 2818
+    },
+    "tests/test_platform_evidence.py": {
+      "posixMode": 420,
+      "sha256": "sha256:f5bfebd8fa13c653441ad54f42ffdae453d6eb5dcf54ca722b67ce33f4771b8b",
+      "size": 5398
+    },
     "tests/test_provenance.py": {
       "posixMode": 420,
       "sha256": "sha256:56c80ab0478bc77dcd1802d70d5a85c15b7036b2ea89264020c4e742d6eee7cc",
@@ -2374,23 +2854,23 @@
     },
     "tests/test_public_front_door.py": {
       "posixMode": 420,
-      "sha256": "sha256:4d2637b6abb605b7e9261129ff806dc39a2af64b887012126df20378ccbf91bd",
-      "size": 7744
+      "sha256": "sha256:f0542e8891f89446d33aa3fd72e197f8c4afc16e2cc3c1ad2c1d23ee43b17007",
+      "size": 7910
     },
     "tests/test_public_release.py": {
       "posixMode": 420,
-      "sha256": "sha256:6c0f309c413c27ce4c8d44e136749e23fd4fdf21bf34d8320b2b737b4aa9e3bd",
-      "size": 26640
+      "sha256": "sha256:bb02059b33816a79f86ff7a0eab0831f946bf1e46b5a8b71d922a8ca7f049621",
+      "size": 31588
     },
     "tests/test_release_artifacts.py": {
       "posixMode": 420,
-      "sha256": "sha256:63680abf4ddee973ac4129eb9badb269f3bc1bd35f86fe7c45134fdfeedb832b",
+      "sha256": "sha256:b20aa3ccdd3c87c0f2526a248854c0e77d36a0f4bd773a1170947bb970a4b24d",
       "size": 33244
     },
     "tests/test_release_reviews.py": {
       "posixMode": 420,
-      "sha256": "sha256:93545758d3887d593bfe8f96236c053455387f9e51f56c6ac6eee6f91284faca",
-      "size": 20322
+      "sha256": "sha256:a25cf51374c9943a4917ac41d3f1e527059b46b384ed7659f20a371daf259e78",
+      "size": 24928
     },
     "tests/test_render_sotu.py": {
       "posixMode": 420,
@@ -2399,8 +2879,13 @@
     },
     "tests/test_runtime_boundaries.py": {
       "posixMode": 420,
-      "sha256": "sha256:db6ac44e5c4249aff415d5415acd6126c83d82e0046ca982390d466472d69ccf",
-      "size": 4937
+      "sha256": "sha256:29274ae6f8c529bc8d968c66e1b9b8b3467646ccf2c327537a9ccdda65347df2",
+      "size": 5675
+    },
+    "tests/test_security_patch_docs.py": {
+      "posixMode": 420,
+      "sha256": "sha256:55ddf226746cf8edfbb754df09d1a98f42afff3e82b3b58ee199ca1a101dedef",
+      "size": 954
     },
     "tests/test_security_scripts.py": {
       "posixMode": 420,
@@ -2424,8 +2909,8 @@
     },
     "tests/test_validate_skills.py": {
       "posixMode": 420,
-      "sha256": "sha256:54d0596b6209f284812cabd6ad21c131ca3dcdc81b58c16611401b88ec3bcebe",
-      "size": 12467
+      "sha256": "sha256:d38526c863bfcbae48622e6e66986f0686039351313e717bc79d2af103f4b866",
+      "size": 13033
     },
     "tests/test_validation_records.py": {
       "posixMode": 420,
@@ -2434,8 +2919,8 @@
     },
     "trust/README.md": {
       "posixMode": 420,
-      "sha256": "sha256:fbf314829581b2ab4c05db4dc383eb5463d6eee05610712ff3ef235dfe606547",
-      "size": 15498
+      "sha256": "sha256:6ac66fba1281ef71ede3b9c1ab0e7fec9f21344a7352c3d9156aa1ddf0989a7c",
+      "size": 15590
     },
     "trust/install-inventory.schema.json": {
       "posixMode": 420,
@@ -2556,8 +3041,8 @@
         },
         "scripts/block-dangerous-git.sh": {
           "posixMode": 493,
-          "sha256": "sha256:09d84588195ddcab375a4c87e6fcd43ad81fc0b15b67e6fcbdf343dab3f0b621",
-          "size": 78092
+          "sha256": "sha256:f228b68bf34ede252e355cfc208416e3c4a83a71fffe34fa6d6d66e20ce113ee",
+          "size": 81461
         },
         "scripts/dangerous-patterns.txt": {
           "posixMode": 420,
@@ -2571,8 +3056,8 @@
         },
         "scripts/test-block-dangerous-git.sh": {
           "posixMode": 493,
-          "sha256": "sha256:f94fa58ae1394cd0f2ba490f5b6f3a6f1c41622a426bece96b4c10fc3116837c",
-          "size": 52063
+          "sha256": "sha256:9f0f5ecf3bc7b42e50f86f8e030162af6c5ae8728b2a7af2f22a08a70009a94d",
+          "size": 55247
         }
       },
       "networkCommands": [
@@ -2585,10 +3070,31 @@
         },
         {
           "kind": "fetch",
-          "line": 1495,
+          "line": 163,
           "path": "scripts/block-dangerous-git.sh",
-          "preview": "network_subs = {\"clone\", \"fetch\", \"pull\", \"push\", \"ls-remote\", \"submodule\"}",
-          "sha256": "sha256:e86f53ed80c4638a2f86f0a4285e6b1c3a64b5028cc9fd4e2b9bc2d85ab9904a"
+          "preview": "\"fetch\": set(\"jo\"),",
+          "sha256": "sha256:5eb61dd85860e99fd67c24f0a2ad59f307baed487fb51574900b1203e2ff4387"
+        },
+        {
+          "kind": "fetch",
+          "line": 195,
+          "path": "scripts/block-dangerous-git.sh",
+          "preview": "\"fetch\": {",
+          "sha256": "sha256:847a7ddabd3db6dd11e72e7c9d825c2518474ed95173f487d019f30d1307f8f8"
+        },
+        {
+          "kind": "fetch",
+          "line": 451,
+          "path": "scripts/block-dangerous-git.sh",
+          "preview": "if sub in {\"clone\", \"fetch\", \"pull\", \"ls-remote\"} and (",
+          "sha256": "sha256:67f18b2e1f11c64a9aed961336de69d5436b2a4c33b59d59d35b6e6dbde7faf2"
+        },
+        {
+          "kind": "fetch",
+          "line": 1547,
+          "path": "scripts/block-dangerous-git.sh",
+          "preview": "network_subs = {\"clone\", \"fetch\", \"pull\", \"push\", \"ls-remote\", \"submodule\", \"send-pack\"}",
+          "sha256": "sha256:2b2cdb87778f357a95c8f4c6242ae570d6c61ae94ccd6dba081d1abb534fa387"
         },
         {
           "kind": "fetch",
@@ -2652,6 +3158,62 @@
           "path": "scripts/test-block-dangerous-git.sh",
           "preview": "check 2 \"GIT_SSH_COMMAND='git push' git fetch\" 'visible Git SSH command blocks on a network operation'",
           "sha256": "sha256:8faa2fe699550ce72b69dbfb0b629b5f66da43f0bfc3725bf82a46082047808d"
+        },
+        {
+          "kind": "git-network",
+          "line": 625,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 2 'git clone -u evil origin' '006 clone upload program'",
+          "sha256": "sha256:e4a1457d253b52d19e5d8f8198fe72f518e589520592ece4cc6639fbea740bcd"
+        },
+        {
+          "kind": "fetch",
+          "line": 626,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 2 'git fetch --upload-pack=evil origin' '006 fetch upload program'",
+          "sha256": "sha256:ec64fe67017fcb71ef348b80f115b020bb7cc83b80b268fbd9721c7d14f756ad"
+        },
+        {
+          "kind": "git-network",
+          "line": 626,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 2 'git fetch --upload-pack=evil origin' '006 fetch upload program'",
+          "sha256": "sha256:ec64fe67017fcb71ef348b80f115b020bb7cc83b80b268fbd9721c7d14f756ad"
+        },
+        {
+          "kind": "git-network",
+          "line": 627,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 2 'git pull --upload-pack evil origin' '006 pull upload program'",
+          "sha256": "sha256:312f4bc081badf8aa0c2f211bce3716478bb9b162e1f03c95ba4b274dfcba2c3"
+        },
+        {
+          "kind": "fetch",
+          "line": 636,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 0 'git fetch origin' '006 fetch control'",
+          "sha256": "sha256:c664f80c41ebbea2f1f3fd7b45fa54d7c7e55e5209f9c57cc4049107c49b527b"
+        },
+        {
+          "kind": "git-network",
+          "line": 636,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 0 'git fetch origin' '006 fetch control'",
+          "sha256": "sha256:c664f80c41ebbea2f1f3fd7b45fa54d7c7e55e5209f9c57cc4049107c49b527b"
+        },
+        {
+          "kind": "git-network",
+          "line": 637,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 0 'git clone ../fixture-repo.git' '006 clone control'",
+          "sha256": "sha256:8fee4c1b2a17cea58d7839ab8ad12547122055f68d993e3cbf1b291dad5a82be"
+        },
+        {
+          "kind": "git-network",
+          "line": 638,
+          "path": "scripts/test-block-dangerous-git.sh",
+          "preview": "check_strict 0 'git clone --branch --upload-pack=literal ../fixture-repo.git' '006 branch value is data'",
+          "sha256": "sha256:0111e14a121dd6893311303e37ab7b99fd9d60433720bc8b764d1f5b856193a2"
         }
       ],
       "nonHttpRemoteReferences": []
@@ -3830,8 +4392,8 @@
       "files": {
         "SKILL.md": {
           "posixMode": 420,
-          "sha256": "sha256:2fcacf0c47ad5d42d683f703ee02d4a354337626ba6a33a9dff7552a26c849db",
-          "size": 26095
+          "sha256": "sha256:f2599fc42d982dd2777fcda3fec75dceea7fdb012bdef2e403d365931c11ac5e",
+          "size": 27315
         },
         "TEST-MATERIAL.md": {
           "posixMode": 420,
@@ -3855,8 +4417,8 @@
         },
         "scripts/test-sealed-artifacts.mjs": {
           "posixMode": 493,
-          "sha256": "sha256:255da143fdd143e80934632647b187654c884b184c40c5cc3ccd8339d76a0052",
-          "size": 5218
+          "sha256": "sha256:2762e9409bbb0e5098a78a7df7bc9c59bd7f346aa7e1091b58746715cbbc6547",
+          "size": 9073
         },
         "scripts/verify-egress-policy.py": {
           "posixMode": 493,
@@ -3865,13 +4427,6 @@
         }
       },
       "networkCommands": [
-        {
-          "kind": "fetch",
-          "line": 8,
-          "path": "SKILL.md",
-          "preview": "The containment covenant: **a deliverable is not shippable until it reaches nothing.** No CDN script, no remote font, no `fetch` at load, no socket, no beacon; every byte it needs is inlined or vendored beside it. This is the sibling of [`…",
-          "sha256": "sha256:b0c9bc4614314ca56e852b0624a3f43a20d918de7f5d533072c94cafa5c151c2"
-        },
         {
           "kind": "fetch",
           "line": 10,
@@ -8582,6 +9137,20 @@
           "path": "scripts/test-scan-egress.sh",
           "preview": "printf '<script>document.head.dataset.ready=\"1\"</script><script>const s=document.createElement(\"script\");s.type=\"module\";s.src=\"data:text/plain,fetch(%%22%sdocs.invalid/clean%%22)\"</script>\\n' \"$_pr\" > \"$SNAP_DIR/live.html\"",
           "sha256": "sha256:dd7b4f1c4d94d687ffb772238166b2ef0bc116e2ed67175eecfdcb03a2c85772"
+        },
+        {
+          "kind": "fetch",
+          "line": 132,
+          "path": "scripts/test-sealed-artifacts.mjs",
+          "preview": "setTimeout(() => { try { new RTCPeerConnection(); } catch {} fetch(${JSON.stringify(sinkUrl)}).catch(() => {}); }, 450);",
+          "sha256": "sha256:594ce6e9bc5283fe92749536717922184c181556dc18fd48ef94f7045642edc0"
+        },
+        {
+          "kind": "language-network",
+          "line": 132,
+          "path": "scripts/test-sealed-artifacts.mjs",
+          "preview": "setTimeout(() => { try { new RTCPeerConnection(); } catch {} fetch(${JSON.stringify(sinkUrl)}).catch(() => {}); }, 450);",
+          "sha256": "sha256:594ce6e9bc5283fe92749536717922184c181556dc18fd48ef94f7045642edc0"
         }
       ],
       "nonHttpRemoteReferences": []
